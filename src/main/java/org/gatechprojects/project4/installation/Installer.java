@@ -1,5 +1,7 @@
 package org.gatechprojects.project4.installation;
 
+import org.gatechprojects.project4.DAL.Blackboard;
+import org.gatechprojects.project4.DAL.DatabaseConfiguration;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,14 +13,9 @@ public class Installer {
 		installer.install();
 	}
 
-	public void install() {
-		initializeDatabaseSchema();
-		seedData();
-
-	}
-
 	private void initializeDatabaseSchema() {
-		Configuration configuration = new Configuration().configure();
+		DatabaseConfiguration dbConfig = new DatabaseConfiguration();
+		Configuration configuration = dbConfig.buildConfiguration().configure();
 		configuration.setProperty("hibernate.hbm2ddl.auto", "create");
 		SessionFactory factory = configuration.buildSessionFactory();
 		Session session = factory.openSession();
@@ -26,7 +23,15 @@ public class Installer {
 		factory.close();
 	}
 
+	public void install() {
+		initializeDatabaseSchema();
+		seedData();
+
+	}
+
 	private void seedData() {
+		Blackboard blackBoard = new Blackboard();
+
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
 		// Seed Users

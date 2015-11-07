@@ -27,7 +27,7 @@
 		</property>
 
 		<!-- List of XML mapping files -->
-		<mapping resource="Project4.hbm.xml" />
+		<!-- <mapping resource="Project4.hbm.xml" /> -->
 
 	</session-factory>
 </hibernate-configuration>

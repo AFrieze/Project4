@@ -1,7 +1,13 @@
 package org.gatechprojects.project4.SharedDataModules;
 
-public class User {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "user")
+public class User {
+	@Id
 	private int id;
 	private String firstName;
 	private String lastName;
@@ -10,24 +16,24 @@ public class User {
 
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
+	public String getLastName() {
+		return lastName;
 	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setLastName(String lastName) {
