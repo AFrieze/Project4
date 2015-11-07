@@ -1,5 +1,8 @@
 package org.gatechprojects.project4.SharedDataModules;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,9 +14,13 @@ public class User {
 	private int id;
 	private String firstName;
 	private String lastName;
+	private boolean isTA;
+	private boolean isProfessor;
+	private boolean isStudent;
+	private Set<CourseTaken> coursesTaken = new HashSet<CourseTaken>();
 
-	public User() {
-
+	public Set<CourseTaken> getCoursesTaken() {
+		return coursesTaken;
 	}
 
 	public String getFirstName() {
@@ -28,6 +35,22 @@ public class User {
 		return lastName;
 	}
 
+	public boolean isProfessor() {
+		return isProfessor;
+	}
+
+	public boolean isStudent() {
+		return isStudent;
+	}
+
+	public boolean isTA() {
+		return isTA;
+	}
+
+	public void setCoursesTaken(Set<CourseTaken> coursesTaken) {
+		this.coursesTaken = coursesTaken;
+	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
@@ -38,6 +61,18 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public void setProfessor(boolean isProfessor) {
+		this.isProfessor = isProfessor;
+	}
+
+	public void setStudent(boolean isStudent) {
+		this.isStudent = isStudent;
+	}
+
+	public void setTA(boolean isTA) {
+		this.isTA = isTA;
 	}
 
 }

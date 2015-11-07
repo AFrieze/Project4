@@ -5,13 +5,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "input_professor")
-public class InputProfessor {
-
+@Table(name = "output_professor_course_assignment")
+public class OutputProfessorCourseAssignment {
 	@Id
 	private int id;
 	private int userId;
+	private int courseId;
 	private int optimizerCalculationId;
+
+	public int getCourseId() {
+		return courseId;
+	}
 
 	public int getId() {
 		return id;
@@ -23,6 +27,10 @@ public class InputProfessor {
 
 	public int getUserId() {
 		return userId;
+	}
+
+	public void setCourseId(int courseId) {
+		this.courseId = courseId;
 	}
 
 	public void setId(int id) {

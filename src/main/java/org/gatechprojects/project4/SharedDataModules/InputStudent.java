@@ -5,12 +5,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "input_professor")
-public class InputProfessor {
+@Table(name = "input_student")
+public class InputStudent {
 
 	@Id
 	private int id;
 	private int userId;
+	private int studentPriority;
 	private int optimizerCalculationId;
 
 	public int getId() {
@@ -19,6 +20,10 @@ public class InputProfessor {
 
 	public int getOptimizerCalculationId() {
 		return optimizerCalculationId;
+	}
+
+	public int getStudentPriority() {
+		return studentPriority;
 	}
 
 	public int getUserId() {
@@ -31,6 +36,10 @@ public class InputProfessor {
 
 	public void setOptimizerCalculationId(int optimizerCalculationId) {
 		this.optimizerCalculationId = optimizerCalculationId;
+	}
+
+	public void setStudentPriority(int studentPriority) {
+		this.studentPriority = studentPriority;
 	}
 
 	public void setUserId(int userId) {

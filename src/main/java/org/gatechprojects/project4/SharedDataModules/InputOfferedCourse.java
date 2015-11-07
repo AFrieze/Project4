@@ -11,6 +11,7 @@ public class InputOfferedCourse {
 	private int id;
 	private int courseId;
 	private boolean mustBeTaught = false;
+	private int optimizerCalculationId;
 
 	public int getCourseId() {
 		return courseId;
@@ -18,6 +19,10 @@ public class InputOfferedCourse {
 
 	public int getId() {
 		return id;
+	}
+
+	public int getOptimizerCalculationId() {
+		return optimizerCalculationId;
 	}
 
 	public boolean isMustBeTaught() {
@@ -34,6 +39,10 @@ public class InputOfferedCourse {
 
 	public void setMustBeTaught(boolean mustBeTaught) {
 		this.mustBeTaught = mustBeTaught;
+	}
+
+	public void setOptimizerCalculationId(int optimizerCalculationId) {
+		this.optimizerCalculationId = optimizerCalculationId;
 	}
 
 }
