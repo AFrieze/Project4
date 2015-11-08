@@ -1,6 +1,8 @@
 package org.gatechprojects.project4.SharedDataModules;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -8,6 +10,7 @@ import javax.persistence.Table;
 @Table(name = "output_professor_course_assignment")
 public class OutputProfessorCourseAssignment {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int userId;
 	private int courseId;

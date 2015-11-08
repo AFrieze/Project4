@@ -2,28 +2,25 @@ package org.gatechprojects.project4.SharedDataModules;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "course_taken")
-public class CourseTaken {
+@Table(name = "student_course_preference")
+public class StudentCoursePreference {
 
 	@Id
-	@GeneratedValue
-	// @Column(name = "course_id", columnDefinition = "INT NOT NULL
-	// AUTO_INCREMENT")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	@ManyToOne
+	@ManyToOne()
+	@JoinColumn(name = "student_preference_id")
+	private StudentPreference studentPreference;
+	@ManyToOne()
 	@JoinColumn(name = "course_id")
 	private Course course;
-
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
 
 	public Course getCourse() {
 		return course;
@@ -33,8 +30,8 @@ public class CourseTaken {
 		return id;
 	}
 
-	public User getUser() {
-		return user;
+	public StudentPreference getStudentPreference() {
+		return studentPreference;
 	}
 
 	public void setCourse(Course course) {
@@ -45,8 +42,8 @@ public class CourseTaken {
 		this.id = id;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setStudentPreference(StudentPreference studentPreference) {
+		this.studentPreference = studentPreference;
 	}
 
 }

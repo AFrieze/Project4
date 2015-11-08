@@ -1,6 +1,8 @@
 package org.gatechprojects.project4.SharedDataModules;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,10 +11,11 @@ import javax.persistence.Table;
 public class InputStudentPreference {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int userId;
 	private int courseId;
-	private int order;
+	private int courseOrder;
 	private int optimizerCalculationId;
 
 	public int getCourseId() {
@@ -28,7 +31,7 @@ public class InputStudentPreference {
 	}
 
 	public int getOrder() {
-		return order;
+		return courseOrder;
 	}
 
 	public int getUserId() {
@@ -48,7 +51,7 @@ public class InputStudentPreference {
 	}
 
 	public void setOrder(int order) {
-		this.order = order;
+		this.courseOrder = order;
 	}
 
 	public void setUserId(int userId) {

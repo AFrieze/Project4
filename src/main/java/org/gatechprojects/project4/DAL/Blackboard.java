@@ -7,6 +7,7 @@ import javax.annotation.concurrent.ThreadSafe;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 import com.google.common.base.Preconditions;
 
@@ -15,7 +16,6 @@ public class Blackboard implements Closeable
 
 {
 	private State state = State.LATENT;
-	private State transactionState = State.LATENT;
 	private Session session = null;
 	private Transaction transaction = null;
 
@@ -28,10 +28,15 @@ public class Blackboard implements Closeable
 	}
 
 	public void commitTransaction() {
-		Preconditions.checkArgument(transactionState == State.INITIALIZED);
-		transactionState = State.CLOSED;
+		Preconditions.checkNotNull(transaction);
+		Preconditions.checkArgument(transaction.getStatus() == TransactionStatus.ACTIVE);
 		transaction.commit();
+		transaction = null;
+	}
 
+	public UserBoard getUserBoard() {
+		Preconditions.checkArgument(transaction.getStatus() == TransactionStatus.ACTIVE);
+		return new UserBoard(this.transaction, this.session);
 	}
 
 	public synchronized void load() {
@@ -43,18 +48,14 @@ public class Blackboard implements Closeable
 	}
 
 	public void rollbackTransaction() {
-		Preconditions.checkArgument(transactionState == State.INITIALIZED);
-		transactionState = State.CLOSED;
+		Preconditions.checkNotNull(transaction);
+		Preconditions.checkArgument(transaction.getStatus() == TransactionStatus.ACTIVE);
 		transaction.rollback();
 	}
 
-	public void saveChanges() {
-
-	}
-
 	public void startTransaction() {
-		Preconditions.checkArgument(transactionState == State.LATENT);
-		transactionState = State.INITIALIZED;
+		Preconditions.checkArgument(state == State.INITIALIZED);
+		Preconditions.checkArgument(transaction == null);
 		transaction = session.beginTransaction();
 	}
 
