@@ -34,9 +34,16 @@ public class Blackboard implements Closeable
 		transaction = null;
 	}
 
+	public <T> T getByID(Class<T> classType, int id) {
+		return session.get(classType, id);
+	}
+
+	public CatalogBoard getCatalogBoard() {
+		return new CatalogBoard(transaction, session);
+	}
+
 	public UserBoard getUserBoard() {
-		Preconditions.checkArgument(transaction.getStatus() == TransactionStatus.ACTIVE);
-		return new UserBoard(this.transaction, this.session);
+		return new UserBoard(transaction, session);
 	}
 
 	public synchronized void load() {

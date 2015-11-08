@@ -8,16 +8,16 @@
 		<property name="hibernate.hbm2ddl.auto">
 			validate
 		</property>
-		<property name="hibernate.dialect">
+		<property name="hibernate.dialect" >
 			org.hibernate.dialect.MySQLDialect
 		</property>
 		<property name="hibernate.connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>
-
+ <property name="show_sql">true</property>
 		<!-- Assume test is the database name -->
 		<property name="hibernate.connection.url">
-			jdbc:mysql://localhost/project4
+			jdbc:mysql://localhost/project4test
 		</property>
 		<property name="hibernate.connection.username">
 			root

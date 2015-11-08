@@ -1,6 +1,7 @@
 package org.gatechprojects.project4.BAL;
 
 import org.gatechprojects.project4.DAL.Blackboard;
+import org.gatechprojects.project4.SharedDataModules.User;
 
 public class UserService {
 
@@ -29,6 +30,10 @@ public class UserService {
 		int userId = blackboard.getUserBoard().addUser(firstName, lastName, isStudent, isTA, isProfessor);
 		blackboard.commitTransaction();
 		return userId;
+	}
+
+	public User getUser(int userId) {
+		return blackboard.getByID(User.class, userId);
 	}
 
 	public void updateUser(int userId, String firstName, String lastName, boolean isStudent, boolean isTA,

@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,22 +15,25 @@ public class CourseSemester {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int semesterID;
+
+	@ManyToOne
+	@JoinColumn(name = "semester_id")
+	private Semester semester;
 
 	public int getId() {
 		return id;
 	}
 
-	public int getSemesterID() {
-		return semesterID;
+	public Semester getSemester() {
+		return semester;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public void setSemesterID(int semesterID) {
-		this.semesterID = semesterID;
+	public void setSemester(Semester semester) {
+		this.semester = semester;
 	}
 
 }
