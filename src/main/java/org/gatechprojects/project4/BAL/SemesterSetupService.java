@@ -6,7 +6,7 @@ import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 
-public class CatalogService {
+public class SemesterSetupService {
 
 	private Blackboard blackboard;
 
@@ -14,7 +14,7 @@ public class CatalogService {
 	 * Default public contructor. A Blackboard instance will be created using
 	 * {@link Blackboard blackboards} default constructor.
 	 */
-	public CatalogService() {
+	public SemesterSetupService() {
 		blackboard = new Blackboard();
 		blackboard.load();
 	}
@@ -24,7 +24,7 @@ public class CatalogService {
 	 * 
 	 * @param blackboard
 	 */
-	public CatalogService(Blackboard blackboard) {
+	public SemesterSetupService(Blackboard blackboard) {
 		this.blackboard = blackboard;
 	}
 
