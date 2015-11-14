@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.gatechprojects.project4.BAL.CatalogService;
+import org.gatechprojects.project4.BAL.SemesterSetupService;
 import org.gatechprojects.project4.BAL.UserService;
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.Semester;
@@ -34,7 +34,7 @@ public class UserIntegrationTest {
 		testDB.endTestingSession();
 	}
 
-	private int testCourseCreation(CatalogService catalog, String name, int nbrCredits) {
+	private int testCourseCreation(SemesterSetupService catalog, String name, int nbrCredits) {
 		int courseId = catalog.addCourse(name, nbrCredits);
 		Course course = catalog.getCourse(courseId);
 		assertEquals(name, course.getName());
@@ -42,7 +42,7 @@ public class UserIntegrationTest {
 		return courseId;
 	}
 
-	private int testSemesterCreation(CatalogService catalog, String name, int year) {
+	private int testSemesterCreation(SemesterSetupService catalog, String name, int year) {
 		int semesterId = catalog.addSemester(name, year);
 		Semester semester = catalog.getSemester(semesterId);
 		assertEquals(name, semester.getName());
@@ -77,7 +77,7 @@ public class UserIntegrationTest {
 	@Test
 	public void userTests() {
 		UserService userService = new UserService();
-		CatalogService catalogService = new CatalogService();
+		SemesterSetupService catalogService = new SemesterSetupService();
 		String firstName = "Andrew";
 		String lastName = "Freeze";
 		String correctedLastName = "Frieze";
