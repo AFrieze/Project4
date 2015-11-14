@@ -25,7 +25,8 @@ public class User {
 	private boolean isStudent;
 	@OneToMany(mappedBy = "user")
 	private Set<CourseTaken> coursesTaken = new HashSet<CourseTaken>();
-
+	@OneToMany(mappedBy = "user")
+	private Set<ProfessorCompetence> professorCompetencies = new HashSet<ProfessorCompetence>();
 	@OneToMany(mappedBy = "user")
 	private Set<StudentPreference> preferences = new HashSet<StudentPreference>();
 
@@ -47,6 +48,10 @@ public class User {
 
 	public Set<StudentPreference> getPreferences() {
 		return preferences;
+	}
+
+	public Set<ProfessorCompetence> getProfessorCompetencies() {
+		return professorCompetencies;
 	}
 
 	public boolean isProfessor() {
@@ -83,6 +88,10 @@ public class User {
 
 	public void setProfessor(boolean isProfessor) {
 		this.isProfessor = isProfessor;
+	}
+
+	public void setProfessorCompetencies(Set<ProfessorCompetence> professorCompetencies) {
+		this.professorCompetencies = professorCompetencies;
 	}
 
 	public void setStudent(boolean isStudent) {

@@ -2,10 +2,12 @@ package org.gatechprojects.project4.DAL;
 
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.CourseTaken;
+import org.gatechprojects.project4.SharedDataModules.ProfessorCompetence;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.StudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.StudentPreference;
 import org.gatechprojects.project4.SharedDataModules.User;
+import org.gatechprojects.project4.SharedDataModules.UserAvailability;
 import org.hibernate.cfg.Configuration;
 
 public class DatabaseConfiguration {
@@ -24,6 +26,8 @@ public class DatabaseConfiguration {
 		configuration.addAnnotatedClass(CourseTaken.class);
 		configuration.addAnnotatedClass(StudentPreference.class);
 		configuration.addAnnotatedClass(StudentCoursePreference.class);
+		configuration.addAnnotatedClass(ProfessorCompetence.class);
+		configuration.addAnnotatedClass(UserAvailability.class);
 		// configuration.addAnnotatedClass(CoursePrerequisite.class);
 		// configuration.addAnnotatedClass(CourseSemester.class);
 		// configuration.addAnnotatedClass(InputOfferedCourse.class);

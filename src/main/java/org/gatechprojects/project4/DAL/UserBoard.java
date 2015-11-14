@@ -1,5 +1,6 @@
 package org.gatechprojects.project4.DAL;
 
+import java.util.List;
 import java.util.TreeSet;
 
 import org.gatechprojects.project4.SharedDataModules.Course;
@@ -7,8 +8,10 @@ import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.StudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.StudentPreference;
 import org.gatechprojects.project4.SharedDataModules.User;
+import org.gatechprojects.project4.SharedDataModules.UserAvailability;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 public class UserBoard extends Board {
 
@@ -21,6 +24,19 @@ public class UserBoard extends Board {
 		User user = new User();
 		populateUser(user, firstName, lastName, isStudent, isTA, isProfessor);
 		return (Integer) getSession().save(user);
+	}
+
+	public List<UserAvailability> getAvailableUsersBySemesterAndType(boolean isStudent, boolean isTA,
+			boolean isProfessor, int semesterId) {
+		return getSession().createCriteria(User.class).add(Restrictions.eq("semester_id", semesterId))
+				.add(Restrictions.or(Restrictions.eq("isStudent", isStudent), Restrictions.eq("isTA", isTA),
+						Restrictions.eq("isProfessor", isProfessor)))
+				.list();
+	}
+
+	public List<User> getAvailableUsersByType(boolean isStudent, boolean isTA, boolean isProfessor) {
+		return getSession().createCriteria(User.class).add(Restrictions.or(Restrictions.eq("isStudent", isStudent),
+				Restrictions.eq("isTA", isTA), Restrictions.eq("isProfessor", isProfessor))).list();
 	}
 
 	public User getUser(int userId) {

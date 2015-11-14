@@ -9,35 +9,43 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "course_semester")
-public class CourseSemester {
+@Table(name = "professor_competence")
+public class ProfessorCompetence {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name = "semester_id")
-	private Semester semester;
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User assignedProfessor;
+	@JoinColumn(name = "course_id")
+	private Course course;
+
+	public Course getCourse() {
+		return course;
+	}
 
 	public int getId() {
 		return id;
 	}
 
-	public Semester getSemester() {
-		return semester;
+	public User getUser() {
+		return user;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public void setSemester(Semester semester) {
-		this.semester = semester;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

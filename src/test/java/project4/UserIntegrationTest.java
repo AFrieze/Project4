@@ -24,6 +24,11 @@ public class UserIntegrationTest {
 		LOG.info("Testing log, This test should be removed");
 	}
 
+	@Test
+	public void semesterConfigurationTest() {
+
+	}
+
 	@Before
 	public void setup() {
 		testDB.startTestingSession();
@@ -96,4 +101,5 @@ public class UserIntegrationTest {
 		int semesterId = testSemesterCreation(catalogService, semesterName, semesterYear);
 
 	}
+
 }
