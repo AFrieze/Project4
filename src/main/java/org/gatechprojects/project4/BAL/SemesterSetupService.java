@@ -145,6 +145,7 @@ public class SemesterSetupService {
 	 */
 	public SemesterConfiguration getSemesterConfiguration(int semesterId) {
 		SemesterConfiguration semesterConfiguration = new SemesterConfiguration();
+		semesterConfiguration.setSemesterId(semesterId);
 		semesterConfiguration = populateConfigurationCourses(semesterConfiguration, semesterId);
 		semesterConfiguration = populateConfigurationProfessors(semesterConfiguration, semesterId);
 		semesterConfiguration = populateConfigurationTAs(semesterConfiguration, semesterId);

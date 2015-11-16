@@ -30,6 +30,9 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private Set<StudentPreference> preferences = new HashSet<StudentPreference>();
 
+	@OneToMany(mappedBy = "user")
+	private Set<UserAvailability> userAvailabilities = new HashSet<UserAvailability>();
+
 	public Set<CourseTaken> getCoursesTaken() {
 		return coursesTaken;
 	}

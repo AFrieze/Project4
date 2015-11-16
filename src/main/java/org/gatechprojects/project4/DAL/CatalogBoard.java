@@ -1,5 +1,6 @@
 package org.gatechprojects.project4.DAL;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.gatechprojects.project4.SharedDataModules.Course;
@@ -27,9 +28,9 @@ public class CatalogBoard extends Board {
 	}
 
 	public void clearCurrentSemesterConfigurations(int semesterId) {
-		String hql = "delete from course_semester where semester_id = :semesterId";
+		String hql = "delete from CourseSemester where semester.id = :semesterId";
 		getSession().createQuery(hql).setInteger("semesterId", semesterId).executeUpdate();
-		hql = "delete from user_availability where semester_id = :semesterId";
+		hql = "delete from UserAvailability where semester.id = :semesterId";
 		getSession().createQuery(hql).setInteger("semesterId", semesterId).executeUpdate();
 	}
 
@@ -58,7 +59,8 @@ public class CatalogBoard extends Board {
 	}
 
 	public List<CourseSemester> getSemesterCourses(int semesterId) {
-		return getSession().createCriteria(CourseSemester.class).add(Restrictions.eq("semester_id", semesterId)).list();
+		return new ArrayList<CourseSemester>(getSession().createCriteria(CourseSemester.class)
+				.add(Restrictions.eq("semester.id", semesterId)).list());
 	}
 
 	public List<Semester> getSemesters() {

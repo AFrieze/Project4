@@ -1,9 +1,11 @@
 package org.gatechprojects.project4.DAL;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
 import org.gatechprojects.project4.SharedDataModules.Course;
+import org.gatechprojects.project4.SharedDataModules.ProfessorCompetence;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.StudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.StudentPreference;
@@ -11,12 +13,24 @@ import org.gatechprojects.project4.SharedDataModules.User;
 import org.gatechprojects.project4.SharedDataModules.UserAvailability;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.SimpleExpression;
 
 public class UserBoard extends Board {
 
 	UserBoard(Transaction transaction, Session session) {
 		super(transaction, session);
+	}
+
+	public void addProfessorCompetency(int courseId, int userId) {
+		ProfessorCompetence pc = new ProfessorCompetence();
+		Course course = getSession().get(Course.class, courseId);
+		User user = getSession().get(User.class, userId);
+		pc.setCourse(course);
+		pc.setUser(user);
+		getSession().save(pc);
+
 	}
 
 	public int addUser(String firstName, String lastName, boolean isStudent, boolean isTA, boolean isProfessor) {
@@ -26,17 +40,63 @@ public class UserBoard extends Board {
 		return (Integer) getSession().save(user);
 	}
 
+	private Criterion[] buildUserTypeCriterion(boolean isStudent, boolean isTA, boolean isProfessor) {
+		List<SimpleExpression> restrictions = new ArrayList<SimpleExpression>();
+		if (isStudent) {
+			restrictions.add(Restrictions.eq("isStudent", isStudent));
+		}
+		if (isTA) {
+			restrictions.add(Restrictions.eq("isTA", isTA));
+		}
+		if (isProfessor) {
+			restrictions.add(Restrictions.eq("isProfessor", isProfessor));
+		}
+		return restrictions.toArray(new Criterion[0]);
+	}
+
 	public List<UserAvailability> getAvailableUsersBySemesterAndType(boolean isStudent, boolean isTA,
 			boolean isProfessor, int semesterId) {
-		return getSession().createCriteria(User.class).add(Restrictions.eq("semester_id", semesterId))
-				.add(Restrictions.or(Restrictions.eq("isStudent", isStudent), Restrictions.eq("isTA", isTA),
-						Restrictions.eq("isProfessor", isProfessor)))
-				.list();
+		Criterion[] userTypeCriterion = buildUserTypeCriterion(isStudent, isTA, isProfessor);
+		if (userTypeCriterion.length == 0) {
+			return new ArrayList<UserAvailability>();
+		}
+
+		List<String> restrictions = new ArrayList<String>();
+		if (isStudent) {
+			restrictions.add("ua.user.isStudent = true");
+		} else if (isTA) {
+			restrictions.add("ua.user.isTA = true");
+		} else if (isProfessor) {
+			restrictions.add("ua.user.isProfessor = true");
+		}
+		if (restrictions.size() == 0) {
+			return new ArrayList<UserAvailability>();
+		}
+
+		String hql = "from UserAvailability as ua where (";
+		for (int i = 0; i < restrictions.size(); i++) {
+			if (i > 0) {
+				hql = hql + " or";
+			}
+			hql = hql + " " + restrictions.get(i);
+		}
+		hql = hql + ")";
+
+		return getSession().createQuery(hql).list();
+
+		// return
+		// getSession().createCriteria(User.class).add(Restrictions.eq("semester_id",
+		// semesterId))
+		// .add(Restrictions.or(userTypeCriterion)).list();
 	}
 
 	public List<User> getAvailableUsersByType(boolean isStudent, boolean isTA, boolean isProfessor) {
-		return getSession().createCriteria(User.class).add(Restrictions.or(Restrictions.eq("isStudent", isStudent),
-				Restrictions.eq("isTA", isTA), Restrictions.eq("isProfessor", isProfessor))).list();
+		Criterion[] userTypeCriterion = buildUserTypeCriterion(isStudent, isTA, isProfessor);
+		if (userTypeCriterion.length == 0) {
+			return new ArrayList<User>();
+		}
+
+		return getSession().createCriteria(User.class).add(Restrictions.or(userTypeCriterion)).list();
 	}
 
 	public User getUser(int userId) {

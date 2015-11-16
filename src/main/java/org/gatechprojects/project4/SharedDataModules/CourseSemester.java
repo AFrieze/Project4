@@ -21,8 +21,20 @@ public class CourseSemester {
 	private Semester semester;
 
 	@ManyToOne
+	@JoinColumn(name = "course_id")
+	private Course course;
+
+	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User assignedProfessor;
+
+	public User getAssignedProfessor() {
+		return assignedProfessor;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
 
 	public int getId() {
 		return id;
@@ -30,6 +42,14 @@ public class CourseSemester {
 
 	public Semester getSemester() {
 		return semester;
+	}
+
+	public void setAssignedProfessor(User assignedProfessor) {
+		this.assignedProfessor = assignedProfessor;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public void setId(int id) {
