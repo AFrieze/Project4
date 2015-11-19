@@ -28,5 +28,4 @@ public class Professor extends Person {
 	public void setCourseCompetencies(List<Course> courseCompetencies) {
 		this.courseCompetencies = courseCompetencies;
 	}
-
 }

@@ -5,6 +5,10 @@ import java.util.List;
 
 import org.gatechprojects.project4.SharedDataModules.CourseSemester;
 
+/*
+ * This class will be used by the Admin screen to show TAs, profs and courses
+ */
+
 public class SemesterConfiguration {
 
 	private int semesterId;
