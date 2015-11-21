@@ -35,10 +35,10 @@ public class UserBoard extends Board {
 	}
 
 	public int addUser(Integer membershipId, String firstName, String lastName, boolean isStudent, boolean isTA,
-			boolean isProfessor) {
+			boolean isProfessor, boolean isAdministrator) {
 		verifyTransaction();
 		User user = new User();
-		populateUser(membershipId, user, firstName, lastName, isStudent, isTA, isProfessor);
+		populateUser(membershipId, user, firstName, lastName, isStudent, isTA, isProfessor, isAdministrator);
 		return (Integer) getSession().save(user);
 	}
 
@@ -116,7 +116,7 @@ public class UserBoard extends Board {
 	}
 
 	private void populateUser(Integer membershipId, User user, String firstName, String lastName, boolean isStudent,
-			boolean isTA, boolean isProfessor) {
+			boolean isTA, boolean isProfessor, boolean isAdministrator) {
 
 		if (membershipId != null) {
 			user.setMembership(getSession().get(MembershipUser.class, membershipId));
@@ -126,13 +126,14 @@ public class UserBoard extends Board {
 		user.setStudent(isStudent);
 		user.setTA(isTA);
 		user.setProfessor(isProfessor);
+		user.setAdministrator(isAdministrator);
 	}
 
 	public void updateUser(Integer membershipId, int userId, String firstName, String lastName, boolean isStudent,
-			boolean isTA, boolean isProfessor) {
+			boolean isTA, boolean isProfessor, boolean isAdministrator) {
 		verifyTransaction();
 		User user = getSession().get(User.class, userId);
-		populateUser(membershipId, user, firstName, lastName, isStudent, isTA, isProfessor);
+		populateUser(membershipId, user, firstName, lastName, isStudent, isTA, isProfessor, isAdministrator);
 	}
 
 	public void updateUserPreferences(int userId, int semesterId, int desiredNumberCourses, int... desiredCourseIds) {

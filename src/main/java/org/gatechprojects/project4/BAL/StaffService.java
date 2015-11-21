@@ -49,14 +49,14 @@ public class StaffService {
 
 	public Professor addProfessor(Integer membershipId, String firstName, String lastName) {
 		blackboard.startTransaction();
-		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, false, true);
+		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, false, true, false);
 		blackboard.commitTransaction();
 		return new Professor(blackboard.getUserBoard().getUser(userId));
 	}
 
 	public TeacherAssistant addTeacherAssistant(Integer membershipId, String firstName, String lastName) {
 		blackboard.startTransaction();
-		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, true, false);
+		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, true, false, false);
 		blackboard.commitTransaction();
 		return new TeacherAssistant(blackboard.getUserBoard().getUser(userId));
 	}

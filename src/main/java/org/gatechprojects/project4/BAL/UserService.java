@@ -28,7 +28,7 @@ public class UserService {
 
 	public Student addStudent(Integer membershipId, String firstName, String lastName) {
 		blackboard.startTransaction();
-		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, true, false, false);
+		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, true, false, false, false);
 		blackboard.commitTransaction();
 		return new Student(blackboard.getUserBoard().getUser(userId));
 	}

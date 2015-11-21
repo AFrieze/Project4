@@ -37,6 +37,13 @@ public class SemesterSetupService {
 		this.blackboard = blackboard;
 	}
 
+	/**
+	 * Creates a new course in the program.
+	 * 
+	 * @param name
+	 * @param nbrCredits
+	 * @return
+	 */
 	public int addCourse(String name, int nbrCredits) {
 		blackboard.startTransaction();
 		int courseId = blackboard.getCatalogBoard().createCourse(name, nbrCredits);
@@ -44,6 +51,13 @@ public class SemesterSetupService {
 		return courseId;
 	}
 
+	/**
+	 * Adds a new semester to the program
+	 * 
+	 * @param name
+	 * @param year
+	 * @return
+	 */
 	public int addSemester(String name, int year) {
 		blackboard.startTransaction();
 		int semesterId = blackboard.getCatalogBoard().createSemester(name, year);
@@ -129,7 +143,7 @@ public class SemesterSetupService {
 	}
 
 	/**
-	 * Returns a List of {@link TeacherAssistant tas} which are avaialable for
+	 * Returns a List of {@link TeacherAssistant tas} which are available for
 	 * the program.
 	 * 
 	 * @return
