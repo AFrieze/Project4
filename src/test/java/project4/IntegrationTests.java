@@ -1,12 +1,15 @@
 package project4;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
 import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.SemesterConfiguration;
 import org.gatechproject.project4.BAL.dto.Student;
 import org.gatechproject.project4.BAL.dto.TeacherAssistant;
+import org.gatechprojects.project4.BAL.Membership;
 import org.gatechprojects.project4.BAL.SemesterSetupService;
 import org.gatechprojects.project4.BAL.StaffService;
 import org.gatechprojects.project4.BAL.UserService;
@@ -26,6 +29,25 @@ public class IntegrationTests {
 	@Test
 	public void logSomething() {
 		// LOG.info("Testing log, This test should be removed");
+	}
+
+	@Test
+	public void membershipTest() {
+		String userName = "Bob.Test";
+		String password = "somevalue";
+
+		Membership membership = new Membership();
+		int membershipId = membership.registerMember(userName, password);
+		assertTrue(membership.authenticate(userName, password));
+		assertFalse(membership.authenticate("randomuser", "badvalue"));
+
+		String firstName = "Bob";
+		UserService userService = new UserService();
+		userService.addStudent(membershipId, firstName, "Test");
+
+		Student student = userService.getStudentByMembershipId(membershipId);
+		assertEquals(firstName, student.getFirstName());
+
 	}
 
 	@Test

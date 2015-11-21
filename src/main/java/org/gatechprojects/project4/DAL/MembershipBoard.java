@@ -15,7 +15,7 @@ public class MembershipBoard extends Board {
 
 	public boolean authenticate(String userName, String password) {
 		List users = getSession().createCriteria(MembershipUser.class).add(Restrictions.eq("userName", userName))
-				.add(Restrictions.eq(password, password)).setFetchSize(1).list();
+				.add(Restrictions.eq("password", password)).setFetchSize(1).list();
 		return users.size() == 1;
 	}
 

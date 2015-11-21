@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
 
 public class IntegrationTestDB {
 
+	private SessionFactory factory = null;
 	private Session session;
 
 	public void endTestingSession() {
@@ -14,10 +15,12 @@ public class IntegrationTestDB {
 	}
 
 	public void startTestingSession() {
-		DatabaseConfiguration dbConfig = new DatabaseConfiguration();
-		Configuration configuration = dbConfig.buildConfiguration().configure();
-		configuration.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-		SessionFactory factory = configuration.buildSessionFactory();
+		if (factory == null) {
+			DatabaseConfiguration dbConfig = new DatabaseConfiguration();
+			Configuration configuration = dbConfig.buildConfiguration().configure();
+			configuration.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+			this.factory = configuration.buildSessionFactory();
+		}
 		this.session = factory.openSession();
 	}
 

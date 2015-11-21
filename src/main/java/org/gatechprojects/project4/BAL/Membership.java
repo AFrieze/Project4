@@ -25,11 +25,7 @@ public class Membership {
 	}
 
 	public boolean authenticate(String userName, String password) {
-		return true;
-	}
-
-	public boolean hasRole(MembershipRole role) {
-		return true;
+		return blackboard.getMembershipBoard().authenticate(userName, password);
 	}
 
 	public int registerMember(String userName, String password) {

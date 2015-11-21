@@ -108,7 +108,7 @@ public class UserBoard extends Board {
 	public User getUserByMembershipId(int membershipId) {
 
 		String hql = "from User as u where u.membership.id = :membershipId";
-		List users = getSession().createQuery(hql).setParameter(":membershipId", membershipId).setFetchSize(1).list();
+		List users = getSession().createQuery(hql).setParameter("membershipId", membershipId).setFetchSize(1).list();
 		if (users.size() == 1) {
 			return (User) users.get(0);
 		}
