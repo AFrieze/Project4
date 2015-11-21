@@ -28,6 +28,8 @@ public class CourseSemester {
 	@JoinColumn(name = "user_id")
 	private User assignedProfessor;
 
+	private int maxCourseSize;
+
 	public User getAssignedProfessor() {
 		return assignedProfessor;
 	}
@@ -38,6 +40,10 @@ public class CourseSemester {
 
 	public int getId() {
 		return id;
+	}
+
+	public int getMaxCourseSize() {
+		return maxCourseSize;
 	}
 
 	public Semester getSemester() {
@@ -54,6 +60,10 @@ public class CourseSemester {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public void setMaxCourseSize(int maxCourseSize) {
+		this.maxCourseSize = maxCourseSize;
 	}
 
 	public void setSemester(Semester semester) {

@@ -1,9 +1,7 @@
-package org.gatechproject.project4.BAL.reports;
+package org.gatechproject.project4.BAL.dto;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.gatechprojects.project4.SharedDataModules.CourseSemester;
 
 /*
  * This class will be used by the Admin screen to show TAs, profs and courses
@@ -16,10 +14,10 @@ public class SemesterConfiguration {
 
 	private List<Professor> professors = new ArrayList<>();
 
-	private List<CourseSemester> courses = new ArrayList<>();
+	private List<ConfiguredCourse> offeredCourses = new ArrayList<>();
 
-	public List<CourseSemester> getCourses() {
-		return courses;
+	public List<ConfiguredCourse> getOfferedCourses() {
+		return offeredCourses;
 	}
 
 	public List<Professor> getProfessors() {
@@ -34,8 +32,8 @@ public class SemesterConfiguration {
 		return teacherAssistants;
 	}
 
-	public void setCourses(List<CourseSemester> courses) {
-		this.courses = courses;
+	public void setOfferedCourses(List<ConfiguredCourse> courses) {
+		this.offeredCourses = courses;
 	}
 
 	public void setProfessors(List<Professor> professors) {

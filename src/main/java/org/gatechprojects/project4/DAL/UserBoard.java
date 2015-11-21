@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.TreeSet;
 
 import org.gatechprojects.project4.SharedDataModules.Course;
+import org.gatechprojects.project4.SharedDataModules.MembershipUser;
 import org.gatechprojects.project4.SharedDataModules.ProfessorCompetence;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.StudentCoursePreference;
@@ -33,10 +34,11 @@ public class UserBoard extends Board {
 
 	}
 
-	public int addUser(String firstName, String lastName, boolean isStudent, boolean isTA, boolean isProfessor) {
+	public int addUser(Integer membershipId, String firstName, String lastName, boolean isStudent, boolean isTA,
+			boolean isProfessor) {
 		verifyTransaction();
 		User user = new User();
-		populateUser(user, firstName, lastName, isStudent, isTA, isProfessor);
+		populateUser(membershipId, user, firstName, lastName, isStudent, isTA, isProfessor);
 		return (Integer) getSession().save(user);
 	}
 
@@ -103,8 +105,22 @@ public class UserBoard extends Board {
 		return getSession().get(User.class, userId);
 	}
 
-	private void populateUser(User user, String firstName, String lastName, boolean isStudent, boolean isTA,
-			boolean isProfessor) {
+	public User getUserByMembershipId(int membershipId) {
+
+		String hql = "from User as u where u.membership.id = :membershipId";
+		List users = getSession().createQuery(hql).setParameter(":membershipId", membershipId).setFetchSize(1).list();
+		if (users.size() == 1) {
+			return (User) users.get(0);
+		}
+		return null;
+	}
+
+	private void populateUser(Integer membershipId, User user, String firstName, String lastName, boolean isStudent,
+			boolean isTA, boolean isProfessor) {
+
+		if (membershipId != null) {
+			user.setMembership(getSession().get(MembershipUser.class, membershipId));
+		}
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
 		user.setStudent(isStudent);
@@ -112,11 +128,11 @@ public class UserBoard extends Board {
 		user.setProfessor(isProfessor);
 	}
 
-	public void updateUser(int userId, String firstName, String lastName, boolean isStudent, boolean isTA,
-			boolean isProfessor) {
+	public void updateUser(Integer membershipId, int userId, String firstName, String lastName, boolean isStudent,
+			boolean isTA, boolean isProfessor) {
 		verifyTransaction();
 		User user = getSession().get(User.class, userId);
-		populateUser(user, firstName, lastName, isStudent, isTA, isProfessor);
+		populateUser(membershipId, user, firstName, lastName, isStudent, isTA, isProfessor);
 	}
 
 	public void updateUserPreferences(int userId, int semesterId, int desiredNumberCourses, int... desiredCourseIds) {

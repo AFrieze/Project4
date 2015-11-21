@@ -1,4 +1,4 @@
-package org.gatechproject.project4.BAL.reports;
+package org.gatechproject.project4.BAL.dto;
 
 import java.util.ArrayList;
 import java.util.Date;

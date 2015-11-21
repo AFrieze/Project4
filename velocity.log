@@ -1,0 +1,391 @@
+2015-11-21 10:42:28,965 - Log4JLogChute initialized using file 'velocity.log'
+2015-11-21 10:42:28,966 - Initializing Velocity, Calling init()...
+2015-11-21 10:42:28,966 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-11-21 10:42:28,966 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-11-21 10:42:28,966 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-11-21 10:42:28,966 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-11-21 10:42:28,966 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 10:42:28,966 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 10:42:28,970 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:42:28,980 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-11-21 10:42:28,983 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-11-21 10:42:28,983 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-11-21 10:42:28,984 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-11-21 10:42:28,985 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-11-21 10:42:28,985 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-11-21 10:42:28,986 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-11-21 10:42:28,987 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-11-21 10:42:28,988 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-11-21 10:42:28,988 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-11-21 10:42:29,013 - Created '20' parsers.
+2015-11-21 10:42:29,018 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-11-21 10:42:29,018 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-11-21 10:42:29,018 - Velocimacro : Default library not found.
+2015-11-21 10:42:29,018 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-11-21 10:42:29,018 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-11-21 10:42:29,018 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-11-21 10:42:29,018 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-11-21 10:42:29,024 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:04,024 - Log4JLogChute initialized using file 'velocity.log'
+2015-11-21 10:50:04,025 - Initializing Velocity, Calling init()...
+2015-11-21 10:50:04,025 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-11-21 10:50:04,025 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-11-21 10:50:04,025 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-11-21 10:50:04,025 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-11-21 10:50:04,025 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 10:50:04,025 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 10:50:04,029 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:04,039 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-11-21 10:50:04,040 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-11-21 10:50:04,041 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-11-21 10:50:04,041 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-11-21 10:50:04,042 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-11-21 10:50:04,042 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-11-21 10:50:04,043 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-11-21 10:50:04,044 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-11-21 10:50:04,045 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-11-21 10:50:04,046 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-11-21 10:50:04,070 - Created '20' parsers.
+2015-11-21 10:50:04,075 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-11-21 10:50:04,075 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-11-21 10:50:04,075 - Velocimacro : Default library not found.
+2015-11-21 10:50:04,076 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-11-21 10:50:04,076 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-11-21 10:50:04,076 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-11-21 10:50:04,076 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-11-21 10:50:04,082 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:05,916 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:07,937 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:15,646 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:21,115 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:21,721 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:22,049 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:25,127 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:25,742 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:26,068 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:30,316 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:30,651 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:50:30,907 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:53:45,941 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:53:46,757 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:53:47,820 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:53:48,269 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 10:59:13,970 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:02:28,516 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:15,365 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,111 - Log4JLogChute initialized using file 'velocity.log'
+2015-11-21 11:04:34,111 - Initializing Velocity, Calling init()...
+2015-11-21 11:04:34,111 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-11-21 11:04:34,111 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-11-21 11:04:34,112 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-11-21 11:04:34,112 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-11-21 11:04:34,112 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:04:34,112 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:04:34,115 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,125 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-11-21 11:04:34,127 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-11-21 11:04:34,127 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-11-21 11:04:34,128 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-11-21 11:04:34,128 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-11-21 11:04:34,129 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-11-21 11:04:34,130 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-11-21 11:04:34,131 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-11-21 11:04:34,132 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-11-21 11:04:34,133 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-11-21 11:04:34,159 - Created '20' parsers.
+2015-11-21 11:04:34,165 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-11-21 11:04:34,166 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-11-21 11:04:34,166 - Velocimacro : Default library not found.
+2015-11-21 11:04:34,166 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-11-21 11:04:34,166 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-11-21 11:04:34,166 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-11-21 11:04:34,166 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-11-21 11:04:34,175 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,182 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,186 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,190 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,194 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,198 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,203 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,207 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,211 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,215 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,218 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,220 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,225 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,228 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,232 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,235 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,240 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,243 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,245 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,248 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,251 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,303 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,306 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,308 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,311 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,313 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,317 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,319 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,322 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,326 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,329 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,332 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,335 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,337 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,340 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,343 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,346 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,349 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,351 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,353 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,357 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:34,360 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,026 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,029 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,032 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,033 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,035 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,036 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,038 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,040 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,042 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,043 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,046 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,050 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,053 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,056 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,059 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,061 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,063 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,065 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,067 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,069 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:36,071 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,114 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,117 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,120 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,125 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,129 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,133 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,135 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,138 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,141 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,144 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,147 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,151 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,154 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,156 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,159 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,163 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,167 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,170 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,174 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,178 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:04:41,181 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,192 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,202 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,208 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,232 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,237 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,240 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,243 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,247 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,251 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,254 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,258 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,262 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,267 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,272 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,275 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,279 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,283 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,287 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,289 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,292 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:11,294 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,570 - Log4JLogChute initialized using file 'velocity.log'
+2015-11-21 11:05:35,571 - Initializing Velocity, Calling init()...
+2015-11-21 11:05:35,571 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-11-21 11:05:35,571 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-11-21 11:05:35,571 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-11-21 11:05:35,571 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-11-21 11:05:35,571 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:05:35,571 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:05:35,574 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,584 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-11-21 11:05:35,585 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-11-21 11:05:35,585 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-11-21 11:05:35,586 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-11-21 11:05:35,586 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-11-21 11:05:35,587 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-11-21 11:05:35,588 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-11-21 11:05:35,589 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-11-21 11:05:35,590 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-11-21 11:05:35,590 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-11-21 11:05:35,615 - Created '20' parsers.
+2015-11-21 11:05:35,620 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-11-21 11:05:35,621 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-11-21 11:05:35,621 - Velocimacro : Default library not found.
+2015-11-21 11:05:35,621 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-11-21 11:05:35,621 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-11-21 11:05:35,621 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-11-21 11:05:35,621 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-11-21 11:05:35,627 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,635 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,640 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,644 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,647 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,651 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,654 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,657 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,660 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,662 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,665 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,667 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,669 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,671 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,674 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,676 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,679 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,682 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,685 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,688 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:35,690 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,045 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,049 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,053 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,057 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,061 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,064 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,068 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,071 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,075 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,080 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,084 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,086 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,091 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,095 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,099 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,103 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,106 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,110 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,112 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,115 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:05:39,118 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:07:08,150 - Log4JLogChute initialized using file 'velocity.log'
+2015-11-21 11:07:08,150 - Initializing Velocity, Calling init()...
+2015-11-21 11:07:08,150 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-11-21 11:07:08,150 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-11-21 11:07:08,152 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-11-21 11:07:08,152 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-11-21 11:07:08,152 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:07:08,152 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:07:08,156 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:07:08,171 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-11-21 11:07:08,173 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-11-21 11:07:08,174 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-11-21 11:07:08,175 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-11-21 11:07:08,175 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-11-21 11:07:08,176 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-11-21 11:07:08,177 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-11-21 11:07:08,178 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-11-21 11:07:08,179 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-11-21 11:07:08,180 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-11-21 11:07:08,208 - Created '20' parsers.
+2015-11-21 11:07:08,214 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-11-21 11:07:08,215 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-11-21 11:07:08,215 - Velocimacro : Default library not found.
+2015-11-21 11:07:08,215 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-11-21 11:07:08,215 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-11-21 11:07:08,215 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-11-21 11:07:08,215 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-11-21 11:07:08,224 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:07:47,694 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:08:17,458 - Log4JLogChute initialized using file 'velocity.log'
+2015-11-21 11:08:17,459 - Initializing Velocity, Calling init()...
+2015-11-21 11:08:17,459 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-11-21 11:08:17,459 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-11-21 11:08:17,459 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-11-21 11:08:17,459 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-11-21 11:08:17,459 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:08:17,459 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:08:17,463 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:08:17,473 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-11-21 11:08:17,474 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-11-21 11:08:17,475 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-11-21 11:08:17,475 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-11-21 11:08:17,475 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-11-21 11:08:17,476 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-11-21 11:08:17,477 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-11-21 11:08:17,477 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-11-21 11:08:17,478 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-11-21 11:08:17,479 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-11-21 11:08:17,504 - Created '20' parsers.
+2015-11-21 11:08:17,509 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-11-21 11:08:17,510 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-11-21 11:08:17,510 - Velocimacro : Default library not found.
+2015-11-21 11:08:17,510 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-11-21 11:08:17,510 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-11-21 11:08:17,510 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-11-21 11:08:17,510 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-11-21 11:08:17,516 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:08:20,022 - Log4JLogChute initialized using file 'velocity.log'
+2015-11-21 11:08:20,022 - Log4JLogChute initialized using file 'velocity.log'
+2015-11-21 11:08:20,022 - Initializing Velocity, Calling init()...
+2015-11-21 11:08:20,022 - Initializing Velocity, Calling init()...
+2015-11-21 11:08:20,022 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-11-21 11:08:20,022 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-11-21 11:08:20,022 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-11-21 11:08:20,022 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-11-21 11:08:20,022 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-11-21 11:08:20,022 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-11-21 11:08:20,022 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-11-21 11:08:20,022 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-11-21 11:08:20,023 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:08:20,023 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:08:20,023 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:08:20,023 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-11-21 11:08:20,023 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:08:20,023 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:08:20,023 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-11-21 11:08:20,023 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-11-21 11:08:20,024 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-11-21 11:08:20,026 - Created '20' parsers.
+2015-11-21 11:08:20,026 - Created '20' parsers.
+2015-11-21 11:08:20,026 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-11-21 11:08:20,026 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-11-21 11:08:20,026 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-11-21 11:08:20,026 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-11-21 11:08:20,027 - Velocimacro : Default library not found.
+2015-11-21 11:08:20,027 - Velocimacro : Default library not found.
+2015-11-21 11:08:20,027 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-11-21 11:08:20,027 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-11-21 11:08:20,027 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-11-21 11:08:20,027 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-11-21 11:08:20,027 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-11-21 11:08:20,027 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-11-21 11:08:20,027 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-11-21 11:08:20,027 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-11-21 11:08:20,028 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:08:20,028 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:08:22,849 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-21 11:08:22,849 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader

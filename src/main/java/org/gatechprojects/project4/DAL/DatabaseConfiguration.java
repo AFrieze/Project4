@@ -3,6 +3,7 @@ package org.gatechprojects.project4.DAL;
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.CourseSemester;
 import org.gatechprojects.project4.SharedDataModules.CourseTaken;
+import org.gatechprojects.project4.SharedDataModules.MembershipUser;
 import org.gatechprojects.project4.SharedDataModules.ProfessorCompetence;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.StudentCoursePreference;
@@ -30,6 +31,7 @@ public class DatabaseConfiguration {
 		configuration.addAnnotatedClass(ProfessorCompetence.class);
 		configuration.addAnnotatedClass(UserAvailability.class);
 		configuration.addAnnotatedClass(CourseSemester.class);
+		configuration.addAnnotatedClass(MembershipUser.class);
 		// configuration.addAnnotatedClass(CoursePrerequisite.class);
 		// configuration.addAnnotatedClass(CourseSemester.class);
 		// configuration.addAnnotatedClass(InputOfferedCourse.class);

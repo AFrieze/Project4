@@ -42,6 +42,10 @@ public class Blackboard implements Closeable
 		return new CatalogBoard(transaction, session);
 	}
 
+	public MembershipBoard getMembershipBoard() {
+		return new MembershipBoard(transaction, session);
+	}
+
 	public UserBoard getUserBoard() {
 		return new UserBoard(transaction, session);
 	}

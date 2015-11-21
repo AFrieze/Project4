@@ -1,4 +1,4 @@
-package org.gatechproject.project4.BAL.reports;
+package org.gatechproject.project4.BAL.dto;
 
 /**
  * This class will be used by the "Student Home Page" screen/view

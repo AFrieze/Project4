@@ -3,10 +3,11 @@ package org.gatechprojects.project4.BAL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gatechproject.project4.BAL.reports.Professor;
-import org.gatechproject.project4.BAL.reports.SemesterConfiguration;
-import org.gatechproject.project4.BAL.reports.Student;
-import org.gatechproject.project4.BAL.reports.TeacherAssistant;
+import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
+import org.gatechproject.project4.BAL.dto.Professor;
+import org.gatechproject.project4.BAL.dto.SemesterConfiguration;
+import org.gatechproject.project4.BAL.dto.Student;
+import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.CourseSemester;
@@ -77,20 +78,27 @@ public class SemesterSetupService {
 			blackboard.getCatalogBoard().addUserAvailability(ua);
 		}
 
-		for (CourseSemester courseSemester : configuration.getCourses()) {
-			blackboard.getCatalogBoard().addCourseSemester(courseSemester);
+		for (ConfiguredCourse courseConfig : configuration.getOfferedCourses()) {
+			CourseSemester cs = new CourseSemester();
+			if (courseConfig.getAssignedProfessorId() != null) {
+				cs.setAssignedProfessor(blackboard.getUserBoard().getUser(courseConfig.getAssignedProfessorId()));
+			}
+			cs.setCourse(blackboard.getCatalogBoard().getCourse(courseConfig.getCourseId()));
+			cs.setMaxCourseSize(courseConfig.getMaxCourseSize());
+			cs.setSemester(blackboard.getCatalogBoard().getSemester(configuration.getSemesterId()));
+			blackboard.getCatalogBoard().addCourseSemester(cs);
 		}
 		blackboard.commitTransaction();
 	}
 
 	/**
-	 * Applys the student's semester plan of courses.  The priorty of the courses
+	 * Applys the student's semester plan of courses. The priorty of the courses
 	 * are based on the order in the List.
 	 */
 	public void applyStudentSemesterPlan(Student student, List<Course> coursePlan) {
 		// TODO - Luc - Apply the student's semester plan to the database
 	}
-	
+
 	/**
 	 * Returns a list of all the {@link Course courses} available in the
 	 * programs.
@@ -164,7 +172,11 @@ public class SemesterSetupService {
 	private SemesterConfiguration populateConfigurationCourses(SemesterConfiguration semesterConfiguration,
 			int semesterId) {
 		List<CourseSemester> semesterCourses = blackboard.getCatalogBoard().getSemesterCourses(semesterId);
-		semesterConfiguration.setCourses(semesterCourses);
+		List<ConfiguredCourse> configuredCourses = new ArrayList<>();
+		for (CourseSemester cs : semesterCourses) {
+			configuredCourses.add(new ConfiguredCourse(cs));
+		}
+		semesterConfiguration.setOfferedCourses(configuredCourses);
 		return semesterConfiguration;
 	}
 

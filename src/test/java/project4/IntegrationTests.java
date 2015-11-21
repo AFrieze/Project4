@@ -2,16 +2,16 @@ package project4;
 
 import static org.junit.Assert.assertEquals;
 
-import org.gatechproject.project4.BAL.reports.Professor;
-import org.gatechproject.project4.BAL.reports.SemesterConfiguration;
-import org.gatechproject.project4.BAL.reports.TeacherAssistant;
+import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
+import org.gatechproject.project4.BAL.dto.Professor;
+import org.gatechproject.project4.BAL.dto.SemesterConfiguration;
+import org.gatechproject.project4.BAL.dto.Student;
+import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.BAL.SemesterSetupService;
 import org.gatechprojects.project4.BAL.StaffService;
 import org.gatechprojects.project4.BAL.UserService;
 import org.gatechprojects.project4.SharedDataModules.Course;
-import org.gatechprojects.project4.SharedDataModules.CourseSemester;
 import org.gatechprojects.project4.SharedDataModules.Semester;
-import org.gatechprojects.project4.SharedDataModules.User;
 import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
@@ -35,14 +35,14 @@ public class IntegrationTests {
 		UserService userService = new UserService();
 		SemesterSetupService semesterService = new SemesterSetupService();
 		// seed some test data
-		int userId = userService.addUser("Andrew", "Burke", true, false, false);
-		int professorId = userService.addUser("Tim", "Block", false, false, true);
-		int taId = userService.addUser("John", "Jackson", false, true, false);
+		Student student = userService.addStudent(null, "Andrew", "Burke");
+		Professor professor = staffService.addProfessor(null, "Tim", "Block");
+		TeacherAssistant ta = staffService.addTeacherAssistant(null, "John", "Jackson");
 		int semesterId = semesterService.addSemester("Spring", 2016);
 		Semester semester = semesterService.getSemester(semesterId);
 		int course1Id = semesterService.addCourse("cs 6300 - Software Process", 3);
 		Course course = semesterService.getCourse(course1Id);
-		staffService.addCourseCompetency(course1Id, professorId);
+		staffService.addCourseCompetency(course1Id, professor.getUserId());
 
 		// verify that the seeded data is now available
 		assertEquals(1, semesterService.getAvailableCourses().size());
@@ -52,28 +52,25 @@ public class IntegrationTests {
 
 		// verify that the current semesterConfiguration is empty
 		SemesterConfiguration configuration = semesterService.getSemesterConfiguration(semesterId);
-		assertEquals(0, configuration.getCourses().size());
+		assertEquals(0, configuration.getOfferedCourses().size());
 		assertEquals(0, configuration.getProfessors().size());
 		assertEquals(0, configuration.getTeacherAssistants().size());
 		assertEquals(semesterId, configuration.getSemesterId());
 
 		// configure the seeded data to apply to the semesterId
-		User professorUser = userService.getUser(professorId);
-		CourseSemester cs = new CourseSemester();
-		cs.setSemester(semester);
-		cs.setCourse(course);
-		cs.setAssignedProfessor(professorUser);
-		configuration.getCourses().add(cs);
-		Professor professor = new Professor(professorUser);
+		ConfiguredCourse configuredCourse = new ConfiguredCourse();
+		configuredCourse.setCourseId(course1Id);
+		configuredCourse.setAssignedProfessorId(professor.getUserId());
+		configuration.getOfferedCourses().add(configuredCourse);
 		configuration.getProfessors().add(professor);
-		configuration.getTeacherAssistants().add(new TeacherAssistant(userService.getUser(taId)));
+		configuration.getTeacherAssistants().add(ta);
 
 		// apply the new semesterConfiguration
 		semesterService.applySemesterConfiguration(configuration, false);
 
 		// verify that the new configuration has taken effect
 		configuration = semesterService.getSemesterConfiguration(semesterId);
-		assertEquals(1, configuration.getCourses().size());
+		assertEquals(1, configuration.getOfferedCourses().size());
 		assertEquals(1, configuration.getProfessors().size());
 		assertEquals(1, semesterService.getAvailableProfessors().get(0).getCourseCompetencies().size());
 		assertEquals(1, configuration.getTeacherAssistants().size());
@@ -108,26 +105,11 @@ public class IntegrationTests {
 
 	private int testUserCreate(UserService userService, String firstName, String lastName, boolean isStudent,
 			boolean isTA, boolean isProfessor) {
-		int userId = userService.addUser(firstName, lastName, isStudent, isTA, isProfessor);
-		User user = userService.getUser(userId);
-		assertEquals(firstName, user.getFirstName());
-		assertEquals(lastName, user.getLastName());
-		assertEquals(isStudent, user.isStudent());
-		assertEquals(isTA, user.isTA());
-		assertEquals(isProfessor, user.isProfessor());
-		return userId;
-	}
-
-	private void testUserUpdate(UserService userService, int userId, String firstName, String correctedLastName,
-			boolean isStudent, boolean isTA, boolean isProfessor) {
-
-		userService.updateUser(userId, firstName, correctedLastName, isStudent, isTA, isProfessor);
-		User user = userService.getUser(userId);
-		assertEquals(firstName, user.getFirstName());
-		assertEquals(correctedLastName, user.getLastName());
-		assertEquals(isStudent, user.isStudent());
-		assertEquals(isTA, user.isTA());
-		assertEquals(isProfessor, user.isProfessor());
+		Student student = userService.addStudent(null, firstName, lastName);
+		Student fetchedStudent = userService.getStudentById(student.getUserId());
+		assertEquals(firstName, fetchedStudent.getFirstName());
+		assertEquals(lastName, fetchedStudent.getLastName());
+		return student.getUserId();
 	}
 
 	@Test
@@ -141,7 +123,6 @@ public class IntegrationTests {
 		boolean isStudent = true;
 		boolean isProfessor = false;
 		int userId = testUserCreate(userService, firstName, lastName, isStudent, isTA, isProfessor);
-		testUserUpdate(userService, userId, firstName, correctedLastName, isStudent, isTA, isProfessor);
 
 		String courseName = "CS 6100";
 		int nbrCredits = 3;

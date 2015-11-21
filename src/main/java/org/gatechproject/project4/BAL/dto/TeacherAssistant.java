@@ -1,4 +1,4 @@
-package org.gatechproject.project4.BAL.reports;
+package org.gatechproject.project4.BAL.dto;
 
 import org.gatechprojects.project4.SharedDataModules.User;
 

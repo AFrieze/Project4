@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,11 +17,14 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	// @Column(name = "user_id", columnDefinition = "INT NOT NULL
-	// AUTO_INCREMENT")
 	private int id;
+	@OneToOne
+	@JoinColumn(name = "membership_id")
+	private MembershipUser membership;
 	private String firstName;
+
 	private String lastName;
+
 	private boolean isTA;
 	private boolean isProfessor;
 	private boolean isStudent;
@@ -29,7 +34,6 @@ public class User {
 	private Set<ProfessorCompetence> professorCompetencies = new HashSet<ProfessorCompetence>();
 	@OneToMany(mappedBy = "user")
 	private Set<StudentPreference> preferences = new HashSet<StudentPreference>();
-
 	@OneToMany(mappedBy = "user")
 	private Set<UserAvailability> userAvailabilities = new HashSet<UserAvailability>();
 
@@ -47,6 +51,10 @@ public class User {
 
 	public String getLastName() {
 		return lastName;
+	}
+
+	public MembershipUser getMembership() {
+		return membership;
 	}
 
 	public Set<StudentPreference> getPreferences() {
@@ -83,6 +91,10 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public void setMembership(MembershipUser membership) {
+		this.membership = membership;
 	}
 
 	public void setPreferences(Set<StudentPreference> preferences) {

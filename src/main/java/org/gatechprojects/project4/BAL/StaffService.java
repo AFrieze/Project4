@@ -1,5 +1,7 @@
 package org.gatechprojects.project4.BAL;
 
+import org.gatechproject.project4.BAL.dto.Professor;
+import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.SharedDataModules.User;
 
@@ -45,4 +47,17 @@ public class StaffService {
 
 	}
 
+	public Professor addProfessor(Integer membershipId, String firstName, String lastName) {
+		blackboard.startTransaction();
+		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, false, true);
+		blackboard.commitTransaction();
+		return new Professor(blackboard.getUserBoard().getUser(userId));
+	}
+
+	public TeacherAssistant addTeacherAssistant(Integer membershipId, String firstName, String lastName) {
+		blackboard.startTransaction();
+		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, true, false);
+		blackboard.commitTransaction();
+		return new TeacherAssistant(blackboard.getUserBoard().getUser(userId));
+	}
 }
