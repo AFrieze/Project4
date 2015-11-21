@@ -26,22 +26,20 @@ public class UserService {
 		this.blackboard = blackboard;
 	}
 
+	/**
+	 * Adds a student to the program.
+	 * 
+	 * @param membershipId
+	 * @param firstName
+	 * @param lastName
+	 * @return
+	 */
 	public Student addStudent(Integer membershipId, String firstName, String lastName) {
 		blackboard.startTransaction();
 		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, true, false, false, false);
 		blackboard.commitTransaction();
 		return new Student(blackboard.getUserBoard().getUser(userId));
 	}
-
-	// public int addUser(Integer membershipId, String firstName, String
-	// lastName, boolean isStudent, boolean isTA,
-	// boolean isProfessor) {
-	// blackboard.startTransaction();
-	// int userId = blackboard.getUserBoard().addUser(membershipId, firstName,
-	// lastName, isStudent, isTA, isProfessor);
-	// blackboard.commitTransaction();
-	// return userId;
-	// }
 
 	public Student getStudentById(int userId) {
 		Student student = null;
@@ -60,15 +58,6 @@ public class UserService {
 		}
 		return student;
 	}
-
-	// public void updateUser(Integer membershipId, int userId, String
-	// firstName, String lastName, boolean isStudent,
-	// boolean isTA, boolean isProfessor) {
-	// blackboard.startTransaction();
-	// blackboard.getUserBoard().updateUser(membershipId, userId, firstName,
-	// lastName, isStudent, isTA, isProfessor);
-	// blackboard.commitTransaction();
-	// }
 
 	public void updateStudentPreferences(int userId, int semesterId, int desiredNumberCourses,
 			int... desiredCourseIds) {

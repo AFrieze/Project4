@@ -15,6 +15,13 @@ import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.User;
 import org.gatechprojects.project4.SharedDataModules.UserAvailability;
 
+/**
+ * 
+ * Provides access to data needed to understand and configure a sememster.
+ * 
+ * @author Andrew
+ *
+ */
 public class SemesterSetupService {
 
 	private Blackboard blackboard;
@@ -70,6 +77,9 @@ public class SemesterSetupService {
 	 * {@link SemesterConfiguration#getSemesterId() semester} and applies the
 	 * passed in configuration.
 	 * 
+	 * <p>
+	 * Generally used in conjunction with {@link #getSemesterConfiguration(int)}
+	 * 
 	 * @param configuration
 	 */
 	public void applySemesterConfiguration(SemesterConfiguration configuration, boolean isShadow) {
@@ -124,37 +134,10 @@ public class SemesterSetupService {
 	}
 
 	/**
-	 * Returns a list of {@link Professor professors} which are available to the
-	 * program.
-	 * 
-	 * @return
+	 * @return the {@link Semester semesters} available in the system
 	 */
-	public List<Professor> getAvailableProfessors() {
-		List<User> users = blackboard.getUserBoard().getAvailableUsersByType(false, false, true);
-		List<Professor> professors = new ArrayList<Professor>();
-		for (User user : users) {
-			professors.add(new Professor(user));
-		}
-		return professors;
-	}
-
 	public List<Semester> getAvailableSemesters() {
 		return blackboard.getCatalogBoard().getSemesters();
-	}
-
-	/**
-	 * Returns a List of {@link TeacherAssistant tas} which are available for
-	 * the program.
-	 * 
-	 * @return
-	 */
-	public List<TeacherAssistant> getAvailableTeacherAssistants() {
-		List<User> users = blackboard.getUserBoard().getAvailableUsersByType(false, true, false);
-		List<TeacherAssistant> tas = new ArrayList<TeacherAssistant>();
-		for (User user : users) {
-			tas.add(new TeacherAssistant(user));
-		}
-		return tas;
 	}
 
 	public Course getCourse(int courseId) {
@@ -170,6 +153,13 @@ public class SemesterSetupService {
 	 * Builds and returns as {@link SemesterConfiguration} containing
 	 * information regarding the currently configured courses, tas, and
 	 * professors for a semester.
+	 * 
+	 * <p>
+	 * One recommended usage of this method to request the
+	 * SemesterConfiguration, modify it, then apply your modifications through a
+	 * call to
+	 * {@link #applySemesterConfiguration(SemesterConfiguration, boolean)
+	 * applySemesterConfiguration}.
 	 * 
 	 * @param semesterId
 	 * @return

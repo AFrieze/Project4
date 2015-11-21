@@ -24,6 +24,15 @@ public class Membership {
 		this.blackboard = blackboard;
 	}
 
+	/**
+	 * 
+	 * Returns true if the provided userName and password are correctly matched
+	 * to a user in the system with login credentials
+	 * 
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
 	public boolean authenticate(String userName, String password) {
 		return blackboard.getMembershipBoard().authenticate(userName, password);
 	}

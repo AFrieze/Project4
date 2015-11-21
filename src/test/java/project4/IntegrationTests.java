@@ -68,9 +68,9 @@ public class IntegrationTests {
 
 		// verify that the seeded data is now available
 		assertEquals(1, semesterService.getAvailableCourses().size());
-		assertEquals(1, semesterService.getAvailableProfessors().size());
-		assertEquals(1, semesterService.getAvailableProfessors().get(0).getCourseCompetencies().size());
-		assertEquals(1, semesterService.getAvailableTeacherAssistants().size());
+		assertEquals(1, staffService.getAvailableProfessors().size());
+		assertEquals(1, staffService.getAvailableProfessors().get(0).getCourseCompetencies().size());
+		assertEquals(1, staffService.getAvailableTeacherAssistants().size());
 
 		// verify that the current semesterConfiguration is empty
 		SemesterConfiguration configuration = semesterService.getSemesterConfiguration(semesterId);
@@ -94,7 +94,7 @@ public class IntegrationTests {
 		configuration = semesterService.getSemesterConfiguration(semesterId);
 		assertEquals(1, configuration.getOfferedCourses().size());
 		assertEquals(1, configuration.getProfessors().size());
-		assertEquals(1, semesterService.getAvailableProfessors().get(0).getCourseCompetencies().size());
+		assertEquals(1, staffService.getAvailableProfessors().get(0).getCourseCompetencies().size());
 		assertEquals(1, configuration.getTeacherAssistants().size());
 		assertEquals(semesterId, configuration.getSemesterId());
 	}

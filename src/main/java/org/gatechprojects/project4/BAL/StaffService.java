@@ -1,5 +1,8 @@
 package org.gatechprojects.project4.BAL;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.DAL.Blackboard;
@@ -59,5 +62,35 @@ public class StaffService {
 		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, true, false, false);
 		blackboard.commitTransaction();
 		return new TeacherAssistant(blackboard.getUserBoard().getUser(userId));
+	}
+
+	/**
+	 * Returns a list of {@link Professor professors} which are available to the
+	 * program.
+	 * 
+	 * @return
+	 */
+	public List<Professor> getAvailableProfessors() {
+		List<User> users = blackboard.getUserBoard().getAvailableUsersByType(false, false, true);
+		List<Professor> professors = new ArrayList<Professor>();
+		for (User user : users) {
+			professors.add(new Professor(user));
+		}
+		return professors;
+	}
+
+	/**
+	 * Returns a List of {@link TeacherAssistant tas} which are available for
+	 * the program.
+	 * 
+	 * @return
+	 */
+	public List<TeacherAssistant> getAvailableTeacherAssistants() {
+		List<User> users = blackboard.getUserBoard().getAvailableUsersByType(false, true, false);
+		List<TeacherAssistant> tas = new ArrayList<TeacherAssistant>();
+		for (User user : users) {
+			tas.add(new TeacherAssistant(user));
+		}
+		return tas;
 	}
 }

@@ -1,6 +1,0 @@
-Database setup
-1. Download and install MySQL
-2. Update the username/password for the database in the hibernate.cfg.xml located in src/main/resources and src/test/resources
-3. Create two empty schemas: project4, project4test
-4. Run the Installer class located in org.gatechprojects.project5.installation
--Note:  This class attempts to upgrade the project4 schema to reflect the models registers in the DatabaseConfiguration class
