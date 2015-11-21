@@ -5,8 +5,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.gatechprojects.project4.SharedDataModules.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,9 +12,6 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class ControllerService {
-
-	static final Logger LOG = LogManager.getLogger(ControllerService.class.getName());
-	private ExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
 	public static void main(String[] args) throws IOException {
 		ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -30,12 +25,17 @@ public class ControllerService {
 		try {
 			executor.awaitTermination(5, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
-			LOG.error("executor inturrpted during shutdown, controller exiting with error");
+			// LOG.error("executor inturrpted during shutdown, controller
+			// exiting with error");
 			System.exit(-1);
 		}
-		LOG.info("Controller exiting normally");
+		// LOG.info("Controller exiting normally");
 		System.exit(0);
 	}
+
+	// static final Logger LOG =
+	// LogManager.getLogger(ControllerService.class.getName());
+	private ExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
 	public void start() {
 		try {
@@ -46,7 +46,7 @@ public class ControllerService {
 			session.save(user);
 			tx.commit();
 		} catch (Exception e) {
-			LOG.error("Error in controller", e);
+			// LOG.error("Error in controller", e);
 		}
 	}
 

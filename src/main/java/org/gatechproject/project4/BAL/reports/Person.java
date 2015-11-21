@@ -20,24 +20,24 @@ public abstract class Person {
 		return firstName;
 	}
 
-	public int getUserId() {
-		return userId;
-	}
-
 	public String getLastName() {
 		return lastName;
+	}
+
+	public int getUserId() {
+		return userId;
 	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public void setUserId(int id) {
-		this.userId = id;
-	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public void setUserId(int id) {
+		this.userId = id;
 	}
 
 }

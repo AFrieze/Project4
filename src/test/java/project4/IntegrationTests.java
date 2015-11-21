@@ -2,8 +2,6 @@ package project4;
 
 import static org.junit.Assert.assertEquals;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.gatechproject.project4.BAL.reports.Professor;
 import org.gatechproject.project4.BAL.reports.SemesterConfiguration;
 import org.gatechproject.project4.BAL.reports.TeacherAssistant;
@@ -20,13 +18,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class IntegrationTests {
-	static final Logger LOG = LogManager.getLogger(IntegrationTests.class.getName());
+	// static final Logger LOG =
+	// LogManager.getLogger(IntegrationTests.class.getName());
 	private IntegrationTestDB testDB = new IntegrationTestDB();
 	private Session dbSession;
 
 	@Test
 	public void logSomething() {
-		LOG.info("Testing log, This test should be removed");
+		// LOG.info("Testing log, This test should be removed");
 	}
 
 	@Test
