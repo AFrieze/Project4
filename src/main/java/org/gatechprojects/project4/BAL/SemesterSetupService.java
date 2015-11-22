@@ -27,7 +27,7 @@ public class SemesterSetupService {
 	private Blackboard blackboard;
 
 	/**
-	 * Default public contructor. A Blackboard instance will be created using
+	 * Default public constructor. A Blackboard instance will be created using
 	 * {@link Blackboard blackboards} default constructor.
 	 */
 	public SemesterSetupService() {
@@ -85,12 +85,13 @@ public class SemesterSetupService {
 	public void applySemesterConfiguration(SemesterConfiguration configuration, boolean isShadow) {
 		Semester semester = blackboard.getCatalogBoard().getSemester(configuration.getSemesterId());
 		blackboard.startTransaction();
-		blackboard.getCatalogBoard().clearCurrentSemesterConfigurations(configuration.getSemesterId());
+		blackboard.getCatalogBoard().clearCurrentSemesterConfigurations(configuration.getSemesterId(), false);
 		for (TeacherAssistant ta : configuration.getTeacherAssistants()) {
 			User user = blackboard.getUserBoard().getUser(ta.getUserId());
 			UserAvailability ua = new UserAvailability();
 			ua.setUser(user);
 			ua.setSemester(semester);
+			ua.setShadow(isShadow);
 			blackboard.getCatalogBoard().addUserAvailability(ua);
 		}
 
@@ -99,6 +100,7 @@ public class SemesterSetupService {
 			UserAvailability ua = new UserAvailability();
 			ua.setUser(user);
 			ua.setSemester(semester);
+			ua.setShadow(isShadow);
 			blackboard.getCatalogBoard().addUserAvailability(ua);
 		}
 
@@ -110,6 +112,7 @@ public class SemesterSetupService {
 			cs.setCourse(blackboard.getCatalogBoard().getCourse(courseConfig.getCourseId()));
 			cs.setMaxCourseSize(courseConfig.getMaxCourseSize());
 			cs.setSemester(blackboard.getCatalogBoard().getSemester(configuration.getSemesterId()));
+			cs.setShadow(isShadow);
 			blackboard.getCatalogBoard().addCourseSemester(cs);
 		}
 		blackboard.commitTransaction();

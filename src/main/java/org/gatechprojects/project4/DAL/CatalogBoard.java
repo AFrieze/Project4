@@ -27,11 +27,20 @@ public class CatalogBoard extends Board {
 
 	}
 
-	public void clearCurrentSemesterConfigurations(int semesterId) {
-		String hql = "delete from CourseSemester where semester.id = :semesterId";
-		getSession().createQuery(hql).setInteger("semesterId", semesterId).executeUpdate();
-		hql = "delete from UserAvailability where semester.id = :semesterId";
-		getSession().createQuery(hql).setInteger("semesterId", semesterId).executeUpdate();
+	/**
+	 * Clears the {@link CourseSemester} and {@link UserAvailability} for the
+	 * provided semesterId and shadow status.
+	 * 
+	 * @param semesterId
+	 * @param isShadow
+	 */
+	public void clearCurrentSemesterConfigurations(int semesterId, boolean isShadow) {
+		String hql = "delete from CourseSemester where semester.id = :semesterId and isShadow = :isShadow";
+		getSession().createQuery(hql).setInteger("semesterId", semesterId).setBoolean("isShadow", isShadow)
+				.executeUpdate();
+		hql = "delete from UserAvailability where semester.id = :semesterId and isShadow = :isShadow";
+		getSession().createQuery(hql).setInteger("semesterId", semesterId).setBoolean("isShadow", isShadow)
+				.executeUpdate();
 	}
 
 	public int createCourse(String name, int nbrCredits) {

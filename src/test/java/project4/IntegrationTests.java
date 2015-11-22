@@ -66,6 +66,11 @@ public class IntegrationTests {
 		Course course = semesterService.getCourse(course1Id);
 		staffService.addCourseCompetency(course1Id, professor.getUserId());
 
+		// refresh the caches
+		staffService = new StaffService();
+		userService = new UserService();
+		semesterService = new SemesterSetupService();
+
 		// verify that the seeded data is now available
 		assertEquals(1, semesterService.getAvailableCourses().size());
 		assertEquals(1, staffService.getAvailableProfessors().size());
@@ -86,7 +91,6 @@ public class IntegrationTests {
 		configuration.getOfferedCourses().add(configuredCourse);
 		configuration.getProfessors().add(professor);
 		configuration.getTeacherAssistants().add(ta);
-
 		// apply the new semesterConfiguration
 		semesterService.applySemesterConfiguration(configuration, false);
 
