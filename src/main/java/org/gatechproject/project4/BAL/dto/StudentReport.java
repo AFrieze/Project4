@@ -4,14 +4,14 @@ package org.gatechproject.project4.BAL.dto;
  * This class will be used by the "Student Home Page" screen/view
  */
 
-public class ViewStudent {
+public class StudentReport {
 
 	private Student student = null;
 	
-	public ViewStudent() {
+	public StudentReport() {
 	}
 	
-	public ViewStudent(Student student) {
+	public StudentReport(Student student) {
 		this.student = student;
 		// TODO - Luc - We are missing the "system" class that has the system status
 	}

@@ -10,18 +10,18 @@ import java.util.Date;
  *
  */
 
-public class ViewStudentSolutionHistory {
+public class StudentSolutionHistoryReport {
 
 	private Student student = null;
 	private Date currentSolutionDate = null;
 
 	// ===========================================================================
 	
-	public ViewStudentSolutionHistory() {
+	public StudentSolutionHistoryReport() {
 
 	}
 
-	public ViewStudentSolutionHistory(Student student) {
+	public StudentSolutionHistoryReport(Student student) {
 		this.student = student;
 	}
 	

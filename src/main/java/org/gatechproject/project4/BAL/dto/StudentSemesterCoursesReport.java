@@ -9,16 +9,16 @@ import org.gatechprojects.project4.SharedDataModules.Course;
  * This class will be used by the "Next Semester Courses" screen/View
  */
 
-public class ViewStudentSemesterCourses {
+public class StudentSemesterCoursesReport {
 
 	private Student student = null;
 	private List<Course> availableCourses = new ArrayList<>();
 	private List<Course> semesterCoursePlan = new ArrayList<>();
 	
-	public ViewStudentSemesterCourses() {
+	public StudentSemesterCoursesReport() {
 	}
 
-	public ViewStudentSemesterCourses(Student student) {
+	public StudentSemesterCoursesReport(Student student) {
 		this.student = student;
 		// TODO - Luc - need constructor to take data from database
 		// TODO - Luc - need the object that will get us solution status and the solution

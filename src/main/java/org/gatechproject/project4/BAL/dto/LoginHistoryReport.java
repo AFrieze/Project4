@@ -7,16 +7,16 @@ package org.gatechproject.project4.BAL.dto;
  *
  */
 
-public class ViewLoginHistory {
+public class LoginHistoryReport {
 
 	private Student student = null;
 
 	// ===========================================================================
 	
-	public ViewLoginHistory() {
+	public LoginHistoryReport() {
 	}
 	
-	public ViewLoginHistory(Student student) {
+	public LoginHistoryReport(Student student) {
 		this.student = student;
 	}
 
