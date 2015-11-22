@@ -67,9 +67,10 @@ public class CatalogBoard extends Board {
 		return getSession().get(Semester.class, semesterId);
 	}
 
-	public List<CourseSemester> getSemesterCourses(int semesterId) {
-		return new ArrayList<CourseSemester>(getSession().createCriteria(CourseSemester.class)
-				.add(Restrictions.eq("semester.id", semesterId)).list());
+	public List<CourseSemester> getSemesterCourses(int semesterId, boolean isShadow) {
+		return new ArrayList<CourseSemester>(
+				getSession().createCriteria(CourseSemester.class).add(Restrictions.eq("semester.id", semesterId))
+						.add(Restrictions.eqOrIsNull("isShadow", isShadow)).list());
 	}
 
 	public List<Semester> getSemesters() {

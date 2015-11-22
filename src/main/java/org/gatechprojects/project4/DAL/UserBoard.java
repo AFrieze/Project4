@@ -57,7 +57,7 @@ public class UserBoard extends Board {
 	}
 
 	public List<UserAvailability> getAvailableUsersBySemesterAndType(boolean isStudent, boolean isTA,
-			boolean isProfessor, int semesterId) {
+			boolean isProfessor, int semesterId, boolean isShadow) {
 		Criterion[] userTypeCriterion = buildUserTypeCriterion(isStudent, isTA, isProfessor);
 		if (userTypeCriterion.length == 0) {
 			return new ArrayList<UserAvailability>();
@@ -82,9 +82,9 @@ public class UserBoard extends Board {
 			}
 			hql = hql + " " + restrictions.get(i);
 		}
-		hql = hql + ")";
+		hql = hql + ") and ua.isShadow = :isShadow";
 
-		return getSession().createQuery(hql).list();
+		return getSession().createQuery(hql).setParameter("isShadow", isShadow).list();
 
 		// return
 		// getSession().createCriteria(User.class).add(Restrictions.eq("semester_id",

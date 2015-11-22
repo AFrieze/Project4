@@ -155,7 +155,11 @@ public class SemesterSetupService {
 	 * 
 	 * Builds and returns as {@link SemesterConfiguration} containing
 	 * information regarding the currently configured courses, tas, and
-	 * professors for a semester.
+	 * professors for a semester. If the passed in isShadow parameter is true,
+	 * the most recent shadow for the semester is loaded.
+	 * <p>
+	 * 
+	 * 
 	 * 
 	 * <p>
 	 * One recommended usage of this method to request the
@@ -167,18 +171,18 @@ public class SemesterSetupService {
 	 * @param semesterId
 	 * @return
 	 */
-	public SemesterConfiguration getSemesterConfiguration(int semesterId) {
+	public SemesterConfiguration getSemesterConfiguration(int semesterId, boolean isShadow) {
 		SemesterConfiguration semesterConfiguration = new SemesterConfiguration();
 		semesterConfiguration.setSemesterId(semesterId);
-		semesterConfiguration = populateConfigurationCourses(semesterConfiguration, semesterId);
-		semesterConfiguration = populateConfigurationProfessors(semesterConfiguration, semesterId);
-		semesterConfiguration = populateConfigurationTAs(semesterConfiguration, semesterId);
+		semesterConfiguration = populateConfigurationCourses(semesterConfiguration, semesterId, isShadow);
+		semesterConfiguration = populateConfigurationProfessors(semesterConfiguration, semesterId, isShadow);
+		semesterConfiguration = populateConfigurationTAs(semesterConfiguration, semesterId, isShadow);
 		return semesterConfiguration;
 	}
 
 	private SemesterConfiguration populateConfigurationCourses(SemesterConfiguration semesterConfiguration,
-			int semesterId) {
-		List<CourseSemester> semesterCourses = blackboard.getCatalogBoard().getSemesterCourses(semesterId);
+			int semesterId, boolean isShadow) {
+		List<CourseSemester> semesterCourses = blackboard.getCatalogBoard().getSemesterCourses(semesterId, isShadow);
 		List<ConfiguredCourse> configuredCourses = new ArrayList<>();
 		for (CourseSemester cs : semesterCourses) {
 			configuredCourses.add(new ConfiguredCourse(cs));
@@ -188,19 +192,19 @@ public class SemesterSetupService {
 	}
 
 	private SemesterConfiguration populateConfigurationProfessors(SemesterConfiguration semesterConfiguration,
-			int semesterId) {
+			int semesterId, boolean isShadow) {
 		List<UserAvailability> professorConfigurations = blackboard.getUserBoard()
-				.getAvailableUsersBySemesterAndType(false, false, true, semesterId);
+				.getAvailableUsersBySemesterAndType(false, false, true, semesterId, isShadow);
 		for (UserAvailability user : professorConfigurations) {
 			semesterConfiguration.getProfessors().add(new Professor(user.getUser()));
 		}
 		return semesterConfiguration;
 	}
 
-	private SemesterConfiguration populateConfigurationTAs(SemesterConfiguration semesterConfiguration,
-			int semesterId) {
+	private SemesterConfiguration populateConfigurationTAs(SemesterConfiguration semesterConfiguration, int semesterId,
+			boolean isShadow) {
 		List<UserAvailability> taConfigurations = blackboard.getUserBoard().getAvailableUsersBySemesterAndType(false,
-				true, false, semesterId);
+				true, false, semesterId, isShadow);
 		for (UserAvailability user : taConfigurations) {
 			semesterConfiguration.getTeacherAssistants().add(new TeacherAssistant(user.getUser()));
 		}

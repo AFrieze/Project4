@@ -78,7 +78,7 @@ public class IntegrationTests {
 		assertEquals(1, staffService.getAvailableTeacherAssistants().size());
 
 		// verify that the current semesterConfiguration is empty
-		SemesterConfiguration configuration = semesterService.getSemesterConfiguration(semesterId);
+		SemesterConfiguration configuration = semesterService.getSemesterConfiguration(semesterId, false);
 		assertEquals(0, configuration.getOfferedCourses().size());
 		assertEquals(0, configuration.getProfessors().size());
 		assertEquals(0, configuration.getTeacherAssistants().size());
@@ -95,7 +95,7 @@ public class IntegrationTests {
 		semesterService.applySemesterConfiguration(configuration, false);
 
 		// verify that the new configuration has taken effect
-		configuration = semesterService.getSemesterConfiguration(semesterId);
+		configuration = semesterService.getSemesterConfiguration(semesterId, false);
 		assertEquals(1, configuration.getOfferedCourses().size());
 		assertEquals(1, configuration.getProfessors().size());
 		assertEquals(1, staffService.getAvailableProfessors().get(0).getCourseCompetencies().size());
