@@ -1,20 +1,28 @@
 package org.gatechproject.project4.BAL.dto;
 
+import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.CourseSemester;
 
 public class ConfiguredCourse {
 	private int courseId;
 	private int maxCourseSize;
 	private Integer assignedProfessorId;
+	private String courseName;
 
 	public ConfiguredCourse() {
 
+	}
+
+	public ConfiguredCourse(Course course) {
+		this.courseId = course.getId();
+		this.courseName = course.getName();
 	}
 
 	public ConfiguredCourse(CourseSemester cs) {
 		this.assignedProfessorId = cs.getAssignedProfessor().getId();
 		this.courseId = cs.getCourse().getId();
 		this.maxCourseSize = cs.getMaxCourseSize();
+		this.courseName = cs.getCourse().getName();
 	}
 
 	public Integer getAssignedProfessorId() {
@@ -23,6 +31,10 @@ public class ConfiguredCourse {
 
 	public int getCourseId() {
 		return courseId;
+	}
+
+	public String getCourseName() {
+		return courseName;
 	}
 
 	public int getMaxCourseSize() {
@@ -35,6 +47,10 @@ public class ConfiguredCourse {
 
 	public void setCourseId(int courseId) {
 		this.courseId = courseId;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
 
 	public void setMaxCourseSize(int maxCourseSize) {

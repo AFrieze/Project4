@@ -8,6 +8,7 @@ import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
 import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.SemesterConfiguration;
 import org.gatechproject.project4.BAL.dto.Student;
+import org.gatechproject.project4.BAL.dto.StudentSemesterPreferences;
 import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.BAL.Membership;
 import org.gatechprojects.project4.BAL.SemesterSetupService;
@@ -51,7 +52,7 @@ public class IntegrationTests {
 	}
 
 	@Test
-	public void semesterConfigurationTest() {
+	public void semesterConfigurationAndStudentPreferencesTest() {
 
 		StaffService staffService = new StaffService();
 		UserService userService = new UserService();
@@ -101,6 +102,24 @@ public class IntegrationTests {
 		assertEquals(1, staffService.getAvailableProfessors().get(0).getCourseCompetencies().size());
 		assertEquals(1, configuration.getTeacherAssistants().size());
 		assertEquals(semesterId, configuration.getSemesterId());
+
+		// verify current student preferences
+		StudentSemesterPreferences preferences = userService.getStudentPreferences(student.getUserId(), semesterId);
+		assertEquals(0, preferences.getPreferredCourses().size());
+		assertEquals(student.getUserId(), preferences.getUserId());
+		assertEquals(0, preferences.getPreferredCourses().size());
+		assertEquals(semesterId, preferences.getSemesterId());
+
+		// update preferences
+		preferences.getPreferredCourses().add(configuration.getOfferedCourses().get(0));
+		preferences.setNbrCoursesDesired(1);
+		userService.applyStudentPreferences(preferences);
+
+		// verify preferences updated
+		preferences = userService.getStudentPreferences(student.getUserId(), semesterId);
+		assertEquals(1, preferences.getPreferredCourses().size());
+		assertEquals(1, preferences.getNbrCoursesDesired());
+
 	}
 
 	@Before

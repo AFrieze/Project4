@@ -6,7 +6,6 @@ import java.util.List;
 import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
 import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.SemesterConfiguration;
-import org.gatechproject.project4.BAL.dto.Student;
 import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.SharedDataModules.Course;
@@ -116,14 +115,6 @@ public class SemesterSetupService {
 			blackboard.getCatalogBoard().addCourseSemester(cs);
 		}
 		blackboard.commitTransaction();
-	}
-
-	/**
-	 * Applys the student's semester plan of courses. The priorty of the courses
-	 * are based on the order in the List.
-	 */
-	public void applyStudentSemesterPlan(Student student, List<Course> coursePlan) {
-		// TODO - Luc - Apply the student's semester plan to the database
 	}
 
 	/**

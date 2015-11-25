@@ -2,7 +2,6 @@ package org.gatechprojects.project4.DAL;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeSet;
 
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.MembershipUser;
@@ -101,6 +100,11 @@ public class UserBoard extends Board {
 		return getSession().createCriteria(User.class).add(Restrictions.or(userTypeCriterion)).list();
 	}
 
+	public StudentPreference getStudentPreference(int userId, int semesterId) {
+		return (StudentPreference) getSession().createCriteria(StudentPreference.class)
+				.add(Restrictions.eq("user.id", userId)).add(Restrictions.eq("semester.id", semesterId)).uniqueResult();
+	}
+
 	public User getUser(int userId) {
 		return getSession().get(User.class, userId);
 	}
@@ -136,20 +140,28 @@ public class UserBoard extends Board {
 		populateUser(membershipId, user, firstName, lastName, isStudent, isTA, isProfessor, isAdministrator);
 	}
 
-	public void updateUserPreferences(int userId, int semesterId, int desiredNumberCourses, int... desiredCourseIds) {
+	public int updateUserPreferences(int userId, int semesterId, int desiredNumberCourses,
+			Integer... desiredCourseIds) {
 		verifyTransaction();
-		User user = getSession().get(User.class, userId);
+
+		String hql = "delete from StudentPreference where semester.id = :semesterId and user.id = :userId";
+		getSession().createQuery(hql).setInteger("semesterId", semesterId).setInteger("userId", userId).executeUpdate();
+
+		// add new preferences
 		Semester semester = getSession().get(Semester.class, semesterId);
-		StudentPreference preferences = null;
+		StudentPreference preferences = new StudentPreference();
+		preferences.setUser(getUser(userId));
 		preferences.setDesiredNumberCourses(desiredNumberCourses);
 		preferences.setSemester(semester);
-		TreeSet<StudentCoursePreference> coursePreferences = new TreeSet<StudentCoursePreference>();
+		List<StudentCoursePreference> coursePreferences = new ArrayList<StudentCoursePreference>();
 		for (int desiredCourseId : desiredCourseIds) {
 			Course course = getSession().get(Course.class, desiredCourseId);
 			StudentCoursePreference p = new StudentCoursePreference();
 			p.setCourse(course);
 			coursePreferences.add(p);
 		}
+		preferences.setCoursePreferences(coursePreferences);
+		return (Integer) getSession().save(preferences);
 	}
 
 }

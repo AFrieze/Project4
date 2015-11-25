@@ -1,7 +1,14 @@
 package org.gatechprojects.project4.BAL;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
 import org.gatechproject.project4.BAL.dto.Student;
+import org.gatechproject.project4.BAL.dto.StudentSemesterPreferences;
 import org.gatechprojects.project4.DAL.Blackboard;
+import org.gatechprojects.project4.SharedDataModules.MembershipUser;
+import org.gatechprojects.project4.SharedDataModules.StudentPreference;
 import org.gatechprojects.project4.SharedDataModules.User;
 
 public class UserService {
@@ -41,15 +48,50 @@ public class UserService {
 		return new Student(blackboard.getUserBoard().getUser(userId));
 	}
 
+	/**
+	 * Applies the passed in {@link StudentSemesterPreferences}. Any existing
+	 * preferences for the {@link StudentSemesterPreferences#getUserId() user's}
+	 * {@link StudentSemesterPreferences#getSemesterId() semester} will be cleared and
+	 * replaced by those provided.
+	 * 
+	 * @param studentPreferences
+	 */
+	public void applyStudentPreferences(StudentSemesterPreferences studentPreferences) {
+		List<Integer> courseIds = new ArrayList<Integer>();
+		for (ConfiguredCourse cc : studentPreferences.getPreferredCourses()) {
+			courseIds.add(cc.getCourseId());
+		}
+		blackboard.startTransaction();
+		blackboard.getUserBoard().updateUserPreferences(studentPreferences.getUserId(),
+				studentPreferences.getSemesterId(), studentPreferences.getNbrCoursesDesired(),
+				courseIds.toArray(new Integer[] {}));
+		blackboard.commitTransaction();
+	}
+
+	/**
+	 * Fetches a {@link Student} based on the provided userId. If no student is
+	 * found, null is returned.
+	 * 
+	 * @param userId
+	 * @return
+	 */
 	public Student getStudentById(int userId) {
 		Student student = null;
 		User user = blackboard.getUserBoard().getUser(userId);
-		if (user != null) {
+		if (user != null && user.isStudent()) {
 			student = new Student(user);
 		}
 		return student;
 	}
 
+	/**
+	 * Fetches a {@link Student} based on their {@link MembershipUser#getId()
+	 * membershipId}. This is generally used to link an authenticated membership
+	 * user to their catalog account.
+	 * 
+	 * @param membershipId
+	 * @return
+	 */
 	public Student getStudentByMembershipId(int membershipId) {
 		Student student = null;
 		User user = blackboard.getUserBoard().getUserByMembershipId(membershipId);
@@ -59,11 +101,25 @@ public class UserService {
 		return student;
 	}
 
-	public void updateStudentPreferences(int userId, int semesterId, int desiredNumberCourses,
-			int... desiredCourseIds) {
-		blackboard.startTransaction();
-		blackboard.getUserBoard().updateUserPreferences(userId, semesterId, desiredNumberCourses, desiredCourseIds);
-		blackboard.commitTransaction();
+	/**
+	 * Returns the {@link StudentSemesterPreferences} for the provided user and
+	 * semester. If no preferences currently exist, a default preferences object
+	 * will be provided populated with the usersID and semester.
+	 * 
+	 * @param userId
+	 * @param semesterId
+	 * @return
+	 */
+	public StudentSemesterPreferences getStudentPreferences(int userId, int semesterId) {
+		StudentPreference studentPreference = blackboard.getUserBoard().getStudentPreference(userId, semesterId);
+		StudentSemesterPreferences preferences = null;
+		if (studentPreference != null) {
+			preferences = new StudentSemesterPreferences(studentPreference, semesterId);
+		} else {
+			preferences = new StudentSemesterPreferences();
+			preferences.setSemesterId(semesterId);
+			preferences.setUserId(userId);
+		}
+		return preferences;
 	}
-
 }
