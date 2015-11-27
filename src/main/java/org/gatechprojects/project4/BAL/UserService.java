@@ -1,10 +1,12 @@
 package org.gatechprojects.project4.BAL;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
 import org.gatechproject.project4.BAL.dto.Student;
+import org.gatechproject.project4.BAL.dto.StudentCourseRecommendation;
 import org.gatechproject.project4.BAL.dto.StudentSemesterPreferences;
 import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.SharedDataModules.MembershipUser;
@@ -51,8 +53,8 @@ public class UserService {
 	/**
 	 * Applies the passed in {@link StudentSemesterPreferences}. Any existing
 	 * preferences for the {@link StudentSemesterPreferences#getUserId() user's}
-	 * {@link StudentSemesterPreferences#getSemesterId() semester} will be cleared and
-	 * replaced by those provided.
+	 * {@link StudentSemesterPreferences#getSemesterId() semester} will be
+	 * cleared and replaced by those provided.
 	 * 
 	 * @param studentPreferences
 	 */
@@ -99,6 +101,18 @@ public class UserService {
 			student = new Student(user);
 		}
 		return student;
+	}
+
+	/**
+	 * Returns the most recent list of recommended
+	 * {@link StudentCourseRecommendation courseSolutions} which were generated
+	 * before the passed in time.
+	 * 
+	 * @param time
+	 * @return
+	 */
+	private List<StudentCourseRecommendation> getStudentCourseRecommendations(Calendar time) {
+		return null;
 	}
 
 	/**

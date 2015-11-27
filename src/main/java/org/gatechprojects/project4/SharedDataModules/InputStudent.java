@@ -14,7 +14,7 @@ public class InputStudent {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int userId;
-	private int studentPriority;
+	private int creditsTaken;
 	private int optimizerCalculationId;
 
 	public int getId() {
@@ -26,7 +26,7 @@ public class InputStudent {
 	}
 
 	public int getStudentPriority() {
-		return studentPriority;
+		return creditsTaken;
 	}
 
 	public int getUserId() {
@@ -42,7 +42,7 @@ public class InputStudent {
 	}
 
 	public void setStudentPriority(int studentPriority) {
-		this.studentPriority = studentPriority;
+		this.creditsTaken = studentPriority;
 	}
 
 	public void setUserId(int userId) {

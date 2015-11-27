@@ -8,18 +8,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "input_student_preference")
-public class InputStudentPreference {
+public class InputStudentCoursePreference {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int userId;
 	private int courseId;
-	private int courseOrder;
+	private int coursePriority;
 	private int optimizerCalculationId;
 
 	public int getCourseId() {
 		return courseId;
+	}
+
+	public int getCoursePriority() {
+		return coursePriority;
 	}
 
 	public int getId() {
@@ -30,10 +34,6 @@ public class InputStudentPreference {
 		return optimizerCalculationId;
 	}
 
-	public int getOrder() {
-		return courseOrder;
-	}
-
 	public int getUserId() {
 		return userId;
 	}
@@ -42,16 +42,16 @@ public class InputStudentPreference {
 		this.courseId = courseId;
 	}
 
+	public void setCoursePriority(int coursePriority) {
+		this.coursePriority = coursePriority;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	public void setOptimizerCalculationId(int optimizerCalculationId) {
 		this.optimizerCalculationId = optimizerCalculationId;
-	}
-
-	public void setOrder(int order) {
-		this.courseOrder = order;
 	}
 
 	public void setUserId(int userId) {
