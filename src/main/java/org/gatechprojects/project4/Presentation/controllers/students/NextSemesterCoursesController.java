@@ -70,7 +70,7 @@ public class NextSemesterCoursesController {
 			//Hibernate: select user0_.id as id1_8_0_, user0_.firstName as firstNam2_8_0_, user0_.isAdministrator as isAdmini3_8_0_, user0_.isProfessor as isProfes4_8_0_, user0_.isStudent as isStuden5_8_0_, user0_.isTA as isTA6_8_0_, user0_.lastName as lastName7_8_0_, user0_.membership_id as membersh8_8_0_, membership1_.id as id1_3_1_, membership1_.password as password2_3_1_, membership1_.userName as userName3_3_1_ from user user0_ left outer join membership_user membership1_ on user0_.membership_id=membership1_.id where user0_.id=?
 			//Hibernate: select semester0_.id as id1_5_0_, semester0_.name as name2_5_0_, semester0_.year as year3_5_0_ from semester semester0_ where semester0_.id=?
 			
-			userService.updateStudentPreferences(currentUser.getId(), semesterId, desiredNumberCourses, courseIdsArray);
+			//userService.updateStudentPreferences(currentUser.getId(), semesterId, desiredNumberCourses, courseIdsArray);
 			
 			message.put("type", "success");
 			message.put("summary", "Success! ");
