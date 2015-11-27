@@ -1,0 +1,28 @@
+/* Application CSS */
+
+/*************
+ *Global CSS */
+ 
+#login {
+	margin: 25px auto 0;
+	max-width: 450px;
+}
+
+/************ 
+ *Student Screen Styling */
+
+/* Next Semester Courses Screen */
+#nextsumestercourses #available-courses .move-down,
+#nextsumestercourses #available-courses .move-up,
+#nextsumestercourses #available-courses .move-to-unselected {
+	display: none;
+}
+
+#nextsumestercourses #selected-courses .move-to-selected,
+#nextsumestercourses #selected-courses div.course:first-child .move-up,
+#nextsumestercourses #selected-courses div.course:last-child .move-down
+{
+	display: none;
+}
+
+

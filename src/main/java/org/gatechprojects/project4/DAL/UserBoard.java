@@ -114,6 +114,27 @@ public class UserBoard extends Board {
 		}
 		return null;
 	}
+	
+	/**
+	 * 
+	 * Method for login and session management
+	 * 
+	 * @param userName
+	 * @param password
+	 * @return User
+	 */
+	
+	public User getUserByMembershipUsernameAndPassword(String userName, String password) {
+
+		String hql = "from User as u where u.membership.userName = :userName and u.membership.password = :password";
+		List users = getSession().createQuery(hql).setParameter("userName", userName).setParameter("password", password).setFetchSize(1).list();
+		if (users.size() == 1) {
+			return (User) users.get(0);
+		}
+		return null;
+	}
+	
+	
 
 	private void populateUser(Integer membershipId, User user, String firstName, String lastName, boolean isStudent,
 			boolean isTA, boolean isProfessor, boolean isAdministrator) {

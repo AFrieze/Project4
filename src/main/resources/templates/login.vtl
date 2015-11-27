@@ -1,14 +1,21 @@
-<html>
-	<head>
-		<title>Login Page</title>
-	</head>
-	<body>
-		<form action="login" method="post">
-		Please enter your login information
-		UserName <input type = "text"/>
-		Password <input type= "password"/>
-		<input type="submit"/>
-		</form>
-	</body>
-	
-</html>
+<div id="login">
+	<form action="/login" method="POST" class="form-signin">
+	    <h2 class="form-signin-heading">Please sign in</h2>
+	    <div class="form-group">
+		    <label for="inputUsername" class="sr-only">Username</label>
+		    <input type="text" name="inputUsername" id="inputUsername" class="form-control" placeholder="Username" required="required" autofocus="autofocus" />
+		</div>
+		<div class="form-group">
+	    	<label for="inputPassword" class="sr-only">Password</label>
+	    	<input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required="required" />
+	    </div>
+	    <!--<div class="checkbox">
+	      <label>
+	        <input type="checkbox" value="remember-me" /> Remember me
+	      </label>
+	    </div>-->
+	    <div class="form-group">
+	    	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+	 	</div>
+	 </form>
+</div>

@@ -1,0 +1,60 @@
+<div id="studenthome" class="home student">
+	<div class="well">
+		<div class="row">
+			<div class="col-sm-10">
+				<p>
+					<strong>Last login:</strong> $user.lastLogin() // NEED BAL or USER METHOD FOR LAST LOGIN OF A GIVEN USER <br />
+					<strong>System Status:</strong> $system.status() // NEED BAL FOR SYSTEM STATUS
+			</div>
+			<div class="col-sm-2">
+				<a href="/student/accoutsettings">Account Settings</a>
+			</div>
+		</div>
+		<hr />
+		<h1>Stubbed time for BAL are not render (replaced with fake data if for layout / function)</h1>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="panel panel-primary">
+				  <div class="panel-heading"><h3 class="panel-title">Academic Standing</h3></div>
+				  <div class="panel-body">
+				    <p>
+				    	<strong>Completed courses:</strong>  $user.numberOfCourseComplete()<br />
+				    	<strong>Current courses:</strong>  $user.numberofCurrentCourses()<br />
+				    	<strong>Student Standing:</strong>  $user.academicStanding()
+				    </p>
+				  </div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="panel panel-primary">
+				  <div class="panel-heading"><h3 class="panel-title">Next Semester</h3></div>
+				  <div class="panel-body">
+				  	<p><strong>Solution status</strong><br/>
+				  		$solution.status() <br />
+				  		$solution.time()
+				  	</p>
+				    <a class="btn btn-primary btn-block" href="/student/nextsemestercourses">Select Courses</a>
+				  </div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="panel panel-primary">
+				  <div class="panel-heading"><h3 class="panel-title">History</h3></div>
+				  <div class="panel-body">
+					  <p>Last 3 solutions</p>
+					  ## FAKE DATA
+					  #set($solutions = ['Nov 10 2015, 5pm', 'Nov 10 2015, 10am', 'Nov 9 2015, 11am'])
+					  // PLACE HOLDER DATA
+					  <ul>
+					  	#foreach($solution in $solutions)
+					  		<li>$solution</li>
+					  	#end
+					  </ul>
+				    <a class="btn btn-primary btn-block" href="/student/solutionhistory">Solution History</a>
+				    <a class="btn btn-default btn-block" href="/student/loginhistory">Login History</a>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

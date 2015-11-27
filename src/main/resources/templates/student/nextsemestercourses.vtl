@@ -1,0 +1,56 @@
+$request.queryParams("selectedCourses").isEmpty()
+<div id="nextsumestercourses">
+	<div class="well">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Available Courses</h3>
+				  </div>
+				  <div class="panel-body" id="available-courses">
+				    #foreach($course in $courses)
+					    <div class="course" data-id="${course.getId()}" data-credits="${course.getCredits()}">
+					    	${course.getName()} (${course.getCredits()} credits) 
+					    	<a class="move-to-unselected  pull-right" href="#"><i class="fa fa-ban"></i></a>
+					    	<a class="move-up  pull-right" href="#"><i class="fa fa-angle-up"></i></a>
+					    	<a class="move-down  pull-right" href="#"><i class="fa fa-angle-down"></i></a>
+					    	<a class="move-to-selected pull-right" href="#"><i class="fa fa-angle-right"></i></a>
+					    	<div class="clearfix" ></div>
+					    </div>
+				    #end
+				  </div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Semester Plan (<span id="courseTotal"></span> credits)</h3>
+				  </div>
+				  <div class="panel-body" id="selected-courses">
+				  </div>
+				</div>
+			</div>
+		</div>
+		<form class="hidden" method="POST" action="/student/nextsemestercourses" id="selectedCoursesFrom">
+			<input name="selectedCourses" id="selectedCourses" value=""/>
+		</form>
+		<button id="submit" class="pull-right btn btn-primary btn-block">Submit for Solution</button>
+		<hr />
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">System Solution (Completed: $solution.dateTime() )</h3>
+				  </div>
+				  <div class="panel-body">
+				    //NEED SOLUTION BAL -- NOW JUST REPEAT COURSE LIST
+				    #foreach($course in $courses)
+				    	${course.getName()}, ${course.getCredits()}, prof: //NEED BAL method for getting the professor for a given class/solution <br />
+				    #end
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/js/next.semester.js"></script>

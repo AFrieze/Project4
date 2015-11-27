@@ -1,6 +1,9 @@
 package org.gatechprojects.project4.BAL;
 
+import java.util.List;
+
 import org.gatechprojects.project4.DAL.Blackboard;
+import org.gatechprojects.project4.SharedDataModules.User;
 
 public class Membership {
 
@@ -42,5 +45,17 @@ public class Membership {
 		int membershipId = blackboard.getMembershipBoard().registerMember(userName, password);
 		blackboard.commitTransaction();
 		return membershipId;
+	}
+	
+	/**
+	 * 
+	 * Returns the User object for a given login
+	 * 
+	 * @param userName
+	 * @param password
+	 * @return User
+	 */
+	public User getUser(String userName, String password) {
+		return blackboard.getUserBoard().getUserByMembershipUsernameAndPassword(userName, password);
 	}
 }
