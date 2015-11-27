@@ -3,6 +3,7 @@ package org.gatechprojects.project4.DAL;
 import java.util.Calendar;
 import java.util.List;
 
+import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
 import org.gatechprojects.project4.SharedDataModules.OutputUserCourseAssignment;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,8 +14,10 @@ public class OptimizerBoard extends Board {
 		super(transaction, session);
 	}
 
-	public Integer getOptimizerCalculationId(Calendar calendar) {
-		return null;
+	public Integer createOptimizerCalculation(OptimizerCalculation optimizerCalculation) {
+		verifyTransaction();
+		return (Integer) getSession().save(optimizerCalculation);
+
 	}
 
 	// public InputStudent getStudentInput(int optimizerCalculationId, int
@@ -22,7 +25,12 @@ public class OptimizerBoard extends Board {
 	// return null;
 	// }
 
+	public Integer getOptimizerCalculationId(Calendar calendar) {
+		return null;
+	}
+
 	public List<OutputUserCourseAssignment> getUserCourseAssignments(int optimizerCalculationId) {
 		return null;
 	}
+
 }

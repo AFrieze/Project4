@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,40 +14,56 @@ public class InputOfferedCourse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int courseId;
-	private boolean mustBeTaught = false;
-	private int optimizerCalculationId;
+	@ManyToOne
+	@JoinColumn(name = "course_id")
+	private Course course;
 
-	public int getCourseId() {
-		return courseId;
+	private int maxCourseSize;
+	@ManyToOne
+	@JoinColumn(name = "assigned_user_id")
+	private User assignedProfessor;
+
+	@ManyToOne
+	@JoinColumn(name = "optimizer_calculation_id")
+	private OptimizerCalculation optimizerCalculation;
+
+	public User getAssignedProfessor() {
+		return assignedProfessor;
+	}
+
+	public Course getCourse() {
+		return course;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public int getOptimizerCalculationId() {
-		return optimizerCalculationId;
+	public int getMaxCourseSize() {
+		return maxCourseSize;
 	}
 
-	public boolean isMustBeTaught() {
-		return mustBeTaught;
+	public OptimizerCalculation getOptimizerCalculation() {
+		return optimizerCalculation;
 	}
 
-	public void setCourseID(int courseId) {
-		this.courseId = courseId;
+	public void setAssignedProfessor(User assignedProfessor) {
+		this.assignedProfessor = assignedProfessor;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public void setMustBeTaught(boolean mustBeTaught) {
-		this.mustBeTaught = mustBeTaught;
+	public void setMaxCourseSize(int maxCourseSize) {
+		this.maxCourseSize = maxCourseSize;
 	}
 
-	public void setOptimizerCalculationId(int optimizerCalculationId) {
-		this.optimizerCalculationId = optimizerCalculationId;
+	public void setOptimizerCalculation(OptimizerCalculation optimizerCalculation) {
+		this.optimizerCalculation = optimizerCalculation;
 	}
-
 }

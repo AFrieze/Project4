@@ -14,6 +14,7 @@ import org.gatechprojects.project4.SharedDataModules.UserAvailability;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.SimpleExpression;
 
@@ -100,6 +101,11 @@ public class UserBoard extends Board {
 		return getSession().createCriteria(User.class).add(Restrictions.or(userTypeCriterion)).list();
 	}
 
+	public StudentPreference getMostRecentStudentPreference(int semesterId) {
+		return (StudentPreference) getSession().createCriteria(StudentPreference.class)
+				.add(Restrictions.eq("semeseter.id", semesterId)).addOrder(Order.desc("id")).uniqueResult();
+	}
+
 	public StudentPreference getStudentPreference(int userId, int semesterId) {
 		return (StudentPreference) getSession().createCriteria(StudentPreference.class)
 				.add(Restrictions.eq("user.id", userId)).add(Restrictions.eq("semester.id", semesterId)).uniqueResult();
@@ -118,7 +124,7 @@ public class UserBoard extends Board {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 
 	 * Method for login and session management
@@ -127,18 +133,17 @@ public class UserBoard extends Board {
 	 * @param password
 	 * @return User
 	 */
-	
+
 	public User getUserByMembershipUsernameAndPassword(String userName, String password) {
 
 		String hql = "from User as u where u.membership.userName = :userName and u.membership.password = :password";
-		List users = getSession().createQuery(hql).setParameter("userName", userName).setParameter("password", password).setFetchSize(1).list();
+		List users = getSession().createQuery(hql).setParameter("userName", userName).setParameter("password", password)
+				.setFetchSize(1).list();
 		if (users.size() == 1) {
 			return (User) users.get(0);
 		}
 		return null;
 	}
-	
-	
 
 	private void populateUser(Integer membershipId, User user, String firstName, String lastName, boolean isStudent,
 			boolean isTA, boolean isProfessor, boolean isAdministrator) {

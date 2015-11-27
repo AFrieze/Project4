@@ -1,5 +1,5 @@
 package project4;
-  
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -14,8 +14,17 @@ import org.gatechprojects.project4.BAL.Membership;
 import org.gatechprojects.project4.BAL.SemesterSetupService;
 import org.gatechprojects.project4.BAL.StaffService;
 import org.gatechprojects.project4.BAL.UserService;
+import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.SharedDataModules.Course;
+import org.gatechprojects.project4.SharedDataModules.InputCourseCompetence;
+import org.gatechprojects.project4.SharedDataModules.InputOfferedCourse;
+import org.gatechprojects.project4.SharedDataModules.InputProfessor;
+import org.gatechprojects.project4.SharedDataModules.InputStudent;
+import org.gatechprojects.project4.SharedDataModules.InputStudentCoursePreference;
+import org.gatechprojects.project4.SharedDataModules.InputTA;
+import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
 import org.gatechprojects.project4.SharedDataModules.Semester;
+import org.gatechprojects.project4.SharedDataModules.User;
 import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
@@ -119,6 +128,47 @@ public class IntegrationTests {
 		preferences = userService.getStudentPreferences(student.getUserId(), semesterId);
 		assertEquals(1, preferences.getPreferredCourses().size());
 		assertEquals(1, preferences.getNbrCoursesDesired());
+
+		// test creation of OptimizerCalculation
+		Blackboard blackboard = new Blackboard();
+		blackboard.load();
+		OptimizerCalculation calculation = new OptimizerCalculation();
+		InputStudent inputStudent = new InputStudent();
+		inputStudent.setCreditsTaken(9);
+		inputStudent.setUser(blackboard.getByID(User.class, student.getUserId()));
+		InputStudentCoursePreference coursePreference = new InputStudentCoursePreference();
+		coursePreference.setCourse(course);
+		coursePreference.setCoursePriority(2);
+		inputStudent.getCoursePreferences().add(coursePreference);
+		calculation.getInputStudents().add(inputStudent);
+
+		InputTA inputTa = new InputTA();
+		inputTa.setUser(blackboard.getByID(User.class, ta.getUserId()));
+		calculation.getInputTAs().add(inputTa);
+
+		InputProfessor inputProfessor = new InputProfessor();
+		InputCourseCompetence inputCourseCompetence = new InputCourseCompetence();
+		inputCourseCompetence.setCourse(course);
+		inputProfessor.getCourseCompetencies().add(inputCourseCompetence);
+		calculation.getInputProfessors().add(inputProfessor);
+
+		InputOfferedCourse offeredCourse = new InputOfferedCourse();
+		offeredCourse.setAssignedProfessor(blackboard.getByID(User.class, professor.getUserId()));
+		offeredCourse.setMaxCourseSize(150);
+		calculation.getInputOfferedCourses().add(offeredCourse);
+
+		blackboard.startTransaction();
+		Integer calculationId = blackboard.getOptimizerBoard().createOptimizerCalculation(calculation);
+		blackboard.commitTransaction();
+		calculation = blackboard.getByID(OptimizerCalculation.class, calculationId);
+		assertEquals(1, calculation.getInputStudents().size());
+		assertEquals(1, calculation.getInputStudents().get(0).getCoursePreferences().size());
+		assertEquals(9, calculation.getInputStudents().get(0).getCreditsTaken());
+		assertEquals(1, calculation.getInputTAs().size());
+		assertEquals(1, calculation.getInputProfessors().size());
+		assertEquals(1, calculation.getInputOfferedCourses().size());
+		assertEquals(150, calculation.getInputOfferedCourses().get(0).getMaxCourseSize());
+		assertEquals(professor.getUserId(), calculation.getInputOfferedCourses().get(0).getAssignedProfessor().getId());
 
 	}
 
