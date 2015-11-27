@@ -28,6 +28,8 @@ public class CourseSemester {
 	@JoinColumn(name = "user_id")
 	private User assignedProfessor;
 
+	private boolean isShadow = false;
+
 	private int maxCourseSize;
 
 	public User getAssignedProfessor() {
@@ -50,6 +52,10 @@ public class CourseSemester {
 		return semester;
 	}
 
+	public boolean isShadow() {
+		return isShadow;
+	}
+
 	public void setAssignedProfessor(User assignedProfessor) {
 		this.assignedProfessor = assignedProfessor;
 	}
@@ -68,6 +74,10 @@ public class CourseSemester {
 
 	public void setSemester(Semester semester) {
 		this.semester = semester;
+	}
+
+	public void setShadow(boolean isShadow) {
+		this.isShadow = isShadow;
 	}
 
 }

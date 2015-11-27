@@ -6,7 +6,6 @@ import java.util.List;
 import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
 import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.SemesterConfiguration;
-import org.gatechproject.project4.BAL.dto.Student;
 import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.SharedDataModules.Course;
@@ -27,7 +26,7 @@ public class SemesterSetupService {
 	private Blackboard blackboard;
 
 	/**
-	 * Default public contructor. A Blackboard instance will be created using
+	 * Default public constructor. A Blackboard instance will be created using
 	 * {@link Blackboard blackboards} default constructor.
 	 */
 	public SemesterSetupService() {
@@ -85,12 +84,13 @@ public class SemesterSetupService {
 	public void applySemesterConfiguration(SemesterConfiguration configuration, boolean isShadow) {
 		Semester semester = blackboard.getCatalogBoard().getSemester(configuration.getSemesterId());
 		blackboard.startTransaction();
-		blackboard.getCatalogBoard().clearCurrentSemesterConfigurations(configuration.getSemesterId());
+		blackboard.getCatalogBoard().clearCurrentSemesterConfigurations(configuration.getSemesterId(), false);
 		for (TeacherAssistant ta : configuration.getTeacherAssistants()) {
 			User user = blackboard.getUserBoard().getUser(ta.getUserId());
 			UserAvailability ua = new UserAvailability();
 			ua.setUser(user);
 			ua.setSemester(semester);
+			ua.setShadow(isShadow);
 			blackboard.getCatalogBoard().addUserAvailability(ua);
 		}
 
@@ -99,6 +99,7 @@ public class SemesterSetupService {
 			UserAvailability ua = new UserAvailability();
 			ua.setUser(user);
 			ua.setSemester(semester);
+			ua.setShadow(isShadow);
 			blackboard.getCatalogBoard().addUserAvailability(ua);
 		}
 
@@ -110,17 +111,10 @@ public class SemesterSetupService {
 			cs.setCourse(blackboard.getCatalogBoard().getCourse(courseConfig.getCourseId()));
 			cs.setMaxCourseSize(courseConfig.getMaxCourseSize());
 			cs.setSemester(blackboard.getCatalogBoard().getSemester(configuration.getSemesterId()));
+			cs.setShadow(isShadow);
 			blackboard.getCatalogBoard().addCourseSemester(cs);
 		}
 		blackboard.commitTransaction();
-	}
-
-	/**
-	 * Applys the student's semester plan of courses. The priorty of the courses
-	 * are based on the order in the List.
-	 */
-	public void applyStudentSemesterPlan(Student student, List<Course> coursePlan) {
-		// TODO - Luc - Apply the student's semester plan to the database
 	}
 
 	/**
@@ -152,7 +146,11 @@ public class SemesterSetupService {
 	 * 
 	 * Builds and returns as {@link SemesterConfiguration} containing
 	 * information regarding the currently configured courses, tas, and
-	 * professors for a semester.
+	 * professors for a semester. If the passed in isShadow parameter is true,
+	 * the most recent shadow for the semester is loaded.
+	 * <p>
+	 * 
+	 * 
 	 * 
 	 * <p>
 	 * One recommended usage of this method to request the
@@ -164,18 +162,18 @@ public class SemesterSetupService {
 	 * @param semesterId
 	 * @return
 	 */
-	public SemesterConfiguration getSemesterConfiguration(int semesterId) {
+	public SemesterConfiguration getSemesterConfiguration(int semesterId, boolean isShadow) {
 		SemesterConfiguration semesterConfiguration = new SemesterConfiguration();
 		semesterConfiguration.setSemesterId(semesterId);
-		semesterConfiguration = populateConfigurationCourses(semesterConfiguration, semesterId);
-		semesterConfiguration = populateConfigurationProfessors(semesterConfiguration, semesterId);
-		semesterConfiguration = populateConfigurationTAs(semesterConfiguration, semesterId);
+		semesterConfiguration = populateConfigurationCourses(semesterConfiguration, semesterId, isShadow);
+		semesterConfiguration = populateConfigurationProfessors(semesterConfiguration, semesterId, isShadow);
+		semesterConfiguration = populateConfigurationTAs(semesterConfiguration, semesterId, isShadow);
 		return semesterConfiguration;
 	}
 
 	private SemesterConfiguration populateConfigurationCourses(SemesterConfiguration semesterConfiguration,
-			int semesterId) {
-		List<CourseSemester> semesterCourses = blackboard.getCatalogBoard().getSemesterCourses(semesterId);
+			int semesterId, boolean isShadow) {
+		List<CourseSemester> semesterCourses = blackboard.getCatalogBoard().getSemesterCourses(semesterId, isShadow);
 		List<ConfiguredCourse> configuredCourses = new ArrayList<>();
 		for (CourseSemester cs : semesterCourses) {
 			configuredCourses.add(new ConfiguredCourse(cs));
@@ -185,19 +183,19 @@ public class SemesterSetupService {
 	}
 
 	private SemesterConfiguration populateConfigurationProfessors(SemesterConfiguration semesterConfiguration,
-			int semesterId) {
+			int semesterId, boolean isShadow) {
 		List<UserAvailability> professorConfigurations = blackboard.getUserBoard()
-				.getAvailableUsersBySemesterAndType(false, false, true, semesterId);
+				.getAvailableUsersBySemesterAndType(false, false, true, semesterId, isShadow);
 		for (UserAvailability user : professorConfigurations) {
 			semesterConfiguration.getProfessors().add(new Professor(user.getUser()));
 		}
 		return semesterConfiguration;
 	}
 
-	private SemesterConfiguration populateConfigurationTAs(SemesterConfiguration semesterConfiguration,
-			int semesterId) {
+	private SemesterConfiguration populateConfigurationTAs(SemesterConfiguration semesterConfiguration, int semesterId,
+			boolean isShadow) {
 		List<UserAvailability> taConfigurations = blackboard.getUserBoard().getAvailableUsersBySemesterAndType(false,
-				true, false, semesterId);
+				true, false, semesterId, isShadow);
 		for (UserAvailability user : taConfigurations) {
 			semesterConfiguration.getTeacherAssistants().add(new TeacherAssistant(user.getUser()));
 		}

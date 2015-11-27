@@ -8,6 +8,7 @@ import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
 import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.SemesterConfiguration;
 import org.gatechproject.project4.BAL.dto.Student;
+import org.gatechproject.project4.BAL.dto.StudentSemesterPreferences;
 import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.BAL.Membership;
 import org.gatechprojects.project4.BAL.SemesterSetupService;
@@ -51,7 +52,7 @@ public class IntegrationTests {
 	}
 
 	@Test
-	public void semesterConfigurationTest() {
+	public void semesterConfigurationAndStudentPreferencesTest() {
 
 		StaffService staffService = new StaffService();
 		UserService userService = new UserService();
@@ -66,6 +67,11 @@ public class IntegrationTests {
 		Course course = semesterService.getCourse(course1Id);
 		staffService.addCourseCompetency(course1Id, professor.getUserId());
 
+		// refresh the caches
+		staffService = new StaffService();
+		userService = new UserService();
+		semesterService = new SemesterSetupService();
+
 		// verify that the seeded data is now available
 		assertEquals(1, semesterService.getAvailableCourses().size());
 		assertEquals(1, staffService.getAvailableProfessors().size());
@@ -73,7 +79,7 @@ public class IntegrationTests {
 		assertEquals(1, staffService.getAvailableTeacherAssistants().size());
 
 		// verify that the current semesterConfiguration is empty
-		SemesterConfiguration configuration = semesterService.getSemesterConfiguration(semesterId);
+		SemesterConfiguration configuration = semesterService.getSemesterConfiguration(semesterId, false);
 		assertEquals(0, configuration.getOfferedCourses().size());
 		assertEquals(0, configuration.getProfessors().size());
 		assertEquals(0, configuration.getTeacherAssistants().size());
@@ -86,17 +92,34 @@ public class IntegrationTests {
 		configuration.getOfferedCourses().add(configuredCourse);
 		configuration.getProfessors().add(professor);
 		configuration.getTeacherAssistants().add(ta);
-
 		// apply the new semesterConfiguration
 		semesterService.applySemesterConfiguration(configuration, false);
 
 		// verify that the new configuration has taken effect
-		configuration = semesterService.getSemesterConfiguration(semesterId);
+		configuration = semesterService.getSemesterConfiguration(semesterId, false);
 		assertEquals(1, configuration.getOfferedCourses().size());
 		assertEquals(1, configuration.getProfessors().size());
 		assertEquals(1, staffService.getAvailableProfessors().get(0).getCourseCompetencies().size());
 		assertEquals(1, configuration.getTeacherAssistants().size());
 		assertEquals(semesterId, configuration.getSemesterId());
+
+		// verify current student preferences
+		StudentSemesterPreferences preferences = userService.getStudentPreferences(student.getUserId(), semesterId);
+		assertEquals(0, preferences.getPreferredCourses().size());
+		assertEquals(student.getUserId(), preferences.getUserId());
+		assertEquals(0, preferences.getPreferredCourses().size());
+		assertEquals(semesterId, preferences.getSemesterId());
+
+		// update preferences
+		preferences.getPreferredCourses().add(configuration.getOfferedCourses().get(0));
+		preferences.setNbrCoursesDesired(1);
+		userService.applyStudentPreferences(preferences);
+
+		// verify preferences updated
+		preferences = userService.getStudentPreferences(student.getUserId(), semesterId);
+		assertEquals(1, preferences.getPreferredCourses().size());
+		assertEquals(1, preferences.getNbrCoursesDesired());
+
 	}
 
 	@Before

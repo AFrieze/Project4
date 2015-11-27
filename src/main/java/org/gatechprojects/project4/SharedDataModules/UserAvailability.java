@@ -23,6 +23,8 @@ public class UserAvailability {
 	@JoinColumn(name = "semester_id")
 	private Semester semester;
 
+	private boolean isShadow = false;
+
 	public int getId() {
 		return id;
 	}
@@ -35,12 +37,20 @@ public class UserAvailability {
 		return user;
 	}
 
+	public boolean isShadow() {
+		return isShadow;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	public void setSemester(Semester semester) {
 		this.semester = semester;
+	}
+
+	public void setShadow(boolean isShadow) {
+		this.isShadow = isShadow;
 	}
 
 	public void setUser(User user) {

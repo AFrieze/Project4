@@ -1,6 +1,6 @@
 package org.gatechprojects.project4.SharedDataModules;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "student_preference")
@@ -29,9 +32,10 @@ public class StudentPreference {
 	private int desiredNumberCourses;
 
 	@OneToMany(mappedBy = "studentPreference")
-	private Set<StudentCoursePreference> coursePreferences;
+	@Cascade({ CascadeType.DELETE, CascadeType.DELETE })
+	private List<StudentCoursePreference> coursePreferences;
 
-	public Set<StudentCoursePreference> getCoursePreferences() {
+	public List<StudentCoursePreference> getCoursePreferences() {
 		return coursePreferences;
 	}
 
@@ -51,7 +55,7 @@ public class StudentPreference {
 		return user;
 	}
 
-	public void setCoursePreferences(Set<StudentCoursePreference> coursePreferences) {
+	public void setCoursePreferences(List<StudentCoursePreference> coursePreferences) {
 		this.coursePreferences = coursePreferences;
 	}
 
