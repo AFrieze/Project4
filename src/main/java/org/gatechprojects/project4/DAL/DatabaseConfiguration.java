@@ -11,6 +11,10 @@ import org.gatechprojects.project4.SharedDataModules.InputStudentCoursePreferenc
 import org.gatechprojects.project4.SharedDataModules.InputTA;
 import org.gatechprojects.project4.SharedDataModules.MembershipUser;
 import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
+import org.gatechprojects.project4.SharedDataModules.OutputOfferedCourse;
+import org.gatechprojects.project4.SharedDataModules.OutputProfessorCourseAssignment;
+import org.gatechprojects.project4.SharedDataModules.OutputTACourseAssignment;
+import org.gatechprojects.project4.SharedDataModules.OutputUserCourseAssignment;
 import org.gatechprojects.project4.SharedDataModules.ProfessorCompetence;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.StudentCoursePreference;
@@ -46,19 +50,9 @@ public class DatabaseConfiguration {
 		configuration.addAnnotatedClass(InputProfessor.class);
 		configuration.addAnnotatedClass(InputTA.class);
 		configuration.addAnnotatedClass(InputCourseCompetence.class);
-		// configuration.addAnnotatedClass(CoursePrerequisite.class);
-		// configuration.addAnnotatedClass(CourseSemester.class);
-		// configuration.addAnnotatedClass(InputOfferedCourse.class);
-		// configuration.addAnnotatedClass(InputCourseCompetence.class);
-		// configuration.addAnnotatedClass(InputProfessor.class);
-		// configuration.addAnnotatedClass(InputStudent.class);
-		// configuration.addAnnotatedClass(InputStudentPreference.class);
-		// configuration.addAnnotatedClass(InputTA.class);
-		// configuration.addAnnotatedClass(InputTaCourseAssignment.class);
-		// configuration.addAnnotatedClass(OptimizerCalculation.class);
-		// configuration.addAnnotatedClass(OutputOfferedCourse.class);
-		// configuration.addAnnotatedClass(OutputProfessorCourseAssignment.class);
-		// configuration.addAnnotatedClass(OutputTACourseAssignment.class);
-		// configuration.addAnnotatedClass(OutputUserCourseAssignment.class);
+		configuration.addAnnotatedClass(OutputOfferedCourse.class);
+		configuration.addAnnotatedClass(OutputProfessorCourseAssignment.class);
+		configuration.addAnnotatedClass(OutputTACourseAssignment.class);
+		configuration.addAnnotatedClass(OutputUserCourseAssignment.class);
 	}
 }
