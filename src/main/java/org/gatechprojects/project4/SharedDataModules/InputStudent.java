@@ -3,6 +3,7 @@ package org.gatechprojects.project4.SharedDataModules;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +31,7 @@ public class InputStudent {
 	@JoinColumn(name = "optimizer_calculation_id")
 	private OptimizerCalculation optimizerCalculation;
 
-	@OneToMany(mappedBy = "inputStudent")
+	@OneToMany(mappedBy = "inputStudent", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<InputStudentCoursePreference> coursePreferences = new ArrayList<InputStudentCoursePreference>();
 
 	public List<InputStudentCoursePreference> getCoursePreferences() {

@@ -40,6 +40,3 @@ local.properties
 .texlipse
 /target/
 /.apt_generated/
-/velocity.log.1
-/velocity.log
-/src.zip

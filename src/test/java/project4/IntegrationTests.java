@@ -134,27 +134,35 @@ public class IntegrationTests {
 		blackboard.load();
 		OptimizerCalculation calculation = new OptimizerCalculation();
 		InputStudent inputStudent = new InputStudent();
+		inputStudent.setOptimizerCalculation(calculation);
 		inputStudent.setCreditsTaken(9);
 		inputStudent.setUser(blackboard.getByID(User.class, student.getUserId()));
 		InputStudentCoursePreference coursePreference = new InputStudentCoursePreference();
 		coursePreference.setCourse(course);
 		coursePreference.setCoursePriority(2);
+		coursePreference.setInputStudent(inputStudent);
 		inputStudent.getCoursePreferences().add(coursePreference);
 		calculation.getInputStudents().add(inputStudent);
 
 		InputTA inputTa = new InputTA();
 		inputTa.setUser(blackboard.getByID(User.class, ta.getUserId()));
+		inputTa.setOptimizerCalculation(calculation);
 		calculation.getInputTAs().add(inputTa);
 
 		InputProfessor inputProfessor = new InputProfessor();
+		inputProfessor.setOptimizerCalculation(calculation);
+		inputProfessor.setUser(blackboard.getByID(User.class, professor.getUserId()));
 		InputCourseCompetence inputCourseCompetence = new InputCourseCompetence();
 		inputCourseCompetence.setCourse(course);
+
+		inputCourseCompetence.setInputProfessor(inputProfessor);
 		inputProfessor.getCourseCompetencies().add(inputCourseCompetence);
 		calculation.getInputProfessors().add(inputProfessor);
 
 		InputOfferedCourse offeredCourse = new InputOfferedCourse();
 		offeredCourse.setAssignedProfessor(blackboard.getByID(User.class, professor.getUserId()));
 		offeredCourse.setMaxCourseSize(150);
+		offeredCourse.setOptimizerCalculation(calculation);
 		calculation.getInputOfferedCourses().add(offeredCourse);
 
 		blackboard.startTransaction();

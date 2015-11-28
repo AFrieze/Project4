@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.CourseSemester;
+import org.gatechprojects.project4.SharedDataModules.CourseTaken;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.UserAvailability;
 import org.hibernate.Session;
@@ -48,6 +49,12 @@ public class CatalogBoard extends Board {
 		Course course = new Course();
 		course = populateCourse(course, name, nbrCredits);
 		return (int) getSession().save(course);
+	}
+
+	public void createCourseTaken(CourseTaken courseTaken) {
+		verifyTransaction();
+		getSession().save(courseTaken);
+
 	}
 
 	public int createSemester(String name, int year) {

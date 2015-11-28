@@ -84,7 +84,7 @@ public class ControllerService {
 	}
 
 	private void registerParticipants() {
-		participants.add(new SemesterOptimizer());
+		participants.add(new SemesterOptimizer(semesterId));
 	}
 
 	public void start() {

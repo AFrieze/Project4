@@ -6,6 +6,7 @@ import java.util.List;
 import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.DAL.Blackboard;
+import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.User;
 
 public class StaffService {
@@ -50,6 +51,19 @@ public class StaffService {
 
 	}
 
+	public List<Course> getAvailableProfessorCompetencies(int userId) {
+
+		User user = blackboard.getUserBoard().getUser(userId);
+		if (!user.isProfessor()) {
+			throw new IllegalArgumentException("Passed in user is not a professor");
+		}
+		blackboard.startTransaction();
+		List<Course> courses = blackboard.getUserBoard().getProfessorCompetencies(userId);
+		blackboard.commitTransaction();
+
+		return courses;
+	}
+	
 	public Professor addProfessor(Integer membershipId, String firstName, String lastName) {
 		blackboard.startTransaction();
 		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, false, true, false);
