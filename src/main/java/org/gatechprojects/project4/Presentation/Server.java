@@ -35,6 +35,7 @@ public class Server {
 			if( !request.pathInfo().startsWith("/js")
 				&& !request.pathInfo().startsWith("/styles")
 				&& !request.pathInfo().startsWith("/images")
+				&& !request.pathInfo().startsWith("/admin")
 				&& !request.pathInfo().startsWith("/favicon.ico")
 				)
 			{
