@@ -1,5 +1,9 @@
 <div id="loginhistory">
 	<div class="well">
-		<h1>Need BAL object for login</h1>
+		<ul>
+			#foreach($login in $loginHistory.getLoginHistory())
+				<li>$!{dateFormat($login)}</li>
+			#end
+		</div>
 	</div>
 </div>
