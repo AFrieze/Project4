@@ -39,6 +39,18 @@ public class OptimizerCalculation {
 	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<InputOfferedCourse> inputOfferedCourses = new ArrayList<InputOfferedCourse>();
 
+	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	private List<OutputOfferedCourse> outputOfferedCourses = new ArrayList<OutputOfferedCourse>();
+
+	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	private List<OutputProfessorCourseAssignment> outputProfessorCourseAssignments = new ArrayList<OutputProfessorCourseAssignment>();
+
+	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	private List<OutputTACourseAssignment> outputTACourseAssignments = new ArrayList<OutputTACourseAssignment>();
+
+	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	private List<OutputUserCourseAssignment> outputUserCourseAssignments = new ArrayList<OutputUserCourseAssignment>();
+
 	public Calendar getCompletionTime() {
 		return completionTime;
 	}
