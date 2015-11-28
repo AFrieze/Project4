@@ -1,0 +1,55 @@
+﻿#logo {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 32px;
+  top: -25px;
+}
+#logo .sublogo {
+  font-size: 12px;
+  margin-top: -7px;
+}
+#search-view-submit {
+  height: 30px;
+}
+.blog .blog-img {
+  display: inline-block;
+  margin: 0 10px;
+  width: 150px;
+}
+.blog .blog-short {
+  vertical-align: top;
+}
+.blog .blog-body ul {
+  font-size: 100%;
+  margin-left: 25px !important;
+}
+.book-body ul {
+  font-size: 100%;
+  margin-left: 25px !important;
+}
+.creative-commons {
+  margin: 10px 0;
+}
+.field-validation-valid {
+  color: #ac0303;
+  vertical-align: top;
+}
+.book-size {
+  width: 100px;
+}
+.row ul li.app-panel {
+  min-height: 500px;
+}
+.row ul li.app-panel .app-thumb {
+  border: 1px solid #ddd;
+}
+.article {
+  min-height: 300px;
+}
+@media only screen and (max-width: 480px) {
+  #logo {
+    font-size: 24px;
+  }
+  #logo .sublogo {
+    display: none;
+  }
+}

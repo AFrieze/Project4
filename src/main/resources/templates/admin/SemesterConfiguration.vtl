@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <title>Admin Portal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/resources/admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/admin/css/style.css">
+    <link rel="stylesheet" href="/resources/admin/css/style-menu.css">
+    <!-- <link rel="stylesheet" href="/css/bootstrap-responsive.min.css"> -->
+    <!-- <link rel="stylesheet" href="/css/style_responsive.css"> -->
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+    <!--=== Top ===-->
+    <div id="top">
+        <div class="container">
+        </div>
+    </div>
+    <!--/top-->
+    <!--=== Header ===-->
+    <div id="header">
+        <div class="container">
+            <!-- Menu -->
+            <div class="navbar navbar-default">
+                <div class="navbar-header">
+                    <a class="btn navbar-btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="glyphicon glyphicon-bar"></span><span class="glyphicon glyphicon-bar">
+                        </span><span class="glyphicon glyphicon-bar"></span></a>
+                    <!-- Logo -->
+                    <div id="logo">
+                        <a href="/">Admin Portal</a>
+                        <div class="sublogo">
+                            Admin Portal</div>
+                    </div>
+                    <!-- /logo -->
+                </div>
+                <!-- /navbar-header -->
+                <!-- /nav-collapse -->
+                <div>
+                    <ul class="nav navbar-nav navbar-right navbar-collapse collapse top-2">
+                        <li><a href="/admin/home">Home</a> </li>
+                        <li class="active"><a href="/admin/SemesterConfiguration">Semester Configuration</a> </li>
+                        <li><a href="/admin/History">History</a> </li>
+                        <li><a href="/admin/Sandbox">Sandbox</a> </li>
+                    </ul>
+                </div>
+                <!-- /nav-collapse -->
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /header -->
+    <!--=== Content part ===-->
+    <div id="body">
+        <div class="breadcrumbs margin-bottom-20">
+            <!--/container-->
+        </div>
+        <!--/breadcrumbs-->
+        <div class="container">
+            <div class="row blog-page">
+                <div class="col-md-12">
+                    <div class="blog margin-bottom-30">
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li><i class="glyphicon glyphicon-calendar"></i>CurrentDateTime</li>
+                            <li><i class="glyphicon glyphicon-pencil"></i>Loggedin user</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <form method="post" action="/admin/SemesterConfiguration">
+                <div class="form-group;col-lg-12" style="padding-bottom:40px">
+                    <label class="control-label col-md-2">
+                        Semester</label>
+                    <div class="col-md-6">
+                        <select name="Semester" class="form-control" onchange="this.form.submit()">
+                            #foreach($semester in $Semesters)
+                            <option value="${semester.getId()}">${semester.getName()} ${semester.getYear()}</option>
+                            #end
+                        </select>
+                    </div>
+                </div>
+                <!-- </form>
+                Right Sidebar 
+                <form method="post" action="/admin/SemesterConfiguration"> -->
+                <div class="col-md-12" style="height: auto">
+                    <hr class="col-md-12" />
+                    <div class="blog margin-bottom-30 col-md-6">
+                        <fieldset class="group">
+                            <label>TAs</label>
+                            <ul id="TAs" class="checkbos">
+                                #foreach($entity in $TeacherAssistants)
+	                            	<li>
+	                            		<input type="checkbox" id="${entity.getUserId()}"  name="tas" value="${entity.getUserId()}" >
+	                            		<label for="cb1">${entity.getFirstName()} ${entity.getLastName()}</label>
+	                            	</li> 
+	                            #end
+                            </ul>
+                        </fieldset>
+                    </div>
+                    <div class="blog margin-bottom-30 col-md-6">
+                        <fieldset class="group">
+                            <label>Professors</label>
+                            <ul id="professors" class="checkbos">
+                                #foreach($entity in $Professors)
+	                            	<li>
+	                            		<input type="checkbox" id="${entity.getUserId()}"  name="professors" value="${entity.getUserId()}" >
+	                            		<label for="cb1">${entity.getFirstName()} ${entity.getLastName()}</label>
+	                            	</li> 
+	                            #end
+                            </ul>
+                        </fieldset>
+                    </div>
+                    <div class="blog margin-bottom-30 col-md-6">
+                        <fieldset class="group">
+                            <label>Courses</label>
+                            <ul id="courses" class="checkbos">
+                                #foreach($entity in $Courses)
+	                            	<li>
+	                            		<input type="checkbox" id="${entity.getId()}"  name="courses" value="${entity.getId()}" >
+	                            		<label for="cb1">${entity.getName()}</label>
+	                            	</li> 
+	                            #end
+                            </ul>
+                        </fieldset>
+                    </div>
+                    <div class="blog margin-bottom-30 col-md-6">
+                        <fieldset class="group">
+                            <label>Competencies Assignments</label>
+                            <ul id="Ul2" class="checkbos">
+                                #foreach($entity in $Competencies)
+	                            	<li>
+	                            		<input type="checkbox" id="${entity.getId()}"  name="competencies" value="${entity.getId()}" >
+	                            		<label for="cb1">${entity.getName()}</label>
+	                            	</li> 
+	                            #end
+                            </ul>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                </div>
+                <div class="col-lg-4">
+                    <input type="submit" name="button_1" value="View Preview" />
+                    <input type="submit" name="button_2" value="Run Preview" />
+                    <input type="submit" name="button_33" value="Apply" />
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--=== Footer ===-->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        Fall 2015 CS6510 Team 40 [Mark Mullison (mmullison3);Luc Comeau (lcomeau3);Andrew
+                        Frieze (afrieze30);Bryce Roberts (broberts43);Nipun Ananad (nanand30)]</p>
+                </div>
+            </div>
+        </div>
+        <!--/container-->
+    </div>
+    <!--/footer-->
+    <!-- JS and jQuery -->
+    <script type="text/javascript" src="admin/js/jquery-2.0.0.min.js"></script>
+    <script type="text/javascript" src="admin/js/bootstrap.min.js"></script>
+</body>
+</html>

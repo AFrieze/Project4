@@ -1,5 +1,7 @@
 package org.gatechprojects.project4.installation;
 
+import java.util.Random;
+
 import org.gatechprojects.project4.BAL.Membership;
 import org.gatechprojects.project4.BAL.StaffService;
 import org.gatechprojects.project4.BAL.UserService;
@@ -102,6 +104,7 @@ public class Installer {
 		seedSemester();
 		seedCourses();
 		seedAdministrator();
+		seedProfessorCompetency();
 	}
 
 	private void seedProfessors() {
@@ -118,6 +121,35 @@ public class Installer {
 		blackboard.load();
 		blackboard.startTransaction();
 		blackboard.getCatalogBoard().createSemester("Spring", 2016);
+		blackboard.getCatalogBoard().createSemester("Fall", 2016);
+		blackboard.getCatalogBoard().createSemester("Spring", 2017);
+		blackboard.getCatalogBoard().createSemester("Fall", 2017);
+		blackboard.commitTransaction();
+		blackboard.close();
+	}
+
+	private void seedCourseSemester() {
+		Blackboard blackboard = new Blackboard();
+		blackboard.load();
+		blackboard.startTransaction();
+		//to do
+		blackboard.commitTransaction();
+		blackboard.close();
+	}
+
+	private void seedProfessorCompetency() {
+		StaffService staffService = new StaffService();
+		Blackboard blackboard = new Blackboard();
+		blackboard.load();
+		blackboard.startTransaction();
+
+		for (int i = 1; i <= NBR_PROFESSORS; i++) {
+			for (int k = 1; k <= 3; k++) {	
+				Random rn = new Random();
+				int j = rn.nextInt(10 - 1 + 1) + 1;
+				staffService.addCourseCompetency(j, i);
+			}
+		}
 		blackboard.commitTransaction();
 		blackboard.close();
 	}
