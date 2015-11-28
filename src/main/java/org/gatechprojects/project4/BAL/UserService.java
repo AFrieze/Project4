@@ -116,6 +116,22 @@ public class UserService {
 	}
 
 	/**
+	 * Returns a list of all the {@link StudentSemesterPreferences} for the
+	 * specified semesterId.
+	 * 
+	 * @param semesterId
+	 * @return
+	 */
+	public List<StudentSemesterPreferences> getStudentPreferences(int semesterId) {
+		List<StudentPreference> preferences = blackboard.getUserBoard().getStudentPreferences(semesterId);
+		List<StudentSemesterPreferences> semesterPreferences = new ArrayList<StudentSemesterPreferences>();
+		for (StudentPreference sp : preferences) {
+			semesterPreferences.add(new StudentSemesterPreferences(sp, semesterId));
+		}
+		return semesterPreferences;
+	}
+
+	/**
 	 * Returns the {@link StudentSemesterPreferences} for the provided user and
 	 * semester. If no preferences currently exist, a default preferences object
 	 * will be provided populated with the usersID and semester.
@@ -136,4 +152,5 @@ public class UserService {
 		}
 		return preferences;
 	}
+
 }

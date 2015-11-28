@@ -1,11 +1,20 @@
 package org.gatechprojects.project4.installation;
 
+import java.util.List;
+
+import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
+import org.gatechproject.project4.BAL.dto.Professor;
+import org.gatechproject.project4.BAL.dto.StudentSemesterPreferences;
 import org.gatechprojects.project4.BAL.Membership;
 import org.gatechprojects.project4.BAL.StaffService;
 import org.gatechprojects.project4.BAL.UserService;
 import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.DAL.CatalogBoard;
 import org.gatechprojects.project4.DAL.DatabaseConfiguration;
+import org.gatechprojects.project4.SharedDataModules.Course;
+import org.gatechprojects.project4.SharedDataModules.CourseTaken;
+import org.gatechprojects.project4.SharedDataModules.Semester;
+import org.gatechprojects.project4.SharedDataModules.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -90,6 +99,28 @@ public class Installer {
 		blackboard.close();
 	}
 
+	private void seedCoursesTaken() {
+		Blackboard blackboard = new Blackboard();
+		blackboard.load();
+		blackboard.startTransaction();
+		List<User> students = blackboard.getUserBoard().getAvailableUsersByType(true, false, false);
+		List<Course> courses = blackboard.getCatalogBoard().getAvailableCourses();
+		int coursesTaken = 0;
+		int maxCoursesTaken = 5;
+		for (int i = 0; i < students.size(); i++) {
+			User user = students.get(i);
+			for (int j = 0; j < coursesTaken; j++) {
+				CourseTaken courseTaken = new CourseTaken();
+				courseTaken.setUser(user);
+				courseTaken.setCourse(courses.get(j));
+				blackboard.getCatalogBoard().createCourseTaken(courseTaken);
+			}
+			coursesTaken = coursesTaken + 1 > maxCoursesTaken ? 0 : coursesTaken + 1;
+		}
+		blackboard.commitTransaction();
+		blackboard.close();
+	}
+
 	private void seedData() {
 
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
@@ -101,7 +132,27 @@ public class Installer {
 		seedTeacherAssistants();
 		seedSemester();
 		seedCourses();
+		seedCoursesTaken();
+		seedStudentPreferences();
+		seedProfessorCompetencies();
 		seedAdministrator();
+	}
+
+	private void seedProfessorCompetencies() {
+		Blackboard blackboard = new Blackboard();
+		blackboard.load();
+		StaffService staffService = new StaffService(blackboard);
+		List<Professor> professors = staffService.getAvailableProfessors();
+		List<Course> courses = blackboard.getCatalogBoard().getAvailableCourses();
+		int nbrCompetencies = 3;
+		int courseIndex = 0;
+		for (Professor professor : professors) {
+			for (int i = 0; i < nbrCompetencies; i++) {
+				staffService.addCourseCompetency(courses.get(courseIndex).getId(), professor.getUserId());
+				courseIndex = courseIndex + 1 >= courses.size() ? 0 : courseIndex + 1;
+			}
+		}
+		blackboard.close();
 	}
 
 	private void seedProfessors() {
@@ -119,6 +170,42 @@ public class Installer {
 		blackboard.startTransaction();
 		blackboard.getCatalogBoard().createSemester("Spring", 2016);
 		blackboard.commitTransaction();
+		blackboard.close();
+	}
+
+	private void seedStudentPreferences() {
+		Blackboard blackboard = new Blackboard();
+		blackboard.load();
+		Semester semester = blackboard.getCatalogBoard().getSemesters().get(0);
+		UserService userService = new UserService(blackboard);
+		List<User> students = blackboard.getUserBoard().getAvailableUsersByType(true, false, false);
+		List<Course> courses = blackboard.getCatalogBoard().getAvailableCourses();
+		int nbrCoursesDesired = 1;
+		int maxNbrCoursesDesired = 4;
+		for (User user : students) {
+			StudentSemesterPreferences semesterPreferences = new StudentSemesterPreferences();
+			semesterPreferences.setUserId(user.getId());
+			semesterPreferences.setNbrCoursesDesired(nbrCoursesDesired);
+			semesterPreferences.setSemesterId(semester.getId());
+			for (int i = 0; i < nbrCoursesDesired; i++) {
+				for (Course course : courses) {
+					boolean isTaken = false;
+					for (CourseTaken taken : user.getCoursesTaken()) {
+						if (course.getId() == taken.getCourse().getId()) {
+							isTaken = true;
+							break;
+						}
+					}
+					if (!isTaken) {
+						ConfiguredCourse cc = new ConfiguredCourse(course);
+						semesterPreferences.getPreferredCourses().add(cc);
+						break;
+					}
+				}
+			}
+			userService.applyStudentPreferences(semesterPreferences);
+			nbrCoursesDesired = nbrCoursesDesired + 1 > maxNbrCoursesDesired ? 1 : nbrCoursesDesired + 1;
+		}
 		blackboard.close();
 	}
 

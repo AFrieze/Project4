@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,15 +28,15 @@ public class OptimizerCalculation {
 	private boolean isShadow = false;
 	private Calendar completionTime;
 
-	@OneToMany(mappedBy = "optimizerCalculation")
+	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<InputStudent> inputStudents = new ArrayList<InputStudent>();
 
-	@OneToMany(mappedBy = "optimizerCalculation")
+	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<InputTA> inputTAs = new ArrayList<InputTA>();
 
-	@OneToMany(mappedBy = "optimizerCalculation")
+	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<InputProfessor> inputProfessors = new ArrayList<InputProfessor>();
-	@OneToMany(mappedBy = "optimizerCalculation")
+	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<InputOfferedCourse> inputOfferedCourses = new ArrayList<InputOfferedCourse>();
 
 	public Calendar getCompletionTime() {

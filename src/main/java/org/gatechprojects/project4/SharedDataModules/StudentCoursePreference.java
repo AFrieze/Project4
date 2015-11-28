@@ -15,6 +15,7 @@ public class StudentCoursePreference {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@ManyToOne()
 	@JoinColumn(name = "student_preference_id")
 	private StudentPreference studentPreference;

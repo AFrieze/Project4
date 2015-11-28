@@ -1,6 +1,7 @@
 package org.gatechprojects.project4.DAL;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.gatechprojects.project4.SharedDataModules.Course;
@@ -111,6 +112,11 @@ public class UserBoard extends Board {
 				.add(Restrictions.eq("user.id", userId)).add(Restrictions.eq("semester.id", semesterId)).uniqueResult();
 	}
 
+	public List<StudentPreference> getStudentPreferences(int semesterId) {
+		return getSession().createCriteria(StudentPreference.class).add(Restrictions.eq("semester.id", semesterId))
+				.list();
+	}
+
 	public User getUser(int userId) {
 		return getSession().get(User.class, userId);
 	}
@@ -170,6 +176,18 @@ public class UserBoard extends Board {
 			Integer... desiredCourseIds) {
 		verifyTransaction();
 
+		// ugly child delete..couldn't figure out how to set cascade in the
+		// database
+		StudentPreference preference = (StudentPreference) getSession().createCriteria(StudentPreference.class)
+				.add(Restrictions.eq("user.id", userId)).add(Restrictions.eq("semester.id", semesterId)).uniqueResult();
+		if (preference != null) {
+			Iterator<StudentCoursePreference> iterator = preference.getCoursePreferences().iterator();
+			while (iterator.hasNext()) {
+				StudentCoursePreference p = iterator.next();
+				getSession().delete(p);
+			}
+
+		}
 		String hql = "delete from StudentPreference where semester.id = :semesterId and user.id = :userId";
 		getSession().createQuery(hql).setInteger("semesterId", semesterId).setInteger("userId", userId).executeUpdate();
 
@@ -184,6 +202,7 @@ public class UserBoard extends Board {
 			Course course = getSession().get(Course.class, desiredCourseId);
 			StudentCoursePreference p = new StudentCoursePreference();
 			p.setCourse(course);
+			p.setStudentPreference(preferences);
 			coursePreferences.add(p);
 		}
 		preferences.setCoursePreferences(coursePreferences);
