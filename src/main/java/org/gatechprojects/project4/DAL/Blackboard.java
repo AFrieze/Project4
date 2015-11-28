@@ -46,6 +46,10 @@ public class Blackboard implements Closeable
 		return new MembershipBoard(transaction, session);
 	}
 
+	public OptimizerBoard getOptimizerBoard() {
+		return new OptimizerBoard(transaction, session);
+	}
+
 	public UserBoard getUserBoard() {
 		return new UserBoard(transaction, session);
 	}

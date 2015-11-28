@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.CourseSemester;
+import org.gatechprojects.project4.SharedDataModules.CourseTaken;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.UserAvailability;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 public class CatalogBoard extends Board {
@@ -49,6 +51,12 @@ public class CatalogBoard extends Board {
 		return (int) getSession().save(course);
 	}
 
+	public void createCourseTaken(CourseTaken courseTaken) {
+		verifyTransaction();
+		getSession().save(courseTaken);
+
+	}
+
 	public int createSemester(String name, int year) {
 		Semester semester = new Semester();
 		semester = populateSemester(semester, name, year);
@@ -61,6 +69,16 @@ public class CatalogBoard extends Board {
 
 	public Course getCourse(int courseId) {
 		return getSession().get(Course.class, courseId);
+	}
+
+	public CourseSemester getMostRecentCourseSemester(int semesterId) {
+		return (CourseSemester) getSession().createCriteria(CourseSemester.class)
+				.add(Restrictions.eq("semeseter.id", semesterId)).addOrder(Order.desc("id")).uniqueResult();
+	}
+
+	public UserAvailability getMostRecentUserAvailability(int semesterId) {
+		return (UserAvailability) getSession().createCriteria(UserAvailability.class)
+				.add(Restrictions.eq("semeseter.id", semesterId)).addOrder(Order.desc("id")).uniqueResult();
 	}
 
 	public Semester getSemester(int semesterId) {

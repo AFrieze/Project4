@@ -1,9 +1,16 @@
 package org.gatechprojects.project4.SharedDataModules;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,39 +20,66 @@ public class InputStudent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int userId;
 	private int creditsTaken;
-	private int optimizerCalculationId;
+
+	private int nbrCoursesDesired;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	@ManyToOne
+	@JoinColumn(name = "optimizer_calculation_id")
+	private OptimizerCalculation optimizerCalculation;
+
+	@OneToMany(mappedBy = "inputStudent", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	private List<InputStudentCoursePreference> coursePreferences = new ArrayList<InputStudentCoursePreference>();
+
+	public List<InputStudentCoursePreference> getCoursePreferences() {
+		return coursePreferences;
+	}
+
+	public int getCreditsTaken() {
+		return creditsTaken;
+	}
 
 	public int getId() {
 		return id;
 	}
 
-	public int getOptimizerCalculationId() {
-		return optimizerCalculationId;
+	public int getNbrCoursesDesired() {
+		return nbrCoursesDesired;
 	}
 
-	public int getStudentPriority() {
-		return creditsTaken;
+	public OptimizerCalculation getOptimizerCalculation() {
+		return optimizerCalculation;
 	}
 
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
+	}
+
+	public void setCoursePreferences(List<InputStudentCoursePreference> coursePreferences) {
+		this.coursePreferences = coursePreferences;
+	}
+
+	public void setCreditsTaken(int creditsTaken) {
+		this.creditsTaken = creditsTaken;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public void setOptimizerCalculationId(int optimizerCalculationId) {
-		this.optimizerCalculationId = optimizerCalculationId;
+	public void setNbrCoursesDesired(int nbrCoursesDesired) {
+		this.nbrCoursesDesired = nbrCoursesDesired;
 	}
 
-	public void setStudentPriority(int studentPriority) {
-		this.creditsTaken = studentPriority;
+	public void setOptimizerCalculation(OptimizerCalculation optimizerCalculation) {
+		this.optimizerCalculation = optimizerCalculation;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
+
 }

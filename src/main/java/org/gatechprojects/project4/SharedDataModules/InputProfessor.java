@@ -1,9 +1,16 @@
 package org.gatechprojects.project4.SharedDataModules;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,30 +20,46 @@ public class InputProfessor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int userId;
-	private int optimizerCalculationId;
+	@ManyToOne
+	@JoinColumn(name = "optimizer_calculation_id")
+	private OptimizerCalculation optimizerCalculation;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	@OneToMany(mappedBy = "inputProfessor", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	private List<InputCourseCompetence> courseCompetencies = new ArrayList<InputCourseCompetence>();
+
+	public List<InputCourseCompetence> getCourseCompetencies() {
+		return courseCompetencies;
+	}
 
 	public int getId() {
 		return id;
 	}
 
-	public int getOptimizerCalculationId() {
-		return optimizerCalculationId;
+	public OptimizerCalculation getOptimizerCalculation() {
+		return optimizerCalculation;
 	}
 
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
+	}
+
+	public void setCourseCompetencies(List<InputCourseCompetence> courseCompetencies) {
+		this.courseCompetencies = courseCompetencies;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public void setOptimizerCalculationId(int optimizerCalculationId) {
-		this.optimizerCalculationId = optimizerCalculationId;
+	public void setOptimizerCalculation(OptimizerCalculation optimizerCalculation) {
+		this.optimizerCalculation = optimizerCalculation;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
+
 }
