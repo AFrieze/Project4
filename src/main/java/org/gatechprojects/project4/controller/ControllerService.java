@@ -72,7 +72,10 @@ public class ControllerService {
 	private boolean hasBlackBoardChanged(boolean isShadow, Blackboard blackboard) {
 		// blackboard.clearSession();
 		BlackboardState tempState = BlackboardState.newInstance(blackboard, semesterId, isShadow);
-		if (!regularState.equals(tempState)) {
+		if (isShadow && !shadowState.equals(tempState)) {
+			shadowState = tempState;
+			return true;
+		} else if (!isShadow && !regularState.equals(tempState)) {
 			regularState = tempState;
 			return true;
 		}

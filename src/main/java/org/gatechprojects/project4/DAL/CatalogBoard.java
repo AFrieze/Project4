@@ -74,7 +74,7 @@ public class CatalogBoard extends Board {
 	public CourseSemester getMostRecentCourseSemester(int semesterId, boolean isShadow) {
 		List<CourseSemester> courseSemesters = getSession().createCriteria(CourseSemester.class)
 				.add(Restrictions.eq("semester.id", semesterId)).add(Restrictions.eq("isShadow", isShadow))
-				.addOrder(Order.desc("id")).setFetchSize(1).list();
+				.addOrder(Order.desc("id")).setFirstResult(0).setMaxResults(1).list();
 		if (courseSemesters.size() > 0) {
 			return courseSemesters.get(0);
 		}
@@ -82,9 +82,13 @@ public class CatalogBoard extends Board {
 	}
 
 	public UserAvailability getMostRecentUserAvailability(int semesterId, boolean isShadow) {
-		return (UserAvailability) getSession().createCriteria(UserAvailability.class)
+		List<UserAvailability> availabilities = getSession().createCriteria(UserAvailability.class)
 				.add(Restrictions.eq("semester.id", semesterId)).add(Restrictions.eq("isShadow", isShadow))
-				.addOrder(Order.desc("id")).uniqueResult();
+				.addOrder(Order.desc("id")).setFirstResult(0).setMaxResults(1).list();
+		if (availabilities.size() > 0) {
+			return availabilities.get(0);
+		}
+		return null;
 	}
 
 	public Semester getSemester(int semesterId) {
