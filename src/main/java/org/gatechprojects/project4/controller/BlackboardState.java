@@ -17,11 +17,13 @@ public class BlackboardState {
 	public static BlackboardState newInstance(Blackboard blackboard, int semesterId, boolean isShadow) {
 
 		StudentPreference latestPreference = blackboard.getUserBoard().getMostRecentStudentPreference(semesterId);
-		CourseSemester latestCourseConfiguration = blackboard.getCatalogBoard().getMostRecentCourseSemester(semesterId);
-		UserAvailability latestUserAvailability = blackboard.getCatalogBoard()
-				.getMostRecentUserAvailability(semesterId);
-		return new BlackboardState(semesterId, latestUserAvailability.getId(), latestPreference.getId(),
-				latestCourseConfiguration.getId());
+		CourseSemester latestCourseConfiguration = blackboard.getCatalogBoard().getMostRecentCourseSemester(semesterId,
+				isShadow);
+		UserAvailability latestUserAvailability = blackboard.getCatalogBoard().getMostRecentUserAvailability(semesterId,
+				isShadow);
+		return new BlackboardState(semesterId, latestUserAvailability == null ? -1 : latestUserAvailability.getId(),
+				latestPreference == null ? -1 : latestPreference.getId(),
+				latestCourseConfiguration == null ? -1 : latestCourseConfiguration.getId());
 	}
 
 	private final int userAvailability;

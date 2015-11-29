@@ -103,8 +103,13 @@ public class UserBoard extends Board {
 	}
 
 	public StudentPreference getMostRecentStudentPreference(int semesterId) {
-		return (StudentPreference) getSession().createCriteria(StudentPreference.class)
-				.add(Restrictions.eq("semeseter.id", semesterId)).addOrder(Order.desc("id")).uniqueResult();
+		List<StudentPreference> studentPreferences = getSession().createCriteria(StudentPreference.class)
+				.add(Restrictions.eq("semester.id", semesterId)).addOrder(Order.desc("id")).setFirstResult(0)
+				.setMaxResults(1).list();
+		if (studentPreferences.size() > 0) {
+			return studentPreferences.get(0);
+		}
+		return null;
 	}
 
 	public StudentPreference getStudentPreference(int userId, int semesterId) {
