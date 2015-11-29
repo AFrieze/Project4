@@ -3,6 +3,7 @@ package org.gatechprojects.project4.DAL;
 import java.util.Calendar;
 import java.util.List;
 
+import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.InputStudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
 import org.gatechprojects.project4.SharedDataModules.OutputOfferedCourse;
@@ -62,4 +63,17 @@ public class OptimizerBoard extends Board {
 				.add(Restrictions.eq("optimizerCalculation.isShadow", isShadow)).list();
 	}
 
+	/**
+	 * Used for testing the method getOptimizerCourseRecommendations() 
+	 */
+	public void createOutputOfferedCourse(Course course, OptimizerCalculation optimizerCalculation) {
+		OutputOfferedCourse offeredCourse = new OutputOfferedCourse();
+
+		offeredCourse.setCourse(course);
+		offeredCourse.setCourseSize(50);
+		offeredCourse.setOptimizerCalculation(optimizerCalculation);
+
+		getSession().save(offeredCourse);
+	}
+	
 }
