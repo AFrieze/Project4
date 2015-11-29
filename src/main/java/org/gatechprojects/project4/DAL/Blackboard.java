@@ -19,10 +19,6 @@ public class Blackboard implements Closeable
 	private Session session = null;
 	private Transaction transaction = null;
 
-	public synchronized void clearSession() {
-		session.clear();
-	}
-
 	@Override
 	public synchronized void close() {
 		state = State.CLOSED;

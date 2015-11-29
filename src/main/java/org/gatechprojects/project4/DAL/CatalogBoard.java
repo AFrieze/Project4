@@ -71,20 +71,14 @@ public class CatalogBoard extends Board {
 		return getSession().get(Course.class, courseId);
 	}
 
-	public CourseSemester getMostRecentCourseSemester(int semesterId, boolean isShadow) {
-		List<CourseSemester> courseSemesters = getSession().createCriteria(CourseSemester.class)
-				.add(Restrictions.eq("semester.id", semesterId)).add(Restrictions.eq("isShadow", isShadow))
-				.addOrder(Order.desc("id")).setFetchSize(1).list();
-		if (courseSemesters.size() > 0) {
-			return courseSemesters.get(0);
-		}
-		return null;
+	public CourseSemester getMostRecentCourseSemester(int semesterId) {
+		return (CourseSemester) getSession().createCriteria(CourseSemester.class)
+				.add(Restrictions.eq("semeseter.id", semesterId)).addOrder(Order.desc("id")).uniqueResult();
 	}
 
-	public UserAvailability getMostRecentUserAvailability(int semesterId, boolean isShadow) {
+	public UserAvailability getMostRecentUserAvailability(int semesterId) {
 		return (UserAvailability) getSession().createCriteria(UserAvailability.class)
-				.add(Restrictions.eq("semester.id", semesterId)).add(Restrictions.eq("isShadow", isShadow))
-				.addOrder(Order.desc("id")).uniqueResult();
+				.add(Restrictions.eq("semeseter.id", semesterId)).addOrder(Order.desc("id")).uniqueResult();
 	}
 
 	public Semester getSemester(int semesterId) {

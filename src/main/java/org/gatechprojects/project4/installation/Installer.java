@@ -12,7 +12,6 @@ import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.DAL.CatalogBoard;
 import org.gatechprojects.project4.DAL.DatabaseConfiguration;
 import org.gatechprojects.project4.SharedDataModules.Course;
-import org.gatechprojects.project4.SharedDataModules.CourseSemester;
 import org.gatechprojects.project4.SharedDataModules.CourseTaken;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.User;
@@ -100,25 +99,6 @@ public class Installer {
 		blackboard.close();
 	}
 
-	private void seedCourseSemesters() {
-
-		Blackboard blackboard = new Blackboard();
-		blackboard.load();
-		List<Course> courses = blackboard.getCatalogBoard().getAvailableCourses();
-		blackboard.startTransaction();
-		Semester semester = blackboard.getByID(Semester.class, 1);
-		for (Course course : courses) {
-			CourseSemester courseSemester = new CourseSemester();
-			courseSemester.setSemester(semester);
-			courseSemester.setCourse(course);
-			courseSemester.setMaxCourseSize(50);
-			courseSemester.setShadow(false);
-			blackboard.getCatalogBoard().addCourseSemester(courseSemester);
-		}
-		blackboard.commitTransaction();
-		blackboard.close();
-	}
-
 	private void seedCoursesTaken() {
 		Blackboard blackboard = new Blackboard();
 		blackboard.load();
@@ -152,7 +132,6 @@ public class Installer {
 		seedTeacherAssistants();
 		seedSemester();
 		seedCourses();
-		seedCourseSemesters();
 		seedCoursesTaken();
 		seedStudentPreferences();
 		seedProfessorCompetencies();

@@ -12,12 +12,13 @@ import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.optimizer.SemesterOptimizer;
 
 public class ControllerService {
-	private static int CONTROLLER_INTERVAL = 5;
+	private static int CONTROLLER_INTERVAL = 5000;
 	private static TimeUnit CONTROLLER_INTERVAL_TIMEUNIT = TimeUnit.SECONDS;
 
 	public static void main(String[] args) throws IOException {
 		ExecutorService executor = Executors.newSingleThreadExecutor();
 		ControllerService service = new ControllerService(Integer.parseInt(args[0]));
+		service.start();
 		Runnable serviceProcess = () -> {
 			service.start();
 		};
@@ -50,11 +51,8 @@ public class ControllerService {
 	}
 
 	public void checkAndAssignWork() {
-
-		Blackboard blackboard = new Blackboard();
-		blackboard.load();
-		boolean shadowChanged = hasBlackBoardChanged(true, blackboard);
-		boolean regularChanged = hasBlackBoardChanged(false, blackboard);
+		boolean shadowChanged = hasBlackBoardChanged(true);
+		boolean regularChanged = hasBlackBoardChanged(false);
 		if (shadowChanged || regularChanged) {
 			for (Participant participant : participants) {
 				if (shadowChanged) {
@@ -65,12 +63,11 @@ public class ControllerService {
 				}
 			}
 		}
-		blackboard.close();
 
 	}
 
-	private boolean hasBlackBoardChanged(boolean isShadow, Blackboard blackboard) {
-		// blackboard.clearSession();
+	private boolean hasBlackBoardChanged(boolean isShadow) {
+		Blackboard blackboard = new Blackboard();
 		BlackboardState tempState = BlackboardState.newInstance(blackboard, semesterId, isShadow);
 		if (!regularState.equals(tempState)) {
 			regularState = tempState;
@@ -79,9 +76,11 @@ public class ControllerService {
 		return false;
 	}
 
-	private void initializeBlackboardStates(Blackboard blackboard) {
+	private void initializeBlackboardStates() {
+		Blackboard blackboard = new Blackboard();
 		regularState = BlackboardState.newInstance(blackboard, semesterId, false);
 		shadowState = BlackboardState.newInstance(blackboard, semesterId, true);
+
 	}
 
 	private void registerParticipants() {
@@ -89,12 +88,10 @@ public class ControllerService {
 	}
 
 	public void start() {
-		Blackboard blackboard = new Blackboard();
-		blackboard.load();
-		initializeBlackboardStates(blackboard);
+		initializeBlackboardStates();
 		registerParticipants();
 		Runnable task = () -> checkAndAssignWork();
-		executor.scheduleAtFixedRate(task, 0, CONTROLLER_INTERVAL, CONTROLLER_INTERVAL_TIMEUNIT);
+		executor.schedule(task, CONTROLLER_INTERVAL, CONTROLLER_INTERVAL_TIMEUNIT);
 	}
 
 }
