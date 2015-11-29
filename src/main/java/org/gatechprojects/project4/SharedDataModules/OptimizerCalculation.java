@@ -43,12 +43,6 @@ public class OptimizerCalculation {
 	private List<OutputOfferedCourse> outputOfferedCourses = new ArrayList<OutputOfferedCourse>();
 
 	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
-	private List<OutputProfessorCourseAssignment> outputProfessorCourseAssignments = new ArrayList<OutputProfessorCourseAssignment>();
-
-	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
-	private List<OutputTACourseAssignment> outputTACourseAssignments = new ArrayList<OutputTACourseAssignment>();
-
-	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<OutputUserCourseAssignment> outputUserCourseAssignments = new ArrayList<OutputUserCourseAssignment>();
 
 	public Calendar getCompletionTime() {
@@ -81,14 +75,6 @@ public class OptimizerCalculation {
 
 	public List<OutputOfferedCourse> getOutputOfferedCourses() {
 		return outputOfferedCourses;
-	}
-
-	public List<OutputProfessorCourseAssignment> getOutputProfessorCourseAssignments() {
-		return outputProfessorCourseAssignments;
-	}
-
-	public List<OutputTACourseAssignment> getOutputTACourseAssignments() {
-		return outputTACourseAssignments;
 	}
 
 	public List<OutputUserCourseAssignment> getOutputUserCourseAssignments() {
@@ -133,15 +119,6 @@ public class OptimizerCalculation {
 
 	public void setOutputOfferedCourses(List<OutputOfferedCourse> outputOfferedCourses) {
 		this.outputOfferedCourses = outputOfferedCourses;
-	}
-
-	public void setOutputProfessorCourseAssignments(
-			List<OutputProfessorCourseAssignment> outputProfessorCourseAssignments) {
-		this.outputProfessorCourseAssignments = outputProfessorCourseAssignments;
-	}
-
-	public void setOutputTACourseAssignments(List<OutputTACourseAssignment> outputTACourseAssignments) {
-		this.outputTACourseAssignments = outputTACourseAssignments;
 	}
 
 	public void setOutputUserCourseAssignments(List<OutputUserCourseAssignment> outputUserCourseAssignments) {

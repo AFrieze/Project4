@@ -1,7 +1,6 @@
 package org.gatechprojects.project4.BAL;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
@@ -13,8 +12,7 @@ import org.gatechproject.project4.BAL.dto.StudentSemesterPreferences;
 import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.SharedDataModules.InputStudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.MembershipUser;
-import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
-import org.gatechprojects.project4.SharedDataModules.OutputProfessorCourseAssignment;
+import org.gatechprojects.project4.SharedDataModules.OutputOfferedCourse;
 import org.gatechprojects.project4.SharedDataModules.OutputUserCourseAssignment;
 import org.gatechprojects.project4.SharedDataModules.StudentPreference;
 import org.gatechprojects.project4.SharedDataModules.User;
@@ -79,20 +77,6 @@ public class UserService {
 	}
 
 	/**
-	 * Returns the {@link OptimizerCalculation#getId() id} of the optimization
-	 * calculation which occurred closest to and before the passed in time. If
-	 * no calculation is found, -1 is returned.
-	 * 
-	 * @param studentID
-	 * @param isShadow
-	 * @param time
-	 * @return
-	 */
-	public int getOptimizerCalculationIdForStudent(int studentID, boolean isShadow, Calendar time) {
-		return blackboard.getOptimizerBoard().getOptimizerCalculationId(time, isShadow);
-	}
-
-	/**
 	 * Fetches a {@link Student} based on the provided userId. If no student is
 	 * found, null is returned.
 	 * 
@@ -144,10 +128,10 @@ public class UserService {
 		for (OutputUserCourseAssignment ca : courseAssignments) {
 			if (ca.getCourse() != null) {
 				Professor assignedProfessor = null;
-				for (OutputProfessorCourseAssignment assignment : ca.getOptimizerCalculation()
-						.getOutputProfessorCourseAssignments()) {
-					if (assignment.getCourse().getId() == ca.getCourse().getId()) {
-						assignedProfessor = new Professor(assignment.getUser());
+				for (OutputOfferedCourse assignment : ca.getOptimizerCalculation().getOutputOfferedCourses()) {
+					if (assignment.getCourse().getId() == ca.getCourse().getId()
+							&& assignment.getAssignedProfessor() != null) {
+						assignedProfessor = new Professor(assignment.getAssignedProfessor());
 					}
 				}
 				studentRecommendations

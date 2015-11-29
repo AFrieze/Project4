@@ -24,8 +24,8 @@ public class OutputTACourseAssignment {
 	private Course course;
 
 	@ManyToOne
-	@JoinColumn(name = "optimizer_calculation_id")
-	private OptimizerCalculation optimizerCalculation;
+	@JoinColumn(name = "output_offered_course_id")
+	private OutputOfferedCourse outputOfferedCourse;
 
 	public Course getCourse() {
 		return course;
@@ -35,8 +35,8 @@ public class OutputTACourseAssignment {
 		return id;
 	}
 
-	public OptimizerCalculation getOptimizerCalculation() {
-		return optimizerCalculation;
+	public OutputOfferedCourse getOutputOfferedCourse() {
+		return outputOfferedCourse;
 	}
 
 	public User getUser() {
@@ -51,8 +51,8 @@ public class OutputTACourseAssignment {
 		this.id = id;
 	}
 
-	public void setOptimizerCalculation(OptimizerCalculation optimizerCalculation) {
-		this.optimizerCalculation = optimizerCalculation;
+	public void setOutputOfferedCourse(OutputOfferedCourse outputOfferedCourse) {
+		this.outputOfferedCourse = outputOfferedCourse;
 	}
 
 	public void setUser(User user) {

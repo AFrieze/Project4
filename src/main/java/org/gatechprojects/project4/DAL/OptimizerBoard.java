@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.gatechprojects.project4.SharedDataModules.InputStudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
+import org.gatechprojects.project4.SharedDataModules.OutputOfferedCourse;
 import org.gatechprojects.project4.SharedDataModules.OutputUserCourseAssignment;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -32,6 +33,11 @@ public class OptimizerBoard extends Board {
 		return count;
 	}
 
+	public List<OutputOfferedCourse> getOfferedCourses(int optimizerCalculationId) {
+		return getSession().createCriteria(OutputOfferedCourse.class)
+				.add(Restrictions.eq("optimizerCalculation.id", optimizerCalculationId)).list();
+	}
+
 	public Integer getOptimizerCalculationId(Calendar calendar, boolean isShadow) {
 		String hql = "from OptimizerCalculation as c where c.completionTime <= :completionTime and c.isShadow = :isShadow order by c.completionTime desc";
 		List calculations = getSession().createQuery(hql).setParameter("completionTime", calendar)
@@ -55,9 +61,5 @@ public class OptimizerBoard extends Board {
 				.add(Restrictions.eq("optimizerCalculation.id", optimizerCalculationId))
 				.add(Restrictions.eq("optimizerCalculation.isShadow", isShadow)).list();
 	}
-	// public InputStudent getStudentInput(int optimizerCalculationId, int
-	// userId) {
-	// return null;
-	// }
 
 }

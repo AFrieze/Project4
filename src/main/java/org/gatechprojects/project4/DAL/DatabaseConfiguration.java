@@ -12,7 +12,6 @@ import org.gatechprojects.project4.SharedDataModules.InputTA;
 import org.gatechprojects.project4.SharedDataModules.MembershipUser;
 import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
 import org.gatechprojects.project4.SharedDataModules.OutputOfferedCourse;
-import org.gatechprojects.project4.SharedDataModules.OutputProfessorCourseAssignment;
 import org.gatechprojects.project4.SharedDataModules.OutputTACourseAssignment;
 import org.gatechprojects.project4.SharedDataModules.OutputUserCourseAssignment;
 import org.gatechprojects.project4.SharedDataModules.ProfessorCompetence;
@@ -51,7 +50,6 @@ public class DatabaseConfiguration {
 		configuration.addAnnotatedClass(InputTA.class);
 		configuration.addAnnotatedClass(InputCourseCompetence.class);
 		configuration.addAnnotatedClass(OutputOfferedCourse.class);
-		configuration.addAnnotatedClass(OutputProfessorCourseAssignment.class);
 		configuration.addAnnotatedClass(OutputTACourseAssignment.class);
 		configuration.addAnnotatedClass(OutputUserCourseAssignment.class);
 	}
