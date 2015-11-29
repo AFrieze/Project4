@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.MembershipUser;
+import org.gatechprojects.project4.SharedDataModules.OutputUserCourseAssignment;
 import org.gatechprojects.project4.SharedDataModules.ProfessorCompetence;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.StudentCoursePreference;
@@ -113,6 +114,21 @@ public class UserBoard extends Board {
 		return null;
 	}
 
+	public List<Course> getProfessorCompetencies(int userId) {
+		// TODO Auto-generated method stub
+		Query query = getSession()
+				.createQuery(
+						"select c from course c join professor_competence pc on c.id = pc.course_id where pc.user_id=:userId")
+				.setString("userId", Integer.toString(userId));
+		List<Course> courses = query.list();
+		return courses;
+	}
+
+	public List<OutputUserCourseAssignment> getStudentCourseAssignments(int studentID, int optimizerCalculationID) {
+		return getSession().createCriteria(OutputUserCourseAssignment.class).add(Restrictions.eq("user.id", studentID))
+				.add(Restrictions.eq("optimizerCalculation.id", optimizerCalculationID)).list();
+	}
+
 	public StudentPreference getStudentPreference(int userId, int semesterId) {
 		return (StudentPreference) getSession().createCriteria(StudentPreference.class)
 				.add(Restrictions.eq("user.id", userId)).add(Restrictions.eq("semester.id", semesterId)).uniqueResult();
@@ -213,13 +229,6 @@ public class UserBoard extends Board {
 		}
 		preferences.setCoursePreferences(coursePreferences);
 		return (Integer) getSession().save(preferences);
-	}
-
-	public List<Course> getProfessorCompetencies(int userId) {
-		// TODO Auto-generated method stub
-		Query query = getSession().createQuery("select c from course c join professor_competence pc on c.id = pc.course_id where pc.user_id=:userId").setString("userId", Integer.toString(userId));	
-		List<Course> courses = query.list();
-		return courses;
 	}
 
 }

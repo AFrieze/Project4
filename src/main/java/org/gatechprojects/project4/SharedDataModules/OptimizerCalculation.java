@@ -79,6 +79,22 @@ public class OptimizerCalculation {
 		return inputTAs;
 	}
 
+	public List<OutputOfferedCourse> getOutputOfferedCourses() {
+		return outputOfferedCourses;
+	}
+
+	public List<OutputProfessorCourseAssignment> getOutputProfessorCourseAssignments() {
+		return outputProfessorCourseAssignments;
+	}
+
+	public List<OutputTACourseAssignment> getOutputTACourseAssignments() {
+		return outputTACourseAssignments;
+	}
+
+	public List<OutputUserCourseAssignment> getOutputUserCourseAssignments() {
+		return outputUserCourseAssignments;
+	}
+
 	public Semester getSemester() {
 		return semester;
 	}
@@ -113,6 +129,23 @@ public class OptimizerCalculation {
 
 	public void setInputTAs(List<InputTA> inputTAs) {
 		this.inputTAs = inputTAs;
+	}
+
+	public void setOutputOfferedCourses(List<OutputOfferedCourse> outputOfferedCourses) {
+		this.outputOfferedCourses = outputOfferedCourses;
+	}
+
+	public void setOutputProfessorCourseAssignments(
+			List<OutputProfessorCourseAssignment> outputProfessorCourseAssignments) {
+		this.outputProfessorCourseAssignments = outputProfessorCourseAssignments;
+	}
+
+	public void setOutputTACourseAssignments(List<OutputTACourseAssignment> outputTACourseAssignments) {
+		this.outputTACourseAssignments = outputTACourseAssignments;
+	}
+
+	public void setOutputUserCourseAssignments(List<OutputUserCourseAssignment> outputUserCourseAssignments) {
+		this.outputUserCourseAssignments = outputUserCourseAssignments;
 	}
 
 	public void setSemester(Semester semester) {

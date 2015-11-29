@@ -5,13 +5,21 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
+import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.Student;
+import org.gatechproject.project4.BAL.dto.StudentCoursePreferenceDetails;
 import org.gatechproject.project4.BAL.dto.StudentCourseRecommendation;
 import org.gatechproject.project4.BAL.dto.StudentSemesterPreferences;
 import org.gatechprojects.project4.DAL.Blackboard;
+import org.gatechprojects.project4.SharedDataModules.InputStudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.MembershipUser;
+import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
+import org.gatechprojects.project4.SharedDataModules.OutputProfessorCourseAssignment;
+import org.gatechprojects.project4.SharedDataModules.OutputUserCourseAssignment;
 import org.gatechprojects.project4.SharedDataModules.StudentPreference;
 import org.gatechprojects.project4.SharedDataModules.User;
+
+import com.google.common.base.Preconditions;
 
 public class UserService {
 
@@ -71,6 +79,20 @@ public class UserService {
 	}
 
 	/**
+	 * Returns the {@link OptimizerCalculation#getId() id} of the optimization
+	 * calculation which occurred closest to and before the passed in time. If
+	 * no calculation is found, -1 is returned.
+	 * 
+	 * @param studentID
+	 * @param isShadow
+	 * @param time
+	 * @return
+	 */
+	public int getOptimizerCalculationIdForStudent(int studentID, boolean isShadow, Calendar time) {
+		return blackboard.getOptimizerBoard().getOptimizerCalculationId(time, isShadow);
+	}
+
+	/**
 	 * Fetches a {@link Student} based on the provided userId. If no student is
 	 * found, null is returned.
 	 * 
@@ -104,15 +126,60 @@ public class UserService {
 	}
 
 	/**
-	 * Returns the most recent list of recommended
-	 * {@link StudentCourseRecommendation courseSolutions} which were generated
-	 * before the passed in time.
+	 * Returns the {@link StudentCourseRecommendation courseRecommendations} for
+	 * the student made in the specified optimizer calculation. Generally used
+	 * in conjunction with {@link #getStudentOptimizerPreferences(int, int)}.
 	 * 
-	 * @param time
+	 * @param studentID
+	 * @param optimizerCalculationID
 	 * @return
 	 */
-	private List<StudentCourseRecommendation> getStudentCourseRecommendations(Calendar time) {
-		return null;
+	public List<StudentCourseRecommendation> getStudentCourseRecommendations(int studentID,
+			int optimizerCalculationID) {
+		Preconditions.checkArgument(studentID > 0);
+		Preconditions.checkArgument(optimizerCalculationID > 0);
+		List<OutputUserCourseAssignment> courseAssignments = blackboard.getUserBoard()
+				.getStudentCourseAssignments(studentID, optimizerCalculationID);
+		List<StudentCourseRecommendation> studentRecommendations = new ArrayList<StudentCourseRecommendation>();
+		for (OutputUserCourseAssignment ca : courseAssignments) {
+			if (ca.getCourse() != null) {
+				Professor assignedProfessor = null;
+				for (OutputProfessorCourseAssignment assignment : ca.getOptimizerCalculation()
+						.getOutputProfessorCourseAssignments()) {
+					if (assignment.getCourse().getId() == ca.getCourse().getId()) {
+						assignedProfessor = new Professor(assignment.getUser());
+					}
+				}
+				studentRecommendations
+						.add(new StudentCourseRecommendation(studentID, new ConfiguredCourse(ca.getCourse()),
+								assignedProfessor, ca.getOptimizerCalculation().getCompletionTime()));
+			}
+		}
+		return studentRecommendations;
+	}
+
+	/**
+	 * Returns a list of {@link InputStudentCoursePreference coursePreferences}
+	 * that the user had specified for the provided optimizer calculation.
+	 * Generally used in conjunction with
+	 * {@link #getStudentCourseRecommendations(int, int)}.
+	 * 
+	 * 
+	 * @param studentID
+	 * @param optimizerCalculationID
+	 * @return
+	 */
+	public List<InputStudentCoursePreference> getStudentOptimizerPreferences(int studentID,
+			int optimizerCalculationID) {
+		List<InputStudentCoursePreference> inputPreferences = blackboard.getOptimizerBoard()
+				.getStudentPreferencesForCalculation(studentID, optimizerCalculationID);
+		List<StudentCoursePreferenceDetails> details = new ArrayList<StudentCoursePreferenceDetails>();
+		for (InputStudentCoursePreference pref : inputPreferences) {
+			int demand = blackboard.getOptimizerBoard().getCourseDemand(pref.getCourse().getId(),
+					optimizerCalculationID);
+			details.add(new StudentCoursePreferenceDetails(pref.getCourse(), demand, pref.getCoursePriority()));
+		}
+		return inputPreferences;
 	}
 
 	/**
