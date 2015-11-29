@@ -160,11 +160,11 @@ public class SemesterOptimizer implements Participant {
 	}
 
 	private void runOptimizer(OptimizerCalculation calculation) {
-		Blackboard blackboard = new Blackboard();
-		blackboard.load();
-		computeResults(calculation);
-		blackboard.getOptimizerBoard().createOptimizerCalculation(calculation);
-		blackboard.close();
+		try (Blackboard blackboard = new Blackboard()) {
+			blackboard.load();
+			computeResults(calculation);
+			blackboard.getOptimizerBoard().createOptimizerCalculation(calculation);
+		}
 	}
 
 }

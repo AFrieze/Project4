@@ -5,6 +5,7 @@ import java.util.List;
 import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
 import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.StudentSemesterPreferences;
+import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.BAL.Membership;
 import org.gatechprojects.project4.BAL.StaffService;
 import org.gatechprojects.project4.BAL.UserService;
@@ -12,6 +13,7 @@ import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.DAL.CatalogBoard;
 import org.gatechprojects.project4.DAL.DatabaseConfiguration;
 import org.gatechprojects.project4.SharedDataModules.Course;
+import org.gatechprojects.project4.SharedDataModules.CourseSemester;
 import org.gatechprojects.project4.SharedDataModules.CourseTaken;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.User;
@@ -99,6 +101,25 @@ public class Installer {
 		blackboard.close();
 	}
 
+	private void seedCourseSemesters() {
+
+		Blackboard blackboard = new Blackboard();
+		blackboard.load();
+		List<Course> courses = blackboard.getCatalogBoard().getAvailableCourses();
+		blackboard.startTransaction();
+		Semester semester = blackboard.getByID(Semester.class, 1);
+		for (Course course : courses) {
+			CourseSemester courseSemester = new CourseSemester();
+			courseSemester.setSemester(semester);
+			courseSemester.setCourse(course);
+			courseSemester.setMaxCourseSize(50);
+			courseSemester.setShadow(false);
+			blackboard.getCatalogBoard().addCourseSemester(courseSemester);
+		}
+		blackboard.commitTransaction();
+		blackboard.close();
+	}
+
 	private void seedCoursesTaken() {
 		Blackboard blackboard = new Blackboard();
 		blackboard.load();
@@ -127,11 +148,12 @@ public class Installer {
 		Session session = factory.openSession();
 		session.close();
 		factory.close();
-		seedProfessors();
+		seedSemester();
+		seedProfessorsAndAvailability();
 		seedStudents();
 		seedTeacherAssistants();
-		seedSemester();
 		seedCourses();
+		seedCourseSemesters();
 		seedCoursesTaken();
 		seedStudentPreferences();
 		seedProfessorCompetencies();
@@ -155,12 +177,14 @@ public class Installer {
 		blackboard.close();
 	}
 
-	private void seedProfessors() {
+	private void seedProfessorsAndAvailability() {
 		StaffService staffService = new StaffService();
 		for (int i = 0; i < NBR_PROFESSORS; i++) {
 			String firstName = String.format("Mr %s", i);
 			String lastName = String.format("Prof%s", i);
-			staffService.addProfessor(null, firstName, lastName);
+			Professor professor = staffService.addProfessor(null, firstName, lastName);
+			staffService.addStaffAvailability(professor.getUserId(), 1, false);
+			staffService.addStaffAvailability(professor.getUserId(), 1, true);
 		}
 	}
 
@@ -227,7 +251,9 @@ public class Installer {
 		for (int i = 0; i < NBR_TAS; i++) {
 			String firstName = String.format("Low %s", i);
 			String lastName = String.format("ly%s", i);
-			staffService.addTeacherAssistant(null, firstName, lastName);
+			TeacherAssistant ta = staffService.addTeacherAssistant(null, firstName, lastName);
+			staffService.addStaffAvailability(ta.getUserId(), 1, false);
+			staffService.addStaffAvailability(ta.getUserId(), 1, true);
 		}
 	}
 

@@ -1,0 +1,6 @@
+tree 29c341b847560fc1fcf07101bc8502c1b16d3443
+parent 54555002808e3c1e819374bfbf6e105bc2b70e4f
+author Luc Comeau <Luc.Comeau@gmail.com> 1448213661 -0700
+committer Luc Comeau <Luc.Comeau@gmail.com> 1448213661 -0700
+
+Changed the "View.." classes in the BAL.dto section to be "...Report"

@@ -497,7 +497,7 @@ blockquote:hover {
   padding: 10px 0 6px;
   -webkit-box-shadow: inset 0 0 4px #eee;
   box-shadow: inset 0 0 4px #eee;
-  background: url('../../css/img/breadcrumbs.png');
+  background: url(img/breadcrumbs.png) repeat;
 }
 .breadcrumbs h1 {
   color: #686868;
@@ -1337,90 +1337,90 @@ a.social-icon {
   background-position: 0 -38px;
 }
 .amazon {
-  background: url('../../css/img/icons/social/amazon.png') no-repeat;
+  background: url(img/icons/social/amazon.png) no-repeat;
 }
 .behance {
-  background: url('../../css/img/icons/social/behance.png') no-repeat;
+  background: url(img/icons/social/behance.png) no-repeat;
 }
 .blogger {
-  background: url('../../css/img/icons/social/blogger.png') no-repeat;
+  background: url(img/icons/social/blogger.png) no-repeat;
 }
 .deviantart {
-  background: url('../../css/img/icons/social/deviantart.png') no-repeat;
+  background: url(img/icons/social/deviantart.png) no-repeat;
 }
 .dribbble {
-  background: url('../../css/img/icons/social/dribbble.png') no-repeat;
+  background: url(img/icons/social/dribbble.png) no-repeat;
 }
 .dropbox {
-  background: url('../../css/img/icons/social/dropbox.png') no-repeat;
+  background: url(img/icons/social/dropbox.png) no-repeat;
 }
 .evernote {
-  background: url('../../css/img/icons/social/evernote.png') no-repeat;
+  background: url(img/icons/social/evernote.png) no-repeat;
 }
 .facebook {
-  background: url('../../css/img/icons/social/facebook.png') no-repeat;
+  background: url(img/icons/social/facebook.png) no-repeat;
 }
 .forrst {
-  background: url('../../css/img/icons/social/forrst.png') no-repeat;
+  background: url(img/icons/social/forrst.png) no-repeat;
 }
 .github {
-  background: url('../../css/img/icons/social/github.png') no-repeat;
+  background: url(img/icons/social/github.png) no-repeat;
 }
 .googleplus {
-  background: url('../../css/img/icons/social/googleplus.png') no-repeat;
+  background: url(img/icons/social/googleplus.png) no-repeat;
 }
 .jolicloud {
-  background: url('../../css/img/icons/social/jolicloud.png') no-repeat;
+  background: url(img/icons/social/jolicloud.png) no-repeat;
 }
 .last-fm {
-  background: url('../../css/img/icons/social/last-fm.png') no-repeat;
+  background: url(img/icons/social/last-fm.png) no-repeat;
 }
 .linkedin {
-  background: url('../../css/img/icons/social/linkedin.png') no-repeat;
+  background: url(img/icons/social/linkedin.png) no-repeat;
 }
 .picasa {
-  background: url('../../css/img/icons/social/picasa.png') no-repeat;
+  background: url(img/icons/social/picasa.png) no-repeat;
 }
 .pintrest {
-  background: url('../../css/img/icons/social/pintrest.png') no-repeat;
+  background: url(img/icons/social/pintrest.png) no-repeat;
 }
 .rss {
-  background: url('../../css/img/icons/social/rss.png') no-repeat;
+  background: url(img/icons/social/rss.png) no-repeat;
 }
 .skype {
-  background: url('../../css/img/icons/social/skype.png') no-repeat;
+  background: url(img/icons/social/skype.png) no-repeat;
 }
 .spotify {
-  background: url('../../css/img/icons/social/spotify.png') no-repeat;
+  background: url(img/icons/social/spotify.png) no-repeat;
 }
 .stumbleupon {
-  background: url('../../css/img/icons/social/stumbleupon.png') no-repeat;
+  background: url(img/icons/social/stumbleupon.png) no-repeat;
 }
 .tumblr {
-  background: url('../../css/img/icons/social/tumblr.png') no-repeat;
+  background: url(img/icons/social/tumblr.png) no-repeat;
 }
 .twitter {
-  background: url('../../css/img/icons/social/twitter.png') no-repeat;
+  background: url(img/icons/social/twitter.png) no-repeat;
 }
 .vimeo {
-  background: url('../../css/img/icons/social/vimeo.png') no-repeat;
+  background: url(img/icons/social/vimeo.png) no-repeat;
 }
 .wordpress {
-  background: url('../../css/img/icons/social/wordpress.png') no-repeat;
+  background: url(img/icons/social/wordpress.png) no-repeat;
 }
 .xing {
-  background: url('../../css/img/icons/social/xing.png') no-repeat;
+  background: url(img/icons/social/xing.png) no-repeat;
 }
 .yahoo {
-  background: url('../../css/img/icons/social/yahoo.png') no-repeat;
+  background: url(img/icons/social/yahoo.png) no-repeat;
 }
 .youtube {
-  background: url('../../css/img/icons/social/youtube.png') no-repeat;
+  background: url(img/icons/social/youtube.png) no-repeat;
 }
 .likeabutton {
-    text-decoration: none; font: menu; height:100px;width:200px;
-    display: inline-block; padding: 30px 8px;vertical-align:middle;
-    background: ButtonFace; color: ButtonText;margin-bottom:10px;
+    text-decoration: none; font: menu;
+    display: inline-block; padding: 2px 8px;
+    background: ButtonFace; color: ButtonText;
     border-style: solid; border-width: 2px;
     border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
 }
@@ -1474,3 +1474,10 @@ ul.checkbos li {
 ul.checkbos li label { 
   margin-left:
 } 
+ul.checkbos li:hover, 
+ul.checkbos li.focus  { 
+  background-color: lightyellow; 
+  border: 1px gray solid; 
+  width: 12em; 
+} 
+ 

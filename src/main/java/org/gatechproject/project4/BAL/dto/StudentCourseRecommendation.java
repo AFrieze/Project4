@@ -9,6 +9,21 @@ public class StudentCourseRecommendation {
 	private ConfiguredCourse course;
 	private Professor professor;
 
+	public StudentCourseRecommendation() {
+		this.userId = -1;
+		this.course = null;
+		this.professor = null;
+		this.solutionDt = null;
+	}
+
+	public StudentCourseRecommendation(int userId, ConfiguredCourse course, Professor professor,
+			Calendar solutionTime) {
+		this.userId = userId;
+		this.course = course;
+		this.professor = professor;
+		this.solutionDt = solutionTime;
+	}
+
 	public ConfiguredCourse getCourse() {
 		return course;
 	}

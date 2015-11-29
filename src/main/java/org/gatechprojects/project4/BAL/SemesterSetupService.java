@@ -1,15 +1,19 @@
 package org.gatechprojects.project4.BAL;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
+import org.gatechproject.project4.BAL.dto.CourseRecommendation;
 import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.SemesterConfiguration;
 import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.CourseSemester;
+import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
+import org.gatechprojects.project4.SharedDataModules.OutputOfferedCourse;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.User;
 import org.gatechprojects.project4.SharedDataModules.UserAvailability;
@@ -138,6 +142,37 @@ public class SemesterSetupService {
 		return blackboard.getCatalogBoard().getCourse(courseId);
 	}
 
+	/**
+	 * Returns the {@link OptimizerCalculation#getId() id} of the optimization
+	 * calculation which occurred closest to and before the passed in time. If
+	 * no calculation is found, -1 is returned.
+	 * 
+	 * @param isShadow
+	 * @param time
+	 * @return
+	 */
+	public int getOptimizerCalculationId(boolean isShadow, Calendar time) {
+		return blackboard.getOptimizerBoard().getOptimizerCalculationId(time, isShadow);
+	}
+
+	/**
+	 * Returns a list of {@link CourseRecommendation courseRecommendations} made
+	 * by the optimizer for the provided optimizerCalculationId.
+	 * 
+	 * @param optimizerCalculationId
+	 * @return
+	 */
+	public List<CourseRecommendation> getOptimizerCourseRecommendations(int optimizerCalculationId) {
+
+		List<OutputOfferedCourse> offeredCourses = blackboard.getOptimizerBoard()
+				.getOfferedCourses(optimizerCalculationId);
+		List<CourseRecommendation> recommendations = new ArrayList<>();
+		for (OutputOfferedCourse offeredCourse : offeredCourses) {
+			recommendations.add(new CourseRecommendation(offeredCourse));
+		}
+		return recommendations;
+	}
+
 	public Semester getSemester(int semesterId) {
 		return blackboard.getByID(Semester.class, semesterId);
 	}
@@ -201,5 +236,4 @@ public class SemesterSetupService {
 		}
 		return semesterConfiguration;
 	}
-
 }

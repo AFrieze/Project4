@@ -26,7 +26,7 @@ public class Server {
 		/*
 		 * Any requests from a non-logged in user should be redirected to the
 		 * login page
-		
+		 */
 		staticFileLocation("/public");
 		
 		before((request, response) -> {
@@ -35,6 +35,7 @@ public class Server {
 			if( !request.pathInfo().startsWith("/js")
 				&& !request.pathInfo().startsWith("/styles")
 				&& !request.pathInfo().startsWith("/images")
+				&& !request.pathInfo().startsWith("/admin")
 				&& !request.pathInfo().startsWith("/favicon.ico")
 				)
 			{
@@ -45,7 +46,7 @@ public class Server {
 				}
 			}
 		});
-*/
+
 		get("/login", (req, res) -> {
 			LoginController controller = new LoginController();
 			return controller.getLoginPage(req);
@@ -141,43 +142,43 @@ public class Server {
 
 
 		get("/admin/HistoryCourseDemand", (req, res) -> {
-			HistoryController historyController = new HistoryController();
-			return historyController.getHistoryCourseDemandPage(req);
+			HistoryController semesterController = new HistoryController();
+			return semesterController.getHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
 		post("/admin/HistoryCourseDemand", (req, res) -> {
-			HistoryController historyController = new HistoryController();
-			return historyController.postHistoryCourseDemandPage(req);
+			HistoryController semesterController = new HistoryController();
+			return semesterController.postHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
 		get("/admin/HistoryStudentHistory", (req, res) -> {
-			HistoryController historyController = new HistoryController();
-			return historyController.getHistoryStudentHistoryPage(req);
+			HistoryController semesterController = new HistoryController();
+			return semesterController.getHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
 
 		post("/admin/HistoryStudentHistory", (req, res) -> {
-			HistoryController historyController = new HistoryController();
-			return historyController.postHistoryStudentHistoryPage(req);
+			HistoryController semesterController = new HistoryController();
+			return semesterController.postHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
 
 		get("/admin/SandboxHistoryCourseDemand", (req, res) -> {
-			SandboxController sandboxController = new SandboxController();
-			return sandboxController.getHistoryCourseDemandPage(req);
+			SandboxController semesterController = new SandboxController();
+			return semesterController.getHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
-		post("/admin/SandboxHistoryCourseDemand", (req, res) -> {
-			SandboxController sandboxController = new SandboxController();
-			return sandboxController.postHistoryCourseDemandPage(req);
+		post("/admin/HistoryCourseDemand", (req, res) -> {
+			SandboxController semesterController = new SandboxController();
+			return semesterController.postHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
-		get("/admin/SandboxHistoryStudentHistory", (req, res) -> {
-			SandboxController sandboxController = new SandboxController();
-			return sandboxController.getHistoryStudentHistoryPage(req);
+		get("/admin/HistoryStudentHistory", (req, res) -> {
+			SandboxController semesterController = new SandboxController();
+			return semesterController.getHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
 
-		post("/admin/SandboxHistoryStudentHistory", (req, res) -> {
-			SandboxController sandboxController = new SandboxController();
-			return sandboxController.postHistoryStudentHistoryPage(req);
+		post("/admin/HistoryStudentHistory", (req, res) -> {
+			SandboxController semesterController = new SandboxController();
+			return semesterController.postHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
 
 	}

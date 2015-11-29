@@ -43,12 +43,6 @@ public class OptimizerCalculation {
 	private List<OutputOfferedCourse> outputOfferedCourses = new ArrayList<OutputOfferedCourse>();
 
 	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
-	private List<OutputProfessorCourseAssignment> outputProfessorCourseAssignments = new ArrayList<OutputProfessorCourseAssignment>();
-
-	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
-	private List<OutputTACourseAssignment> outputTACourseAssignments = new ArrayList<OutputTACourseAssignment>();
-
-	@OneToMany(mappedBy = "optimizerCalculation", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<OutputUserCourseAssignment> outputUserCourseAssignments = new ArrayList<OutputUserCourseAssignment>();
 
 	public Calendar getCompletionTime() {
@@ -77,6 +71,14 @@ public class OptimizerCalculation {
 
 	public List<InputTA> getInputTAs() {
 		return inputTAs;
+	}
+
+	public List<OutputOfferedCourse> getOutputOfferedCourses() {
+		return outputOfferedCourses;
+	}
+
+	public List<OutputUserCourseAssignment> getOutputUserCourseAssignments() {
+		return outputUserCourseAssignments;
 	}
 
 	public Semester getSemester() {
@@ -113,6 +115,14 @@ public class OptimizerCalculation {
 
 	public void setInputTAs(List<InputTA> inputTAs) {
 		this.inputTAs = inputTAs;
+	}
+
+	public void setOutputOfferedCourses(List<OutputOfferedCourse> outputOfferedCourses) {
+		this.outputOfferedCourses = outputOfferedCourses;
+	}
+
+	public void setOutputUserCourseAssignments(List<OutputUserCourseAssignment> outputUserCourseAssignments) {
+		this.outputUserCourseAssignments = outputUserCourseAssignments;
 	}
 
 	public void setSemester(Semester semester) {

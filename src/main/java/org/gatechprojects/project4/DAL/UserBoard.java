@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.MembershipUser;
+import org.gatechprojects.project4.SharedDataModules.OutputUserCourseAssignment;
 import org.gatechprojects.project4.SharedDataModules.ProfessorCompetence;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.StudentCoursePreference;
@@ -42,6 +43,14 @@ public class UserBoard extends Board {
 		User user = new User();
 		populateUser(membershipId, user, firstName, lastName, isStudent, isTA, isProfessor, isAdministrator);
 		return (Integer) getSession().save(user);
+	}
+
+	public int addUserAvailability(int userId, int semesterId, boolean isShadow) {
+		UserAvailability ua = new UserAvailability();
+		ua.setUser(getSession().byId(User.class).load(userId));
+		ua.setSemester(getSession().byId(Semester.class).load(semesterId));
+		ua.setShadow(isShadow);
+		return (Integer) getSession().save(ua);
 	}
 
 	private Criterion[] buildUserTypeCriterion(boolean isStudent, boolean isTA, boolean isProfessor) {
@@ -104,8 +113,27 @@ public class UserBoard extends Board {
 	}
 
 	public StudentPreference getMostRecentStudentPreference(int semesterId) {
-		return (StudentPreference) getSession().createCriteria(StudentPreference.class)
-				.add(Restrictions.eq("semeseter.id", semesterId)).addOrder(Order.desc("id")).uniqueResult();
+		List<StudentPreference> studentPreferences = getSession().createCriteria(StudentPreference.class)
+				.add(Restrictions.eq("semester.id", semesterId)).addOrder(Order.desc("id")).setFirstResult(0)
+				.setMaxResults(1).list();
+		if (studentPreferences.size() > 0) {
+			return studentPreferences.get(0);
+		}
+		return null;
+	}
+
+	public List<Course> getProfessorCompetencies(int userId) {
+		Query query = getSession()
+				.createQuery(
+						"select c from course c join professor_competence pc on c.id = pc.course_id where pc.user_id=:userId")
+				.setString("userId", Integer.toString(userId));
+		List<Course> courses = query.list();
+		return courses;
+	}
+
+	public List<OutputUserCourseAssignment> getStudentCourseAssignments(int studentID, int optimizerCalculationID) {
+		return getSession().createCriteria(OutputUserCourseAssignment.class).add(Restrictions.eq("user.id", studentID))
+				.add(Restrictions.eq("optimizerCalculation.id", optimizerCalculationID)).list();
 	}
 
 	public StudentPreference getStudentPreference(int userId, int semesterId) {
@@ -208,13 +236,6 @@ public class UserBoard extends Board {
 		}
 		preferences.setCoursePreferences(coursePreferences);
 		return (Integer) getSession().save(preferences);
-	}
-
-	public List<Course> getProfessorCompetencies(int userId) {
-		// TODO Auto-generated method stub
-		Query query = getSession().createQuery("select c from course c join professor_competence pc on c.id = pc.course_id where pc.user_id=:userId").setString("userId", Integer.toString(userId));	
-		List<Course> courses = query.list();
-		return courses;
 	}
 
 }

@@ -32,6 +32,8 @@ public class HistoryController {
 		
 		return new ModelAndView(model, "templates/admin/HistoryCourseDemand.vtl");
 	}
+
+
     
 	public ModelAndView getHistoryStudentHistoryPage(Request request) {
 			
@@ -49,20 +51,5 @@ public class HistoryController {
 		return new ModelAndView(model, "templates/admin/HistoryStudentHistory.vtl");
 	}
 
-	public ModelAndView getComputerAidedRecommendationsPage(Request request) {
-			
-		HashMap<String, Object> model = new HashMap<String, Object>();
-		model.put("template", "templates/admin/HistoryComputerAidedRecommendations.vtl");
-		
-		return new ModelAndView(model, "templates/admin/HistoryComputerAidedRecommendations.vtl");
-	}
-
-	public ModelAndView postComputerAidedRecommendationsPage(Request request) {
-		HashMap<String, Object> model = new HashMap<String, Object>();
-		
-		model.put("template", "templates/admin/HistoryComputerAidedRecommendations.vtl");
-		
-		return new ModelAndView(model, "templates/admin/HistoryComputerAidedRecommendations.vtl");
-	}
-
+	
 }
