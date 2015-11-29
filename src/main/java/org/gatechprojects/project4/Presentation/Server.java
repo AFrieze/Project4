@@ -162,23 +162,23 @@ public class Server {
 		} , new VelocityTemplateEngine());
 
 		get("/admin/SandboxHistoryCourseDemand", (req, res) -> {
-			SandboxController semesterController = new SandboxController();
-			return semesterController.getHistoryCourseDemandPage(req);
+			SandboxController sandboxController = new SandboxController();
+			return sandboxController.getHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
-		post("/admin/HistoryCourseDemand", (req, res) -> {
-			SandboxController semesterController = new SandboxController();
-			return semesterController.postHistoryCourseDemandPage(req);
+		post("/admin/SandboxHistoryCourseDemand", (req, res) -> {
+			SandboxController sandboxController = new SandboxController();
+			return sandboxController.postHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
-		get("/admin/HistoryStudentHistory", (req, res) -> {
-			SandboxController semesterController = new SandboxController();
-			return semesterController.getHistoryStudentHistoryPage(req);
+		get("/admin/SandboxHistoryStudentHistory", (req, res) -> {
+			SandboxController sandboxController = new SandboxController();
+			return sandboxController.getHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
 
-		post("/admin/HistoryStudentHistory", (req, res) -> {
-			SandboxController semesterController = new SandboxController();
-			return semesterController.postHistoryStudentHistoryPage(req);
+		post("/admin/SandboxHistoryStudentHistory", (req, res) -> {
+			SandboxController sandboxController = new SandboxController();
+			return sandboxController.postHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
 
 	}
