@@ -26,7 +26,7 @@ public class Server {
 		/*
 		 * Any requests from a non-logged in user should be redirected to the
 		 * login page
-		 
+		*/
 		staticFileLocation("/public");
 		
 		before((request, response) -> {
@@ -45,7 +45,7 @@ public class Server {
 				}
 			}
 		});
-*/
+
 		get("/login", (req, res) -> {
 			LoginController controller = new LoginController();
 			return controller.getLoginPage(req);
