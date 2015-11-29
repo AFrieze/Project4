@@ -12,6 +12,7 @@ import org.gatechprojects.project4.SharedDataModules.StudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.StudentPreference;
 import org.gatechprojects.project4.SharedDataModules.User;
 import org.gatechprojects.project4.SharedDataModules.UserAvailability;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
@@ -212,6 +213,13 @@ public class UserBoard extends Board {
 		}
 		preferences.setCoursePreferences(coursePreferences);
 		return (Integer) getSession().save(preferences);
+	}
+
+	public List<Course> getProfessorCompetencies(int userId) {
+		// TODO Auto-generated method stub
+		Query query = getSession().createQuery("select c from course c join professor_competence pc on c.id = pc.course_id where pc.user_id=:userId").setString("userId", Integer.toString(userId));	
+		List<Course> courses = query.list();
+		return courses;
 	}
 
 }

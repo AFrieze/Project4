@@ -31,25 +31,25 @@ public class LoginController {
 		
 		HashMap model = new HashMap();
 		Membership membership = new Membership();
-		
-		
 		// NOT SURE WHY BUT request.params("inputUsername") returns a empty string 
 		if(request.queryParams("inputUsername") != "" && request.queryParams("inputPassword") != ""){
-			
+			//System.out.println("Found Inputs");
 			if(membership.authenticate(request.queryParams("inputUsername"), request.queryParams("inputPassword"))){
 				request.session().attribute(SESSION_USER, membership.getUser(request.queryParams("inputUsername"), request.queryParams("inputPassword")));
 				if(((User) request.session().attribute(SESSION_USER)).isAdministrator()){
+					//System.out.println("Admin");
 					response.redirect("/admin/home");
 				} else {
+					//System.out.println("Student");
 					response.redirect("/student/home");
 				}
 			
 			} else {
-				// MAYBE ADD A MESSAGE;
+				//System.out.println("Not Auth");
 			};
 			
 		} else {
-			// MAYBE ADD A MESSAGE;
+			//System.out.println("Did not find inputs");
 		}
 		
 		model.put("template", "templates/login.vtl");

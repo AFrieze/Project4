@@ -3,11 +3,11 @@
 		<div class="row">
 			<div class="col-sm-10">
 				<p>
-					<strong>Last login:</strong> $user.lastLogin() // NEED BAL or USER METHOD FOR LAST LOGIN OF A GIVEN USER <br />
-					<strong>System Status:</strong> $system.status() // NEED BAL FOR SYSTEM STATUS
+					<strong>Last login:</strong> $!{dateFormat.format($loginHistory.getLoginHistory().get(0))} <br />
+					<strong>System Status:</strong> ${systemReport.getSystemStatus()}
 			</div>
 			<div class="col-sm-2">
-				<a href="/student/accoutsettings">Account Settings</a>
+				<!--<a href="/student/accoutsettings">Account Settings</a>-->
 			</div>
 		</div>
 		<hr />
@@ -18,9 +18,9 @@
 				  <div class="panel-heading"><h3 class="panel-title">Academic Standing</h3></div>
 				  <div class="panel-body">
 				    <p>
-				    	<strong>Completed courses:</strong>  $user.numberOfCourseComplete()<br />
-				    	<strong>Current courses:</strong>  $user.numberofCurrentCourses()<br />
-				    	<strong>Student Standing:</strong>  $user.academicStanding()
+				    	<strong>Completed courses:</strong>  $currentStudent.getCompletedCoursesCount()<br />
+				    	<strong>Current courses:</strong>  $currentStudent.getCurrentCoursesCount()<br />
+				    	<strong>Student Standing:</strong>  $currentStudent.getStudentStanding()
 				    </p>
 				  </div>
 				</div>
@@ -30,8 +30,8 @@
 				  <div class="panel-heading"><h3 class="panel-title">Next Semester</h3></div>
 				  <div class="panel-body">
 				  	<p><strong>Solution status</strong><br/>
-				  		$solution.status() <br />
-				  		$solution.time()
+				  		$currentStudent.getSolutionStatus() <br />
+				  		$!{dateFormat.format($currentStudent.getSolutionDate())}
 				  	</p>
 				    <a class="btn btn-primary btn-block" href="/student/nextsemestercourses">Select Courses</a>
 				  </div>
@@ -45,6 +45,7 @@
 					  ## FAKE DATA
 					  #set($solutions = ['Nov 10 2015, 5pm', 'Nov 10 2015, 10am', 'Nov 9 2015, 11am'])
 					  // PLACE HOLDER DATA
+					  // NEED METHOD FOR GETTING SOLUTION SET DATETIME
 					  <ul>
 					  	#foreach($solution in $solutions)
 					  		<li>$solution</li>
