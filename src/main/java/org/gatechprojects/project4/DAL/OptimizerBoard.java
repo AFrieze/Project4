@@ -42,7 +42,7 @@ public class OptimizerBoard extends Board {
 		String hql = "from OptimizerCalculation as c where c.completionTime <= :completionTime and c.isShadow = :isShadow order by c.completionTime desc";
 		List calculations = getSession().createQuery(hql).setParameter("completionTime", calendar)
 				.setParameter("isShadow", isShadow).list();
-		if (calculations.size() > 1) {
+		if (calculations.size() > 0) {
 			OptimizerCalculation optCal = (OptimizerCalculation) calculations.get(0);
 			return optCal.getId();
 		}
