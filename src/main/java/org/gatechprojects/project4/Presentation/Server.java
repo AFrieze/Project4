@@ -141,43 +141,43 @@ public class Server {
 
 
 		get("/admin/HistoryCourseDemand", (req, res) -> {
-			HistoryController semesterController = new HistoryController();
-			return semesterController.getHistoryCourseDemandPage(req);
+			HistoryController historyController = new HistoryController();
+			return historyController.getHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
 		post("/admin/HistoryCourseDemand", (req, res) -> {
-			HistoryController semesterController = new HistoryController();
-			return semesterController.postHistoryCourseDemandPage(req);
+			HistoryController historyController = new HistoryController();
+			return historyController.postHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
 		get("/admin/HistoryStudentHistory", (req, res) -> {
-			HistoryController semesterController = new HistoryController();
-			return semesterController.getHistoryStudentHistoryPage(req);
+			HistoryController historyController = new HistoryController();
+			return historyController.getHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
 
 		post("/admin/HistoryStudentHistory", (req, res) -> {
-			HistoryController semesterController = new HistoryController();
-			return semesterController.postHistoryStudentHistoryPage(req);
+			HistoryController historyController = new HistoryController();
+			return historyController.postHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
 
 		get("/admin/SandboxHistoryCourseDemand", (req, res) -> {
-			SandboxController semesterController = new SandboxController();
-			return semesterController.getHistoryCourseDemandPage(req);
+			SandboxController sandboxController = new SandboxController();
+			return sandboxController.getHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
 		post("/admin/HistoryCourseDemand", (req, res) -> {
-			SandboxController semesterController = new SandboxController();
-			return semesterController.postHistoryCourseDemandPage(req);
+			SandboxController sandboxController = new SandboxController();
+			return sandboxController.postHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
 		get("/admin/HistoryStudentHistory", (req, res) -> {
-			SandboxController semesterController = new SandboxController();
-			return semesterController.getHistoryStudentHistoryPage(req);
+			SandboxController sandboxController = new SandboxController();
+			return sandboxController.getHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
 
 		post("/admin/HistoryStudentHistory", (req, res) -> {
-			SandboxController semesterController = new SandboxController();
-			return semesterController.postHistoryStudentHistoryPage(req);
+			SandboxController sandboxController = new SandboxController();
+			return sandboxController.postHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
 
 	}
