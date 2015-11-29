@@ -2,6 +2,7 @@ package org.gatechproject.project4.BAL.dto;
 
 /**
  * This class will be used by the "Student Home Page" screen/view
+ * THIS class should be removed - not needed.
  */
 
 public class StudentReport {
