@@ -162,7 +162,7 @@ public class SemesterSetupService {
 	 * @param optimizerCalculationId
 	 * @return
 	 */
-	private List<CourseRecommendation> getOptimizerCourseRecommendation(int optimizerCalculationId) {
+	public List<CourseRecommendation> getOptimizerCourseRecommendations(int optimizerCalculationId) {
 
 		List<OutputOfferedCourse> offeredCourses = blackboard.getOptimizerBoard()
 				.getOfferedCourses(optimizerCalculationId);
