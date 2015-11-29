@@ -176,3 +176,4 @@ tes/header.vtl', line 13, column 74] : $user.getLastName() cannot be resolved.
 2015-11-29 19:21:28,205 - Velocimacro : autoload off : VM system will not automatically reload global library macros
 2015-11-29 19:21:28,222 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
 2015-11-29 19:21:41,971 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-11-29 23:53:12,942 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
