@@ -26,7 +26,7 @@ public class Server {
 		/*
 		 * Any requests from a non-logged in user should be redirected to the
 		 * login page
-		*/
+		
 		staticFileLocation("/public");
 		
 		before((request, response) -> {
@@ -45,7 +45,7 @@ public class Server {
 				}
 			}
 		});
-
+*/
 		get("/login", (req, res) -> {
 			LoginController controller = new LoginController();
 			return controller.getLoginPage(req);
@@ -165,17 +165,17 @@ public class Server {
 			return sandboxController.getHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
-		post("/admin/HistoryCourseDemand", (req, res) -> {
+		post("/admin/SandboxHistoryCourseDemand", (req, res) -> {
 			SandboxController sandboxController = new SandboxController();
 			return sandboxController.postHistoryCourseDemandPage(req);
 		} , new VelocityTemplateEngine());
 
-		get("/admin/HistoryStudentHistory", (req, res) -> {
+		get("/admin/SandboxHistoryStudentHistory", (req, res) -> {
 			SandboxController sandboxController = new SandboxController();
 			return sandboxController.getHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
 
-		post("/admin/HistoryStudentHistory", (req, res) -> {
+		post("/admin/SandboxHistoryStudentHistory", (req, res) -> {
 			SandboxController sandboxController = new SandboxController();
 			return sandboxController.postHistoryStudentHistoryPage(req);
 		} , new VelocityTemplateEngine());
