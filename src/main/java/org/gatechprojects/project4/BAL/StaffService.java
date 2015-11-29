@@ -51,6 +51,36 @@ public class StaffService {
 
 	}
 
+	public Professor addProfessor(Integer membershipId, String firstName, String lastName) {
+		blackboard.startTransaction();
+		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, false, true, false);
+		blackboard.commitTransaction();
+		return new Professor(blackboard.getUserBoard().getUser(userId));
+	}
+
+	/**
+	 * Method used to indicate that a user, generally a professor or ta, is
+	 * available for the specified semester.
+	 * 
+	 * @param userId
+	 * @param semesterId
+	 * @return
+	 */
+	public int addStaffAvailability(int userId, int semesterId, boolean isShadow) {
+		blackboard.startTransaction();
+		int id = blackboard.getUserBoard().addUserAvailability(userId, semesterId, isShadow);
+		blackboard.commitTransaction();
+		return id;
+
+	}
+
+	public TeacherAssistant addTeacherAssistant(Integer membershipId, String firstName, String lastName) {
+		blackboard.startTransaction();
+		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, true, false, false);
+		blackboard.commitTransaction();
+		return new TeacherAssistant(blackboard.getUserBoard().getUser(userId));
+	}
+
 	public List<Course> getAvailableProfessorCompetencies(int userId) {
 
 		User user = blackboard.getUserBoard().getUser(userId);
@@ -62,20 +92,6 @@ public class StaffService {
 		blackboard.commitTransaction();
 
 		return courses;
-	}
-	
-	public Professor addProfessor(Integer membershipId, String firstName, String lastName) {
-		blackboard.startTransaction();
-		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, false, true, false);
-		blackboard.commitTransaction();
-		return new Professor(blackboard.getUserBoard().getUser(userId));
-	}
-
-	public TeacherAssistant addTeacherAssistant(Integer membershipId, String firstName, String lastName) {
-		blackboard.startTransaction();
-		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, true, false, false);
-		blackboard.commitTransaction();
-		return new TeacherAssistant(blackboard.getUserBoard().getUser(userId));
 	}
 
 	/**

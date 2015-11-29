@@ -5,6 +5,7 @@ import java.util.List;
 import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
 import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.StudentSemesterPreferences;
+import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.BAL.Membership;
 import org.gatechprojects.project4.BAL.StaffService;
 import org.gatechprojects.project4.BAL.UserService;
@@ -147,10 +148,10 @@ public class Installer {
 		Session session = factory.openSession();
 		session.close();
 		factory.close();
-		seedProfessors();
+		seedSemester();
+		seedProfessorsAndAvailability();
 		seedStudents();
 		seedTeacherAssistants();
-		seedSemester();
 		seedCourses();
 		seedCourseSemesters();
 		seedCoursesTaken();
@@ -176,12 +177,14 @@ public class Installer {
 		blackboard.close();
 	}
 
-	private void seedProfessors() {
+	private void seedProfessorsAndAvailability() {
 		StaffService staffService = new StaffService();
 		for (int i = 0; i < NBR_PROFESSORS; i++) {
 			String firstName = String.format("Mr %s", i);
 			String lastName = String.format("Prof%s", i);
-			staffService.addProfessor(null, firstName, lastName);
+			Professor professor = staffService.addProfessor(null, firstName, lastName);
+			staffService.addStaffAvailability(professor.getUserId(), 1, false);
+			staffService.addStaffAvailability(professor.getUserId(), 1, true);
 		}
 	}
 
@@ -248,7 +251,9 @@ public class Installer {
 		for (int i = 0; i < NBR_TAS; i++) {
 			String firstName = String.format("Low %s", i);
 			String lastName = String.format("ly%s", i);
-			staffService.addTeacherAssistant(null, firstName, lastName);
+			TeacherAssistant ta = staffService.addTeacherAssistant(null, firstName, lastName);
+			staffService.addStaffAvailability(ta.getUserId(), 1, false);
+			staffService.addStaffAvailability(ta.getUserId(), 1, true);
 		}
 	}
 

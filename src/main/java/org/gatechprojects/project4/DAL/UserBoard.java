@@ -45,6 +45,14 @@ public class UserBoard extends Board {
 		return (Integer) getSession().save(user);
 	}
 
+	public int addUserAvailability(int userId, int semesterId, boolean isShadow) {
+		UserAvailability ua = new UserAvailability();
+		ua.setUser(getSession().byId(User.class).load(userId));
+		ua.setSemester(getSession().byId(Semester.class).load(semesterId));
+		ua.setShadow(isShadow);
+		return (Integer) getSession().save(ua);
+	}
+
 	private Criterion[] buildUserTypeCriterion(boolean isStudent, boolean isTA, boolean isProfessor) {
 		List<SimpleExpression> restrictions = new ArrayList<SimpleExpression>();
 		if (isStudent) {
@@ -115,7 +123,6 @@ public class UserBoard extends Board {
 	}
 
 	public List<Course> getProfessorCompetencies(int userId) {
-		// TODO Auto-generated method stub
 		Query query = getSession()
 				.createQuery(
 						"select c from course c join professor_competence pc on c.id = pc.course_id where pc.user_id=:userId")

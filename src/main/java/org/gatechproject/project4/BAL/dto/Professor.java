@@ -21,6 +21,12 @@ public class Professor extends Person {
 		}
 	}
 
+	/**
+	 * Returns a list of the {@link Course courses} this professor is able to
+	 * teach.
+	 * 
+	 * @return
+	 */
 	public List<Course> getCourseCompetencies() {
 		return courseCompetencies;
 	}
