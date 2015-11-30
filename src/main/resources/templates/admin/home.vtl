@@ -8,20 +8,11 @@
 <head>
     <title>Admin Portal</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content=".NET, C#, Wildermuth, Shawn, Weblog, XAML, Silverlight, WP7, Microsoft, Training, Consulting, Database, JavaScript, CSS, Web Development, HTML"
-        name="KEYWORDS">
-    <meta runat="server" id="DescriptionMetaTag" content="Shawn Wildermuth's Rants and Raves on Technologies - Software Development"
-        name="DESCRIPTION">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/ShawnWildermuth">
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/style-menu.css">
-    <!-- <link rel="stylesheet" href="/css/bootstrap-responsive.min.css"> -->
-    <!-- <link rel="stylesheet" href="/css/style_responsive.css"> -->
-    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/style-menu.css">
+    <link rel="stylesheet" href="/styles/site.css">
 </head>
 <body>
     <!--=== Top ===-->
@@ -41,7 +32,8 @@
                         </span><span class="glyphicon glyphicon-bar"></span></a>
                     <!-- Logo -->
                     <div id="logo">
-                        <a href="/">Admin Portal</a>
+                        <a href="home.html">
+                            <img src="/images/gtlogo.png" height="30px" alt="Admin Portal"></a>
                         <div class="sublogo">
                             Admin Portal</div>
                     </div>
@@ -87,9 +79,9 @@
                     <!--/blog-->
                     <div>
                         <ul class="list-unstyled">
-                            <li><a href="/admin/SemesterConfiguration" target="_blank" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-chevron-right"></i>Semester Configuration</a> </li>
-                            <li><a href="/admin/History" target="_blank" class="likeabutton"><i class="glyphicon glyphicon-chevron-right"></i>History</a> </li>
-                            <li><a href="/admin/Sandbox" target="_blank" class="likeabutton"><i class="glyphicon glyphicon-chevron-right"></i>Sandbox</a>
+                            <li><a href="/admin/SemesterConfiguration" class="likeabutton"><i class="glyphicon glyphicon-chevron-right"></i>Semester Configuration</a> </li>
+                            <li><a href="/admin/HistoryCourseDemand" class="likeabutton"><i class="glyphicon glyphicon-chevron-right"></i>History</a> </li>
+                            <li><a href="/admin/HistoryCourseDemand" class="likeabutton"><i class="glyphicon glyphicon-chevron-right"></i>Sandbox</a>
                             </li>
                         </ul>
                     </div>

@@ -12,14 +12,16 @@ import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.BAL.SemesterSetupService;
 import org.gatechprojects.project4.BAL.StaffService;
 import org.gatechprojects.project4.BAL.UserService;
+import org.gatechprojects.project4.Presentation.controllers.Controller;
+import org.gatechprojects.project4.SharedDataModules.User;
 
 import spark.ModelAndView;
 import spark.Request;
 
-public class SemesterController {
+public class SemesterController extends Controller {
 
-    private	SemesterSetupService semesterSetupService = new SemesterSetupService();
-
+	private static String PAGE_TITLE = "Login History";
+	private	SemesterSetupService semesterSetupService = new SemesterSetupService();
     private	StaffService staffSetupService = new StaffService();
     private UserService userService = new UserService();
 
@@ -41,27 +43,6 @@ public class SemesterController {
 		return new ModelAndView(model, "templates/admin/SemesterConfiguration.vtl");
 	}
 
-
-	private void getAllMasters(HashMap<String, Object> model) {
-		model.put("Semesters", semesterSetupService.getAvailableSemesters());
-		model.put("SelectedSemester", "");
-		model.put("TeacherAssistants", staffSetupService.getAvailableTeacherAssistants());
-		model.put("Professors", staffSetupService.getAvailableProfessors());
-		model.put("Courses", semesterSetupService.getAvailableCourses());
-		//model.put("Competencies", staffSetupService.getAvailableProfessorCompetencies(1));
-	}
-
-
-	private void getSemesterConfiguration(HashMap<String, Object> model, String semesterId) {
-		SemesterConfiguration semesterConfiguration = semesterSetupService.getSemesterConfiguration(Integer.parseInt(semesterId),true);
-		model.put("TeacherAssistants", semesterConfiguration.getTeacherAssistants());
-		model.put("Professors", semesterConfiguration.getProfessors());
-		model.put("Courses", semesterConfiguration.getOfferedCourses());
-		model.put("Semesters", semesterSetupService.getAvailableSemesters());
-		//model.put("Competencies", staffSetupService.getAvailableProfessorCompetencies(1));
-		//model.put("SelectedSemester", semesterSetupService.getSemester(Integer.parseInt(semesterId)));
-		model.put("SelectedSemester", semesterId);
-	}
 
 	public ModelAndView postSemesterConfigurationPage(Request request) {
 		HashMap<String, Object> model = new HashMap<String, Object>();
@@ -157,4 +138,39 @@ public class SemesterController {
 		
 		semesterConfiguration.setOfferedCourses(courses);
 	}
+
+
+	private void getCommonDetails(HashMap<String, Object> model, Request request)
+	{
+		model.put("template", "templates/admin/SemesterConfiguration.vtl");
+		model.put("pageTitle", PAGE_TITLE);
+		model.put("includeHeader", true);
+		model.put("user", ((User)request.session().attribute(SESSION_USER)));
+		model.put("dateFormat", DATE_FORMAT);
+		model.put("request", request);
+	}
+
+	private void getAllMasters(HashMap<String, Object> model) {
+		model.put("Semesters", semesterSetupService.getAvailableSemesters());
+		model.put("SelectedSemester", "");
+		model.put("TeacherAssistants", staffSetupService.getAvailableTeacherAssistants());
+		model.put("Professors", staffSetupService.getAvailableProfessors());
+		model.put("Courses", semesterSetupService.getAvailableCourses());
+		//model.put("Competencies", staffSetupService.getAvailableProfessorCompetencies(1));
+	}
+
+
+	private void getSemesterConfiguration(HashMap<String, Object> model, String semesterId) {
+		SemesterConfiguration semesterConfiguration = semesterSetupService.getSemesterConfiguration(Integer.parseInt(semesterId),true);
+		model.put("TeacherAssistants", semesterConfiguration.getTeacherAssistants());
+		model.put("Professors", semesterConfiguration.getProfessors());
+		model.put("Courses", semesterConfiguration.getOfferedCourses());
+		model.put("Semesters", semesterSetupService.getAvailableSemesters());
+		
+		//model.put("Competencies", staffSetupService.getAvailableProfessorCompetencies(1));
+		//model.put("SelectedSemester", semesterSetupService.getSemester(Integer.parseInt(semesterId)));
+		
+		model.put("SelectedSemester", semesterId);
+	}
+
 }
