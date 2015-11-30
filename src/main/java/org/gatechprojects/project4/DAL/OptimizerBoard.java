@@ -3,13 +3,17 @@ package org.gatechprojects.project4.DAL;
 import java.util.Calendar;
 import java.util.List;
 
+import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.InputStudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
 import org.gatechprojects.project4.SharedDataModules.OutputOfferedCourse;
 import org.gatechprojects.project4.SharedDataModules.OutputUserCourseAssignment;
+import org.gatechprojects.project4.SharedDataModules.StudentPreference;
+import org.gatechprojects.project4.SharedDataModules.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 public class OptimizerBoard extends Board {
@@ -48,6 +52,20 @@ public class OptimizerBoard extends Board {
 		}
 		return -1;
 	}
+	
+	public OptimizerCalculation getOptimizerCalculation(int optimizerCalculationId) {
+		return getSession().get(OptimizerCalculation.class, optimizerCalculationId);
+	}
+	
+	public List<OptimizerCalculation> getLastOptimizerCalculations(int limit) {
+		List<OptimizerCalculation> optimizerSet =  getSession().createCriteria(OptimizerCalculation.class)
+				.addOrder(Order.desc("id")).setFirstResult(0)
+				.setMaxResults(limit).list();
+
+			return optimizerSet;
+
+	}
+	
 
 	public List<InputStudentCoursePreference> getStudentPreferencesForCalculation(int studentID,
 			int optimizerCalculationID) {
@@ -60,6 +78,19 @@ public class OptimizerBoard extends Board {
 		return getSession().createCriteria(OutputUserCourseAssignment.class)
 				.add(Restrictions.eq("optimizerCalculation.id", optimizerCalculationId))
 				.add(Restrictions.eq("optimizerCalculation.isShadow", isShadow)).list();
+	}
+	
+	/**
+	 * Used for testing the method getOptimizerCourseRecommendations() 
+	 */
+	public void createOutputOfferedCourse(Course course, OptimizerCalculation optimizerCalculation) {
+		OutputOfferedCourse offeredCourse = new OutputOfferedCourse();
+
+		offeredCourse.setCourse(course);
+		offeredCourse.setCourseSize(50);
+		offeredCourse.setOptimizerCalculation(optimizerCalculation);
+
+		getSession().save(offeredCourse);
 	}
 
 }
