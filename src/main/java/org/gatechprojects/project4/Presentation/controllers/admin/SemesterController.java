@@ -1,6 +1,9 @@
 package org.gatechprojects.project4.Presentation.controllers.admin;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,7 +23,7 @@ import spark.Request;
 
 public class SemesterController extends Controller {
 
-	private static String PAGE_TITLE = "Login History";
+	private static String PAGE_TITLE = "Semester Configuration";
 	private	SemesterSetupService semesterSetupService = new SemesterSetupService();
     private	StaffService staffSetupService = new StaffService();
     private UserService userService = new UserService();
@@ -38,7 +41,8 @@ public class SemesterController extends Controller {
 		{	
 			getAllMasters(model);
 		}
-		model.put("template", "templates/admin/SemesterConfiguration.vtl");
+
+		getCommonDetails(model, request);
 		
 		return new ModelAndView(model, "templates/admin/SemesterConfiguration.vtl");
 	}
@@ -58,7 +62,7 @@ public class SemesterController extends Controller {
 			createSemsterConfiguration(model, request, semesterId);
 			getAllMasters(model);
 		}
-		model.put("template", "templates/admin/SemesterConfiguration.vtl");
+		getCommonDetails(model, request);
 		
 		return new ModelAndView(model, "templates/admin/SemesterConfiguration.vtl");
 	}
@@ -92,7 +96,7 @@ public class SemesterController extends Controller {
 
 		model.put("includeMessage", true);
 		model.put("message", message);
-		
+		getCommonDetails(model, request);
 	}
 
 	private void addTAs(SemesterConfiguration semesterConfiguration, String[] selectedTAs) {
@@ -146,6 +150,8 @@ public class SemesterController extends Controller {
 		model.put("pageTitle", PAGE_TITLE);
 		model.put("includeHeader", true);
 		model.put("user", ((User)request.session().attribute(SESSION_USER)));
+		Date date = new Date();
+		model.put("currentdate", DATE_FORMAT.format(date));
 		model.put("dateFormat", DATE_FORMAT);
 		model.put("request", request);
 	}

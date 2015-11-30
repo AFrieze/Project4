@@ -32,7 +32,7 @@
                         </span><span class="glyphicon glyphicon-bar"></span></a>
                     <!-- Logo -->
                     <div id="logo">
-                        <a href="home.html">
+                        <a href="/admin/home">
                             <img src="/images/gtlogo.png" height="30px" alt="Admin Portal"></a>
                         <div class="sublogo">
                             Admin Portal</div>
@@ -43,7 +43,7 @@
                 <!-- /nav-collapse -->
                 <div>
                     <ul class="nav navbar-nav navbar-right navbar-collapse collapse top-2">
-                        <li class="active"><a href="#">Home</a> </li>
+                        <li class="active"><a href="/admin/home">Home</a> </li>
                     </ul>
                 </div>
                 <!-- /nav-collapse -->
@@ -64,8 +64,8 @@
                 <div class="col-md-12">
                     <div class="blog margin-bottom-30">
                         <ul class="list-unstyled list-inline blog-info">
-                            <li><i class="glyphicon glyphicon-calendar"></i>CurrentDateTime</li>
-                            <li><i class="glyphicon glyphicon-pencil"></i>Loggedin user</li>
+                            <li><i class="glyphicon glyphicon-calendar"></i>${currentdate}</li>
+                            <li><i class="glyphicon glyphicon-pencil"></i>${user.getFirstName()} ${user.getLastName()}</li>
                         </ul>
                     </div>
                 </div>

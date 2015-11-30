@@ -1,262 +1,457 @@
-2015-11-30 23:10:45,922 - Initializing Velocity, Calling init()...
-2015-11-30 23:10:45,922 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-11-30 23:10:45,922 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-11-30 23:10:45,922 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-11-30 23:10:45,922 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-11-30 23:10:45,922 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:10:45,922 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:10:45,928 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:45,946 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-11-30 23:10:45,948 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-11-30 23:10:45,950 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-11-30 23:10:45,952 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-11-30 23:10:45,953 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-11-30 23:10:45,953 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-11-30 23:10:45,955 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-11-30 23:10:45,957 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-11-30 23:10:45,958 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-11-30 23:10:45,960 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-11-30 23:10:46,021 - Created '20' parsers.
-2015-11-30 23:10:46,031 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-11-30 23:10:46,042 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2015-11-30 23:10:46,042 - Velocimacro : Default library not found.
-2015-11-30 23:10:46,042 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-11-30 23:10:46,042 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-11-30 23:10:46,042 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-11-30 23:10:46,042 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-11-30 23:10:46,085 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:46,140 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:49,944 - Log4JLogChute initialized using file 'velocity.log'
-2015-11-30 23:10:49,944 - Initializing Velocity, Calling init()...
-2015-11-30 23:10:49,944 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-11-30 23:10:49,944 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-11-30 23:10:49,944 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-11-30 23:10:49,944 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-11-30 23:10:49,945 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:10:49,945 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:10:49,945 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:49,945 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-11-30 23:10:49,945 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-11-30 23:10:49,946 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-11-30 23:10:49,946 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-11-30 23:10:49,946 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-11-30 23:10:49,946 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-11-30 23:10:49,946 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-11-30 23:10:49,946 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-11-30 23:10:49,946 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-11-30 23:10:49,946 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-11-30 23:10:49,947 - Created '20' parsers.
-2015-11-30 23:10:49,947 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-11-30 23:10:49,948 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2015-11-30 23:10:49,948 - Velocimacro : Default library not found.
-2015-11-30 23:10:49,948 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-11-30 23:10:49,948 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-11-30 23:10:49,948 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-11-30 23:10:49,948 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-11-30 23:10:49,950 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:49,951 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:49,957 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:50,022 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:50,024 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:50,442 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:50,443 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:50,455 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:50,456 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:51,493 - Log4JLogChute initialized using file 'velocity.log'
-2015-11-30 23:10:51,493 - Initializing Velocity, Calling init()...
-2015-11-30 23:10:51,493 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-11-30 23:10:51,493 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-11-30 23:10:51,493 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-11-30 23:10:51,493 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-11-30 23:10:51,493 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:10:51,493 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:10:51,493 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:51,494 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-11-30 23:10:51,494 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-11-30 23:10:51,494 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-11-30 23:10:51,494 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-11-30 23:10:51,494 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-11-30 23:10:51,494 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-11-30 23:10:51,494 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-11-30 23:10:51,494 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-11-30 23:10:51,494 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-11-30 23:10:51,494 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-11-30 23:10:51,495 - Created '20' parsers.
-2015-11-30 23:10:51,495 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-11-30 23:10:51,496 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2015-11-30 23:10:51,496 - Velocimacro : Default library not found.
-2015-11-30 23:10:51,496 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-11-30 23:10:51,496 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-11-30 23:10:51,496 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-11-30 23:10:51,496 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-11-30 23:10:51,499 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:51,500 - ResourceManager : found templates/header.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:51,500 - Null reference [template 'templates/header.vtl', line 13, column 53] : $user.getFirstName() cannot be resolved.
-2015-11-30 23:10:51,500 - Null reference [template 'templates/header.vtl', line 13, column 74] : $user.getLastName() cannot be resolved.
-2015-11-30 23:10:51,501 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:52,075 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:52,076 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:52,101 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:52,102 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:52,516 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:52,517 - ResourceManager : found templates/header.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:52,517 - Null reference [template 'templates/header.vtl', line 13, column 53] : $user.getFirstName() cannot be resolved.
-2015-11-30 23:10:52,517 - Null reference [template 'templates/header.vtl', line 13, column 74] : $user.getLastName() cannot be resolved.
-2015-11-30 23:10:52,518 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,427 - Log4JLogChute initialized using file 'velocity.log'
-2015-11-30 23:13:04,428 - Initializing Velocity, Calling init()...
-2015-11-30 23:13:04,428 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-11-30 23:13:04,428 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-11-30 23:13:04,428 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-11-30 23:13:04,428 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-11-30 23:13:04,429 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:13:04,429 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:13:04,429 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,429 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-11-30 23:13:04,433 - Created '20' parsers.
-2015-11-30 23:13:04,433 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-11-30 23:13:04,434 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2015-11-30 23:13:04,434 - Velocimacro : Default library not found.
-2015-11-30 23:13:04,434 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-11-30 23:13:04,434 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-11-30 23:13:04,434 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-11-30 23:13:04,435 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-11-30 23:13:04,436 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,437 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,463 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,464 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,122 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,122 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,899 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,900 - ResourceManager : found templates/header.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,900 - Null reference [template 'templates/header.vtl', line 13, column 53] : $user.getFirstName() cannot be resolved.
-2015-11-30 23:13:10,900 - Null reference [template 'templates/header.vtl', line 13, column 74] : $user.getLastName() cannot be resolved.
-2015-11-30 23:13:10,901 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-ates/header.vtl', line 13, column 53] : $user.getFirstName() cannot be resolved.
-2015-11-30 23:10:52,517 - Null reference [template 'templates/header.vtl', line 13, column 74] : $user.getLastName() cannot be resolved.
-2015-11-30 23:10:52,517 - Null reference [template 'templates/header.vtl', line 13, column 74] : $user.getLastName() cannot be resolved.
-2015-11-30 23:10:52,518 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:10:52,518 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,427 - Log4JLogChute initialized using file 'velocity.log'
-2015-11-30 23:13:04,427 - Log4JLogChute initialized using file 'velocity.log'
-2015-11-30 23:13:04,427 - Log4JLogChute initialized using file 'velocity.log'
-2015-11-30 23:13:04,428 - Initializing Velocity, Calling init()...
-2015-11-30 23:13:04,428 - Initializing Velocity, Calling init()...
-2015-11-30 23:13:04,428 - Initializing Velocity, Calling init()...
-2015-11-30 23:13:04,428 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-11-30 23:13:04,428 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-11-30 23:13:04,428 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-11-30 23:13:04,428 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-11-30 23:13:04,428 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-11-30 23:13:04,428 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-11-30 23:13:04,428 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-11-30 23:13:04,428 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-11-30 23:13:04,428 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-11-30 23:13:04,428 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-11-30 23:13:04,428 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-11-30 23:13:04,428 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-11-30 23:13:04,429 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:13:04,429 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:13:04,429 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:13:04,429 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:13:04,429 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:13:04,429 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-11-30 23:13:04,429 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,429 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,429 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,429 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-11-30 23:13:04,429 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-11-30 23:13:04,429 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-11-30 23:13:04,430 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-11-30 23:13:04,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-11-30 23:13:04,433 - Created '20' parsers.
-2015-11-30 23:13:04,433 - Created '20' parsers.
-2015-11-30 23:13:04,433 - Created '20' parsers.
-2015-11-30 23:13:04,433 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-11-30 23:13:04,433 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-11-30 23:13:04,433 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-11-30 23:13:04,434 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2015-11-30 23:13:04,434 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2015-11-30 23:13:04,434 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2015-11-30 23:13:04,434 - Velocimacro : Default library not found.
-2015-11-30 23:13:04,434 - Velocimacro : Default library not found.
-2015-11-30 23:13:04,434 - Velocimacro : Default library not found.
-2015-11-30 23:13:04,434 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-11-30 23:13:04,434 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-11-30 23:13:04,434 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-11-30 23:13:04,434 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-11-30 23:13:04,434 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-11-30 23:13:04,434 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-11-30 23:13:04,434 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-11-30 23:13:04,434 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-11-30 23:13:04,434 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-11-30 23:13:04,435 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-11-30 23:13:04,435 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-11-30 23:13:04,435 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-11-30 23:13:04,436 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,436 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,436 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,437 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,437 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,437 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,463 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,463 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,463 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,464 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,464 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:04,464 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,122 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,122 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,122 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,122 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,122 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,122 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,899 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,899 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,899 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,900 - ResourceManager : found templates/header.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,900 - ResourceManager : found templates/header.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,900 - ResourceManager : found templates/header.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,900 - Null reference [template 'templates/header.vtl', line 13, column 53] : $user.getFirstName() cannot be resolved.
-2015-11-30 23:13:10,900 - Null reference [template 'templates/header.vtl', line 13, column 53] : $user.getFirstName() cannot be resolved.
-2015-11-30 23:13:10,900 - Null reference [template 'templates/header.vtl', line 13, column 53] : $user.getFirstName() cannot be resolved.
-2015-11-30 23:13:10,900 - Null reference [template 'templates/header.vtl', line 13, column 74] : $user.getLastName() cannot be resolved.
-2015-11-30 23:13:10,900 - Null reference [template 'templates/header.vtl', line 13, column 74] : $user.getLastName() cannot be resolved.
-2015-11-30 23:13:10,900 - Null reference [template 'templates/header.vtl', line 13, column 74] : $user.getLastName() cannot be resolved.
-2015-11-30 23:13:10,901 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,901 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2015-11-30 23:13:10,901 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:20,183 - Initializing Velocity, Calling init()...
+2015-12-01 00:05:20,183 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-12-01 00:05:20,183 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-12-01 00:05:20,183 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-12-01 00:05:20,183 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-12-01 00:05:20,183 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:05:20,183 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:05:20,189 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:20,207 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-12-01 00:05:20,209 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-12-01 00:05:20,210 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-12-01 00:05:20,211 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-12-01 00:05:20,212 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-12-01 00:05:20,212 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-12-01 00:05:20,213 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-12-01 00:05:20,214 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-12-01 00:05:20,215 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-12-01 00:05:20,216 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-12-01 00:05:20,254 - Created '20' parsers.
+2015-12-01 00:05:20,261 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-12-01 00:05:20,261 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-12-01 00:05:20,261 - Velocimacro : Default library not found.
+2015-12-01 00:05:20,261 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-12-01 00:05:20,261 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-12-01 00:05:20,261 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-12-01 00:05:20,261 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-12-01 00:05:20,283 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:20,286 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:05:20,286 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:05:23,871 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:23,871 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:05:23,871 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:05:24,396 - Log4JLogChute initialized using file 'velocity.log'
+2015-12-01 00:05:24,396 - Initializing Velocity, Calling init()...
+2015-12-01 00:05:24,396 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-12-01 00:05:24,396 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-12-01 00:05:24,397 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-12-01 00:05:24,397 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-12-01 00:05:24,397 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:05:24,397 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:05:24,397 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:24,397 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-12-01 00:05:24,398 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-12-01 00:05:24,398 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-12-01 00:05:24,398 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-12-01 00:05:24,398 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-12-01 00:05:24,398 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-12-01 00:05:24,398 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-12-01 00:05:24,399 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-12-01 00:05:24,399 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-12-01 00:05:24,399 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-12-01 00:05:24,406 - Created '20' parsers.
+2015-12-01 00:05:24,406 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-12-01 00:05:24,407 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-12-01 00:05:24,407 - Velocimacro : Default library not found.
+2015-12-01 00:05:24,407 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-12-01 00:05:24,407 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-12-01 00:05:24,408 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-12-01 00:05:24,411 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-12-01 00:05:24,419 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:24,421 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:24,438 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:24,440 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:24,490 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:24,494 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:25,415 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:25,415 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:05:25,415 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:05:59,017 - Log4JLogChute initialized using file 'velocity.log'
+2015-12-01 00:05:59,017 - Initializing Velocity, Calling init()...
+2015-12-01 00:05:59,017 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-12-01 00:05:59,017 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-12-01 00:05:59,017 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-12-01 00:05:59,018 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-12-01 00:05:59,018 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:05:59,018 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:05:59,018 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:59,018 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-12-01 00:05:59,019 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-12-01 00:05:59,019 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-12-01 00:05:59,020 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-12-01 00:05:59,020 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-12-01 00:05:59,020 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-12-01 00:05:59,020 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-12-01 00:05:59,020 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-12-01 00:05:59,020 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-12-01 00:05:59,020 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-12-01 00:05:59,021 - Created '20' parsers.
+2015-12-01 00:05:59,022 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-12-01 00:05:59,022 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-12-01 00:05:59,022 - Velocimacro : Default library not found.
+2015-12-01 00:05:59,022 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-12-01 00:05:59,022 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-12-01 00:05:59,022 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-12-01 00:05:59,022 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-12-01 00:05:59,047 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:59,047 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:05:59,048 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:05:59,279 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:59,281 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:59,293 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:59,294 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:59,317 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:05:59,318 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:06:02,301 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:06:02,301 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:06:02,301 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:06:10,387 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:06:10,388 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:06:10,388 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:06:10,556 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:06:10,557 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:06:10,562 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:06:10,563 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:06:10,573 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:06:10,574 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:12,421 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:12,422 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:12,422 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:13,483 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:13,484 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:13,490 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:13,491 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:13,515 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:13,516 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:19,511 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:19,512 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:19,512 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:19,963 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:19,964 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:19,987 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:19,988 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:20,017 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:20,018 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:20,421 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:20,421 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:20,422 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:22,815 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:22,815 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:22,815 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:22,993 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:22,994 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:23,000 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:23,000 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:23,012 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:23,014 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:23,297 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:23,298 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:23,298 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:26,411 - Log4JLogChute initialized using file 'velocity.log'
+2015-12-01 00:07:26,411 - Initializing Velocity, Calling init()...
+2015-12-01 00:07:26,411 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-12-01 00:07:26,411 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-12-01 00:07:26,411 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-12-01 00:07:26,411 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-12-01 00:07:26,412 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:07:26,412 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:07:26,412 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,412 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-12-01 00:07:26,415 - Created '20' parsers.
+2015-12-01 00:07:26,415 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-12-01 00:07:26,416 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-12-01 00:07:26,416 - Velocimacro : Default library not found.
+2015-12-01 00:07:26,416 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-12-01 00:07:26,416 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-12-01 00:07:26,416 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-12-01 00:07:26,416 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-12-01 00:07:26,422 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,423 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:26,423 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:26,747 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,749 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,753 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,754 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,767 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,768 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:28,675 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:28,676 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:28,676 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:32,302 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:32,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:32,503 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,505 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,510 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,511 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,529 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,530 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:38,330 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:38,330 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:38,330 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:39,411 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,411 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:39,411 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:39,594 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,594 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,597 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,598 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,612 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,613 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:41,364 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:41,364 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:41,364 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:43,255 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,255 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:43,255 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:43,404 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,404 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,409 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,409 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,419 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,420 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:46,303 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:46,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:46,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:23,014 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:23,297 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:23,297 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:23,298 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:23,298 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:23,298 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:23,298 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:26,411 - Log4JLogChute initialized using file 'velocity.log'
+2015-12-01 00:07:26,411 - Log4JLogChute initialized using file 'velocity.log'
+2015-12-01 00:07:26,411 - Log4JLogChute initialized using file 'velocity.log'
+2015-12-01 00:07:26,411 - Initializing Velocity, Calling init()...
+2015-12-01 00:07:26,411 - Initializing Velocity, Calling init()...
+2015-12-01 00:07:26,411 - Initializing Velocity, Calling init()...
+2015-12-01 00:07:26,411 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-12-01 00:07:26,411 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-12-01 00:07:26,411 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-12-01 00:07:26,411 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-12-01 00:07:26,411 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-12-01 00:07:26,411 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-12-01 00:07:26,411 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-12-01 00:07:26,411 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-12-01 00:07:26,411 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-12-01 00:07:26,411 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-12-01 00:07:26,411 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-12-01 00:07:26,411 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-12-01 00:07:26,412 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:07:26,412 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:07:26,412 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:07:26,412 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:07:26,412 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:07:26,412 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-12-01 00:07:26,412 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,412 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,412 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,412 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-12-01 00:07:26,412 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-12-01 00:07:26,412 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-12-01 00:07:26,413 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-12-01 00:07:26,414 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-12-01 00:07:26,415 - Created '20' parsers.
+2015-12-01 00:07:26,415 - Created '20' parsers.
+2015-12-01 00:07:26,415 - Created '20' parsers.
+2015-12-01 00:07:26,415 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-12-01 00:07:26,415 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-12-01 00:07:26,415 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-12-01 00:07:26,416 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-12-01 00:07:26,416 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-12-01 00:07:26,416 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-12-01 00:07:26,416 - Velocimacro : Default library not found.
+2015-12-01 00:07:26,416 - Velocimacro : Default library not found.
+2015-12-01 00:07:26,416 - Velocimacro : Default library not found.
+2015-12-01 00:07:26,416 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-12-01 00:07:26,416 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-12-01 00:07:26,416 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-12-01 00:07:26,416 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-12-01 00:07:26,416 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-12-01 00:07:26,416 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-12-01 00:07:26,416 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-12-01 00:07:26,416 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-12-01 00:07:26,416 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-12-01 00:07:26,416 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-12-01 00:07:26,416 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-12-01 00:07:26,416 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-12-01 00:07:26,422 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,422 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,422 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,423 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:26,423 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:26,423 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:26,423 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:26,423 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:26,423 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:26,747 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,747 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,747 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,749 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,749 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,749 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,753 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,753 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,753 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,754 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,754 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,754 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,767 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,767 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,767 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,768 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,768 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:26,768 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:28,675 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:28,675 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:28,675 - ResourceManager : found templates/admin/SemesterConfiguration.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:28,676 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:28,676 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:28,676 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:28,676 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:28,676 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:28,676 - Null reference [template 'templates/admin/SemesterConfiguration.vtl', line 74, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:32,302 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,302 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,302 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:32,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:32,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:32,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:32,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:32,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:32,503 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,503 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,503 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,505 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,505 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,505 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,510 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,510 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,510 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,511 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,511 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,511 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,529 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,529 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,529 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,530 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,530 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:32,530 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:38,330 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:38,330 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:38,330 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:38,330 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:38,330 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:38,330 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:38,330 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:38,330 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:38,330 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:39,411 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,411 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,411 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,411 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:39,411 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:39,411 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:39,411 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:39,411 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:39,411 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:39,594 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,594 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,594 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,594 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,594 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,594 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,597 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,597 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,597 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,598 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,598 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,598 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,612 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,612 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,612 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,613 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,613 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:39,613 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:41,364 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:41,364 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:41,364 - ResourceManager : found templates/admin/home.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:41,364 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:41,364 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:41,364 - Null reference [template 'templates/admin/home.vtl', line 68, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:41,364 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:41,364 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:41,364 - Null reference [template 'templates/admin/home.vtl', line 68, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:43,255 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,255 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,255 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,255 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:43,255 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:43,255 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:43,255 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:43,255 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:43,255 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:43,404 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,404 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,404 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,404 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,404 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,404 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,409 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,409 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,409 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,409 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,409 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,409 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,419 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,419 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,419 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,420 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,420 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:43,420 - ResourceManager : found templates/login.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:46,303 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:46,303 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:46,303 - ResourceManager : found templates/admin/HistoryCourseDemand.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-12-01 00:07:46,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:46,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:46,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 75] : ${user.getFirstName()} cannot be resolved.
+2015-12-01 00:07:46,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:46,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
+2015-12-01 00:07:46,303 - Null reference [template 'templates/admin/HistoryCourseDemand.vtl', line 71, column 98] : ${user.getLastName()} cannot be resolved.
