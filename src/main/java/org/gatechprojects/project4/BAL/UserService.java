@@ -148,7 +148,7 @@ public class UserService {
 			if (ca.getCourse() != null) {
 				Professor assignedProfessor = null;
 				for (OutputOfferedCourse assignment : ca.getOptimizerCalculation().getOutputOfferedCourses()) {
-					if (assignment.getCourse().getId() == ca.getCourse().getId()
+					if (assignment.getCourse().getCourseId() == ca.getCourse().getCourseId()
 							&& assignment.getAssignedProfessor() != null) {
 						assignedProfessor = new Professor(assignment.getAssignedProfessor());
 					}
@@ -178,7 +178,7 @@ public class UserService {
 				.getStudentPreferencesForCalculation(studentID, optimizerCalculationID);
 		List<StudentCoursePreferenceDetails> details = new ArrayList<StudentCoursePreferenceDetails>();
 		for (InputStudentCoursePreference pref : inputPreferences) {
-			int demand = blackboard.getOptimizerBoard().getCourseDemand(pref.getCourse().getId(),
+			int demand = blackboard.getOptimizerBoard().getCourseDemand(pref.getCourse().getCourseId(),
 					optimizerCalculationID);
 			details.add(new StudentCoursePreferenceDetails(pref.getCourse(), demand, pref.getCoursePriority()));
 		}

@@ -1,7 +1,5 @@
 package org.gatechprojects.project4.Presentation.controllers.admin;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,6 +14,7 @@ import org.gatechprojects.project4.BAL.SemesterSetupService;
 import org.gatechprojects.project4.BAL.StaffService;
 import org.gatechprojects.project4.BAL.UserService;
 import org.gatechprojects.project4.Presentation.controllers.Controller;
+import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.User;
 
 import spark.ModelAndView;
@@ -96,7 +95,6 @@ public class SemesterController extends Controller {
 
 		model.put("includeMessage", true);
 		model.put("message", message);
-		getCommonDetails(model, request);
 	}
 
 	private void addTAs(SemesterConfiguration semesterConfiguration, String[] selectedTAs) {
@@ -131,12 +129,11 @@ public class SemesterController extends Controller {
 	private void addCourses(SemesterConfiguration semesterConfiguration, String[] selectedCourses) {
 
 		SemesterSetupService courseService = new SemesterSetupService();
-		//String[] selectCoursesArrayStr = selectCourses.split(",");
 		List<ConfiguredCourse> courses = new ArrayList<ConfiguredCourse>();
 		
 		for (int i = 0; i < selectedCourses.length; i++) {
 		    int courseId = Integer.parseInt(selectedCourses[i]);
-		    ConfiguredCourse configuredCourse = new ConfiguredCourse(courseService.getCourse(courseId));
+		    ConfiguredCourse configuredCourse = new ConfiguredCourse(courseService.getCourse(courseId),true);
 		    courses.add(configuredCourse);
 		}
 		
@@ -162,19 +159,42 @@ public class SemesterController extends Controller {
 		model.put("TeacherAssistants", staffSetupService.getAvailableTeacherAssistants());
 		model.put("Professors", staffSetupService.getAvailableProfessors());
 		model.put("Courses", semesterSetupService.getAvailableCourses());
-		//model.put("Competencies", staffSetupService.getAvailableProfessorCompetencies(1));
 	}
 
 
 	private void getSemesterConfiguration(HashMap<String, Object> model, String semesterId) {
 		SemesterConfiguration semesterConfiguration = semesterSetupService.getSemesterConfiguration(Integer.parseInt(semesterId),true);
-		model.put("TeacherAssistants", semesterConfiguration.getTeacherAssistants());
-		model.put("Professors", semesterConfiguration.getProfessors());
-		model.put("Courses", semesterConfiguration.getOfferedCourses());
-		model.put("Semesters", semesterSetupService.getAvailableSemesters());
 		
-		//model.put("Competencies", staffSetupService.getAvailableProfessorCompetencies(1));
-		//model.put("SelectedSemester", semesterSetupService.getSemester(Integer.parseInt(semesterId)));
+		List<TeacherAssistant> allTAs = staffSetupService.getAvailableTeacherAssistants();
+		List<TeacherAssistant> assignedTAs = semesterConfiguration.getTeacherAssistants();
+		for (TeacherAssistant ta : allTAs) {
+		    if(assignedTAs.contains(ta))
+		    {
+		    	ta.setAssigned(true);
+		    }
+		}
+
+		List<Professor> allProfessors = staffSetupService.getAvailableProfessors();
+		List<Professor> assignedProfessors = semesterConfiguration.getProfessors();
+		for (Professor prof : allProfessors) {
+		    if(assignedProfessors.contains(prof))
+		    {
+		    	prof.setAssigned(true);
+		    }
+		}
+		
+		List<Course> allCourses = semesterSetupService.getAvailableCourses();
+		List<ConfiguredCourse> assignedCourses = semesterConfiguration.getOfferedCourses();
+		for (Course course : allCourses) {
+		    if(!assignedCourses.contains(course))
+		    {
+		    	assignedCourses.add(new ConfiguredCourse(course,false));
+		    }
+		}
+		model.put("TeacherAssistants", allTAs);
+		model.put("Professors", allProfessors);
+		model.put("Courses", assignedCourses);
+		model.put("Semesters", semesterSetupService.getAvailableSemesters());
 		
 		model.put("SelectedSemester", semesterId);
 	}

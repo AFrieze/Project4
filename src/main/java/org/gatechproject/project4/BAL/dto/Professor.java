@@ -10,7 +10,8 @@ import org.gatechprojects.project4.SharedDataModules.User;
 public class Professor extends Person {
 
 	private List<Course> courseCompetencies = new ArrayList<Course>();
-
+	private boolean assigned = false;
+	
 	public Professor() {
 	}
 
@@ -33,5 +34,13 @@ public class Professor extends Person {
 
 	public void setCourseCompetencies(List<Course> courseCompetencies) {
 		this.courseCompetencies = courseCompetencies;
+	}
+
+	public boolean isAssigned() {
+		return assigned;
+	}
+
+	public void setAssigned(boolean isAssigned) {
+		this.assigned = isAssigned;
 	}
 }

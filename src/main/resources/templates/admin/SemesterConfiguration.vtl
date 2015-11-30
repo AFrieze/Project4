@@ -103,10 +103,17 @@
                             <label>TAs</label>
                             <ul id="TAs" class="checkbos">
                                 #foreach($entity in $TeacherAssistants)
-	                            	<li>
-	                            		<input type="checkbox" id="${entity.getUserId()}"  name="tas" value="${entity.getUserId()}" >
-	                            		<label for="cb1">${entity.getFirstName()} ${entity.getLastName()}</label>
-	                            	</li> 
+	                            	#if("${entity.isAssigned()}")
+	                            		<li>
+		                            		<input type="checkbox" checked="checked" id="${entity.getUserId()}"  name="tas" value="${entity.getUserId()}" >
+		                            		<label for="cb1">${entity.getFirstName()} ${entity.getLastName()}</label>
+		                            	</li>
+	                        		#else
+	                        			<li>
+		                            		<input type="checkbox" id="${entity.getUserId()}"  name="tas" value="${entity.getUserId()}" >
+		                            		<label for="cb1">${entity.getFirstName()} ${entity.getLastName()}</label>
+		                            	</li>
+	                            	#end
 	                            #end
                             </ul>
                         </fieldset>
@@ -116,10 +123,17 @@
                             <label>Professors</label>
                             <ul id="professors" class="checkbos">
                                 #foreach($entity in $Professors)
-	                            	<li>
-	                            		<input type="checkbox" id="${entity.getUserId()}"  name="professors" value="${entity.getUserId()}" >
-	                            		<label for="cb1">${entity.getFirstName()} ${entity.getLastName()}</label>
-	                            	</li> 
+	                            	#if("${entity.isAssigned()}")
+		                            	<li>
+		                            		<input type="checkbox" checked="checked" id="${entity.getUserId()}"  name="professors" value="${entity.getUserId()}" >
+		                            		<label for="cb1">${entity.getFirstName()} ${entity.getLastName()}</label>
+	                            		</li>
+	                        		#else
+	                        			<li>
+		                            		<input type="checkbox" id="${entity.getUserId()}"  name="professors" value="${entity.getUserId()}" >
+		                            		<label for="cb1">${entity.getFirstName()} ${entity.getLastName()}</label>
+	                            		</li>
+	                            	#end 
 	                            #end
                             </ul>
                         </fieldset>
@@ -129,10 +143,18 @@
                             <label>Courses</label>
                             <ul id="courses" class="checkbos">
                                 #foreach($entity in $Courses)
-	                            	<li style="width:430px" >
-	                            		<input type="checkbox" id="${entity.getId()}"  name="courses" value="${entity.getId()}" />
-	                            		<label for="cb1">${entity.getName()}</label>
-	                            	</li> 
+	                            	#if("${entity.isAssigned()}" == true)
+		                            	<li style="width:430px" >
+											<input type="checkbox" checked="checked" id="${entity.getCourseId()}"  name="courses" value="${entity.getCourseId()}" />
+											<label for="cb1">${entity.getName()}</label>
+										</li> 
+	                        		#else
+		                            	<li style="width:430px" >
+											<input type="checkbox" id="${entity.getCourseId()}"  name="courses" value="${entity.getCourseId()}" />
+											<label for="cb1">${entity.getName()}</label>
+										</li> 
+	                            	#end
+	                            	${entity.getMaxCourseSize()}
 	                            #end
                             </ul>
                         </fieldset>

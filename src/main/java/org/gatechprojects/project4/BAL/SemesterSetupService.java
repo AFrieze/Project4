@@ -235,7 +235,7 @@ public class SemesterSetupService {
 		List<CourseSemester> semesterCourses = blackboard.getCatalogBoard().getSemesterCourses(semesterId, isShadow);
 		List<ConfiguredCourse> configuredCourses = new ArrayList<>();
 		for (CourseSemester cs : semesterCourses) {
-			configuredCourses.add(new ConfiguredCourse(cs));
+			configuredCourses.add(new ConfiguredCourse(cs,true));
 		}
 		semesterConfiguration.setOfferedCourses(configuredCourses);
 		return semesterConfiguration;

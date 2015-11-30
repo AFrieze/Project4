@@ -8,22 +8,30 @@ public class ConfiguredCourse {
 	private int maxCourseSize;
 	private Integer assignedProfessorId;
 	private String courseName;
-
+	private boolean assigned = false;
+	
 	public ConfiguredCourse() {
 
 	}
 
 	public ConfiguredCourse(Course course) {
-		this.courseId = course.getId();
+		this.courseId = course.getCourseId();
 		this.courseName = course.getName();
 	}
 
-	public ConfiguredCourse(CourseSemester cs) {
+	public ConfiguredCourse(Course course, boolean isAssigned) {
+		this.courseId = course.getCourseId();
+		this.courseName = course.getName();
+		this.assigned = isAssigned;
+	}
+	
+	public ConfiguredCourse(CourseSemester cs, boolean isAssigned) {
 		if(cs.getAssignedProfessor() != null)
 			this.assignedProfessorId = cs.getAssignedProfessor().getId();
-		this.courseId = cs.getCourse().getId();
+		this.courseId = cs.getCourse().getCourseId();
 		this.maxCourseSize = cs.getMaxCourseSize();
 		this.courseName = cs.getCourse().getName();
+		this.assigned = isAssigned;
 	}
 
 	public Integer getAssignedProfessorId() {
@@ -56,5 +64,13 @@ public class ConfiguredCourse {
 
 	public void setMaxCourseSize(int maxCourseSize) {
 		this.maxCourseSize = maxCourseSize;
+	}
+
+	public boolean isAssigned() {
+		return assigned;
+	}
+
+	public void setAssigned(boolean isAssigned) {
+		this.assigned = isAssigned;
 	}
 }
