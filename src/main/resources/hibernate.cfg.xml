@@ -24,7 +24,7 @@
 			jdbc:mysql://127.0.0.1/project4
 		</property>
 		<property name="hibernate.connection.username">
-			project4
+			root
 		</property>
 		<property name="hibernate.connection.password">
 			password1
