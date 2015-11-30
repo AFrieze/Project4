@@ -132,7 +132,8 @@ public class SemesterSetupService {
 	}
 	
 	public List<Course> getCurrentSemesterCourses() {
-		List<CourseSemester> currentSemesterCourses = blackboard.getCatalogBoard().getSemesterCourses(blackboard.getCatalogBoard().getMostRecentSemester().getId(), false);
+		//List<CourseSemester> currentSemesterCourses = blackboard.getCatalogBoard().getSemesterCourses(blackboard.getCatalogBoard().getMostRecentSemester().getId(), false);
+		List<CourseSemester> currentSemesterCourses = new ArrayList<CourseSemester>(); 
 		List<Course> avaliableCourses = new ArrayList<Course>();
 		for (CourseSemester courseSemesterObj : currentSemesterCourses) {
 			avaliableCourses.add(courseSemesterObj.getCourse());
@@ -148,7 +149,8 @@ public class SemesterSetupService {
 	}
 	
 	public Semester getCurrentSemester(){
-		return blackboard.getCatalogBoard().getMostRecentSemester();
+		//return blackboard.getCatalogBoard().getMostRecentSemester();
+		return null;
 	}
 	
 

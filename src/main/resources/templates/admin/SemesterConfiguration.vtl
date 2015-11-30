@@ -10,12 +10,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
-    <link rel="stylesheet" href="/resources/admin/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/admin/css/style.css">
-    <link rel="stylesheet" href="/resources/admin/css/style-menu.css"> 
-    <!-- <link rel="stylesheet" href="/css/bootstrap-responsive.min.css"> -->
-    <!-- <link rel="stylesheet" href="/css/style_responsive.css"> -->
-    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/style-menu.css"> 
+    <link rel="stylesheet" href="/styles/site.css">
+    <!-- java script -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
 <body>
     <!--=== Top ===-->
@@ -35,7 +35,8 @@
                         </span><span class="glyphicon glyphicon-bar"></span></a>
                     <!-- Logo -->
                     <div id="logo">
-                        <a href="/">Admin Portal</a>
+                        <a href="home.html">
+                            <img src="/images/gtlogo.png" height="30px" alt="Admin Portal"></a>
                         <div class="sublogo">
                             Admin Portal</div>
                     </div>
@@ -80,9 +81,13 @@
                     <label class="control-label col-md-2">
                         Semester</label>
                     <div class="col-md-6">
-                        <select name="Semester" class="form-control" onchange="this.form.submit()">
+                        <select name="Semester" id="ddSemester" class="form-control" onchange="this.form.submit()">
                             #foreach($semester in $Semesters)
-                            <option value="${semester.getId()}">${semester.getName()} ${semester.getYear()}</option>
+                            	#if("${semester.getId()}" == "${SelectedSemester}")
+                            		<option value="${semester.getId()}" selected="selected" >${semester.getName()} ${semester.getYear()}</option>
+                        		#else
+                        			<option value="${semester.getId()}">${semester.getName()} ${semester.getYear()}</option>
+                            	#end
                             #end
                         </select>
                     </div>
@@ -90,6 +95,7 @@
                 <!-- </form>
                 Right Sidebar 
                 <form method="post" action="/admin/SemesterConfiguration"> -->
+                <input type="hidden" name="selectedSemester" id="selectedSemester" value="${SelectedSemester}"/>
                 <div class="col-md-12" style="height: auto">
                     <hr class="col-md-12" />
                     <div class="blog margin-bottom-30 col-md-6">
@@ -123,8 +129,8 @@
                             <label>Courses</label>
                             <ul id="courses" class="checkbos">
                                 #foreach($entity in $Courses)
-	                            	<li>
-	                            		<input type="checkbox" id="${entity.getId()}"  name="courses" value="${entity.getId()}" >
+	                            	<li style="width:430px" >
+	                            		<input type="checkbox" id="${entity.getId()}"  name="courses" value="${entity.getId()}" />
 	                            		<label for="cb1">${entity.getName()}</label>
 	                            	</li> 
 	                            #end
@@ -134,7 +140,7 @@
                     <div class="blog margin-bottom-30 col-md-6">
                         <fieldset class="group">
                             <label>Competencies Assignments</label>
-                            <ul id="Ul2" class="checkbos">
+                            <ul id="competencies" class="checkbos">
                                 #foreach($entity in $Competencies)
 	                            	<li>
 	                            		<input type="checkbox" id="${entity.getId()}"  name="competencies" value="${entity.getId()}" >
@@ -148,9 +154,9 @@
                 <div class="col-lg-8">
                 </div>
                 <div class="col-lg-4">
-                    <input type="submit" name="button_1" value="View Preview" />
-                    <input type="submit" name="button_2" value="Run Preview" />
-                    <input type="submit" name="button_33" value="Apply" />
+                    <input type="submit" name="button" value="View Preview" />
+                    <input type="submit" name="button" value="Run Preview" />
+                    <input type="submit" name="button" value="Apply" />
                 </div>
                 </form>
             </div>
@@ -171,7 +177,12 @@
     </div>
     <!--/footer-->
     <!-- JS and jQuery -->
-    <script type="text/javascript" src="admin/js/jquery-2.0.0.min.js"></script>
-    <script type="text/javascript" src="admin/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-2.0.0.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript"  >
+        
+		
+    </script>
 </body>
 </html>

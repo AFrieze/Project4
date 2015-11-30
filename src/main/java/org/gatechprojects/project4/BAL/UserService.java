@@ -9,6 +9,7 @@ import org.gatechproject.project4.BAL.dto.Student;
 import org.gatechproject.project4.BAL.dto.StudentCoursePreferenceDetails;
 import org.gatechproject.project4.BAL.dto.StudentCourseRecommendation;
 import org.gatechproject.project4.BAL.dto.StudentSemesterPreferences;
+import org.gatechproject.project4.BAL.dto.TeacherAssistant;
 import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.SharedDataModules.InputStudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.MembershipUser;
@@ -92,6 +93,24 @@ public class UserService {
 		return student;
 	}
 
+	public TeacherAssistant getTAById(int userId) {
+		TeacherAssistant teacherAssistant = null;
+		User user = blackboard.getUserBoard().getUser(userId);
+		if (user != null && user.isTA()) {
+			teacherAssistant = new TeacherAssistant(user);
+		}
+		return teacherAssistant;
+	}
+
+	public Professor getProfessorById(int userId) {
+		Professor professor = null;
+		User user = blackboard.getUserBoard().getUser(userId);
+		if (user != null && user.isProfessor()) {
+			professor = new Professor(user);
+		}
+		return professor;
+	}
+	
 	/**
 	 * Fetches a {@link Student} based on their {@link MembershipUser#getId()
 	 * membershipId}. This is generally used to link an authenticated membership
