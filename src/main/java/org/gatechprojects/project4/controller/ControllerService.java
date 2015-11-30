@@ -12,7 +12,7 @@ import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.optimizer.OptimizerParticipant;
 
 public class ControllerService {
-	private static int CONTROLLER_INTERVAL = 5;
+	private static int CONTROLLER_INTERVAL = 10;
 	private static TimeUnit CONTROLLER_INTERVAL_TIMEUNIT = TimeUnit.SECONDS;
 
 	public static void main(String[] args) throws IOException {

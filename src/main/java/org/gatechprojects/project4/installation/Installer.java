@@ -115,6 +115,12 @@ public class Installer {
 			courseSemester.setMaxCourseSize(50);
 			courseSemester.setShadow(false);
 			blackboard.getCatalogBoard().addCourseSemester(courseSemester);
+			courseSemester = new CourseSemester();
+			courseSemester.setSemester(semester);
+			courseSemester.setCourse(course);
+			courseSemester.setMaxCourseSize(50);
+			courseSemester.setShadow(true);
+			blackboard.getCatalogBoard().addCourseSemester(courseSemester);
 		}
 		blackboard.commitTransaction();
 		blackboard.close();

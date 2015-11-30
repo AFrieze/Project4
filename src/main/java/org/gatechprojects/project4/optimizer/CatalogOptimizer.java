@@ -72,7 +72,7 @@ public class CatalogOptimizer {
 	}
 
 	private String[] populateTasAndLookup(OptimizerCalculation calculation) {
-		String[] tas = new String[calculation.getInputOfferedCourses().size()];
+		String[] tas = new String[calculation.getInputTAs().size()];
 		int i = 0;
 		for (InputTA availableTA : calculation.getInputTAs()) {
 			tas[i] = buildTAIdentifier(availableTA);

@@ -48,6 +48,8 @@ public class OptimizerParticipant implements Participant {
 	}
 
 	private OptimizerCalculation computeResults(OptimizerCalculation optimizerCalculation) {
+		CatalogOptimizer optimizer = new CatalogOptimizer();
+		optimizer.calculateSchedule(optimizerCalculation);
 		/*
 		 * Mark - the optimizerCalculation should be populated with input data
 		 * here.
@@ -143,6 +145,7 @@ public class OptimizerParticipant implements Participant {
 				coursePriority++;
 				inputStudent.getCoursePreferences().add(inputCourse);
 			}
+			calculation.getInputStudents().add(inputStudent);
 		}
 
 		return calculation;
