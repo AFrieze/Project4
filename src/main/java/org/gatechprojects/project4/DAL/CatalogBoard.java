@@ -81,6 +81,10 @@ public class CatalogBoard extends Board {
 		return null;
 	}
 
+	public Semester getMostRecentSemester() {
+		return (Semester) getSession().createCriteria(Semester.class).list().get(0);
+	}
+
 	public UserAvailability getMostRecentUserAvailability(int semesterId, boolean isShadow) {
 		List<UserAvailability> availabilities = getSession().createCriteria(UserAvailability.class)
 				.add(Restrictions.eq("semester.id", semesterId)).add(Restrictions.eq("isShadow", isShadow))
