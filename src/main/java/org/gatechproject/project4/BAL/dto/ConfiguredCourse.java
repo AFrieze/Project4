@@ -19,7 +19,8 @@ public class ConfiguredCourse {
 	}
 
 	public ConfiguredCourse(CourseSemester cs) {
-		this.assignedProfessorId = cs.getAssignedProfessor().getId();
+		if(cs.getAssignedProfessor() != null)
+			this.assignedProfessorId = cs.getAssignedProfessor().getId();
 		this.courseId = cs.getCourse().getId();
 		this.maxCourseSize = cs.getMaxCourseSize();
 		this.courseName = cs.getCourse().getName();
@@ -33,7 +34,7 @@ public class ConfiguredCourse {
 		return courseId;
 	}
 
-	public String getCourseName() {
+	public String getName() {
 		return courseName;
 	}
 
