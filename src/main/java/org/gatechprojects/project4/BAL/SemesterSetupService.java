@@ -130,6 +130,15 @@ public class SemesterSetupService {
 	public List<Course> getAvailableCourses() {
 		return blackboard.getCatalogBoard().getAvailableCourses();
 	}
+	
+	public List<Course> getCurrentSemesterCourses() {
+		List<CourseSemester> currentSemesterCourses = blackboard.getCatalogBoard().getSemesterCourses(blackboard.getCatalogBoard().getMostRecentSemester().getId(), false);
+		List<Course> avaliableCourses = new ArrayList<Course>();
+		for (CourseSemester courseSemesterObj : currentSemesterCourses) {
+			avaliableCourses.add(courseSemesterObj.getCourse());
+		}
+		return avaliableCourses;
+	}
 
 	/**
 	 * @return the {@link Semester semesters} available in the system
@@ -137,6 +146,11 @@ public class SemesterSetupService {
 	public List<Semester> getAvailableSemesters() {
 		return blackboard.getCatalogBoard().getSemesters();
 	}
+	
+	public Semester getCurrentSemester(){
+		return blackboard.getCatalogBoard().getMostRecentSemester();
+	}
+	
 
 	public Course getCourse(int courseId) {
 		return blackboard.getCatalogBoard().getCourse(courseId);
@@ -153,6 +167,14 @@ public class SemesterSetupService {
 	 */
 	public int getOptimizerCalculationId(boolean isShadow, Calendar time) {
 		return blackboard.getOptimizerBoard().getOptimizerCalculationId(time, isShadow);
+	}
+	
+	public OptimizerCalculation getOptimizerCalculation(int optimizerCalculationId) {
+		return blackboard.getOptimizerBoard().getOptimizerCalculation(optimizerCalculationId);
+	}
+	
+	public List<OptimizerCalculation> getLastOptimizerCalculations(int limit){
+		return blackboard.getOptimizerBoard().getLastOptimizerCalculations(limit);
 	}
 
 	/**
