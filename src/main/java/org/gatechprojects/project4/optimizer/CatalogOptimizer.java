@@ -15,6 +15,9 @@ import org.gatechprojects.project4.SharedDataModules.InputStudent;
 import org.gatechprojects.project4.SharedDataModules.InputStudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.InputTA;
 import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
+import org.gatechprojects.project4.SharedDataModules.OutputOfferedCourse;
+import org.gatechprojects.project4.SharedDataModules.OutputTACourseAssignment;
+import org.gatechprojects.project4.SharedDataModules.OutputUserCourseAssignment;
 import org.gatechprojects.project4.SharedDataModules.User;
 
 import gurobi.GRB;
@@ -589,18 +592,28 @@ public class CatalogOptimizer {
 			if (model.get(GRB.IntAttr.Status) == GRB.Status.OPTIMAL) {
 				double objectiveValue = model.get(GRB.DoubleAttr.ObjVal);
 				System.out.printf("\nStudent Preferences Met (Ojective value) = %d\n", (int) objectiveValue);
-
+				List<OutputUserCourseAssignment> outputStudents = new ArrayList<OutputUserCourseAssignment>();
+				calculation.setOutputUserCourseAssignments(outputStudents);
 				for (int j = 0; j < numCourses; j++) { // for every course...
 					if (contains(coursesOffered, j)) { // if it's offered...
 						System.out.printf("Course: [%d]" + courses[j] + "\n", j);// print
 																					// the
 																					// course
 																					// name
+						InputOfferedCourse inputCourse = courseNameToInputLookup.get(courses[j]);
+						OutputOfferedCourse outputCourse = new OutputOfferedCourse();
+						outputCourse.setCourse(inputCourse.getCourse());
+						outputCourse.setOptimizerCalculation(calculation);
+						calculation.getOutputOfferedCourses().add(outputCourse);
+
 						for (int a = 0; a < numInstructors; a++) {// and for
 																	// every
 																	// instructor...
 							if (ng_paj[a][j] == 1) {// if that instructor
 													// teaches this course...
+
+								outputCourse
+										.setAssignedProfessor(professorNameToInputLookup.get(instructors[a]).getUser());
 								System.out.printf("Instructor: " + instructors[a] + "\n");// then
 																							// print
 																							// out
@@ -609,10 +622,15 @@ public class CatalogOptimizer {
 																							// name
 							}
 						}
-
+						List<OutputTACourseAssignment> courseTAs = new ArrayList<OutputTACourseAssignment>();
 						for (int a = 0; a < numTas; a++) {// and for every TA...
 							if (ng_taj[a][j] == 1) {// if he or she is assigned
 													// to this course...
+								OutputTACourseAssignment outputTA = new OutputTACourseAssignment();
+								outputTA.setCourse(inputCourse.getCourse());
+								outputTA.setOutputOfferedCourse(outputCourse);
+								outputTA.setUser(tasNameToInputLookup.get(tas[a]).getUser());
+								courseTAs.add(outputTA);
 								System.out.printf("  TA - " + tas[a] + "\n");// then
 																				// print
 																				// out
@@ -621,11 +639,17 @@ public class CatalogOptimizer {
 																				// name
 							}
 						}
+						outputCourse.setAssignedTAs(courseTAs);
 
 						for (int i = 0; i < numStudents; i++) {// and for every
 																// student...
 							if (ng_yij[i][j] == 1) {// if he or she is assigned
 													// to this course...
+								OutputUserCourseAssignment outputStudent = new OutputUserCourseAssignment();
+								outputStudent.setCourse(inputCourse.getCourse());
+								outputStudent.setOptimizerCalculation(calculation);
+								outputStudent.setUser(studentsNameToInputLookup.get(students[i]).getUser());
+								outputStudents.add(outputStudent);
 								System.out.printf("     [%d] " + students[i] + "\n", i);// ..then
 																						// print
 																						// out
