@@ -33,6 +33,7 @@ import org.gatechprojects.project4.SharedDataModules.InputTA;
 import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
 import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.User;
+import org.gatechprojects.project4.optimizer.SemesterOptimizer;
 import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
@@ -105,7 +106,10 @@ public class IntegrationTests {
 //		userBoard.addUserCourseAssignment(4, 1, 1);		
 //		userBoard.addUserCourseAssignment(5, 1, 1);		
 
-		blackboard.commitTransaction();		
+		blackboard.commitTransaction();
+		
+		SemesterOptimizer semOpt = new SemesterOptimizer(1);
+		semOpt.notifyBlackboardChanged(false);
 	}
 	
 	@Test
@@ -114,7 +118,9 @@ public class IntegrationTests {
 		populateDatabaseForTests(blackboard);
 
 		SemesterSetupService semesterService = new SemesterSetupService();
+		UserService userService = new UserService();
 		
+		// --------------------------
 		// Get the latest ID based on the current date and time
 		int id = semesterService.getOptimizerCalculationId(false, new GregorianCalendar());
 		assertEquals(1, id);
@@ -124,11 +130,17 @@ public class IntegrationTests {
 		id = semesterService.getOptimizerCalculationId(false, new GregorianCalendar(2015,9,10,10,10,10));
 		assertEquals(2, id);
 
+		// --------------------------
 		// Get latest ID
 		id = semesterService.getOptimizerCalculationId(false, new GregorianCalendar());
 		
 		List<CourseRecommendation> recs = semesterService.getOptimizerCourseRecommendations(id);
 		assertEquals(1, recs.size());
+		
+		// --------------------------
+		// Test student opt preferences
+		List<InputStudentCoursePreference> coursePrefs = userService.getStudentOptimizerPreferences(1, 1);
+		int size = coursePrefs.size();
 	}
 	
 	@Test

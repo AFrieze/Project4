@@ -53,8 +53,8 @@ public class OptimizerBoard extends Board {
 	public List<InputStudentCoursePreference> getStudentPreferencesForCalculation(int studentID,
 			int optimizerCalculationID) {
 		return getSession().createCriteria(InputStudentCoursePreference.class)
-				.add(Restrictions.eq("inputStudent.user.id", studentID))
-				.add(Restrictions.eq("inputStudent.optimizerCalculation.id", optimizerCalculationID)).list();
+				.add(Restrictions.eq("inputStudent.id", studentID))
+				.add(Restrictions.eq("optimizerCalculation.id", optimizerCalculationID)).list();
 	}
 
 	public List<OutputUserCourseAssignment> getUserCourseAssignments(int optimizerCalculationId, boolean isShadow) {
