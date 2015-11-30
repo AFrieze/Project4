@@ -10,15 +10,59 @@
                 		<input type="text" class="form-control" />
                 	</div>
             	</div>
+            	<form class="hidden" method="POST" action="/student/solutionhistory" id="selectedDateFrom">
+					<input name="selectedDate" id="selectedDate" value=""/>
+				</form>
+        	</div>
+        	<div class="col-sm-6">
+        		<button class="btn btn-primary btn-block" id="filter">Filter</button>
         	</div>
         </div>
         <hr />
-        <h1>Semester Plan NEED BAL objects</h1>
-        <h1>System Solution NEED BAL objects</h1>
+        #if($notSolution)
+        	<h2>No solution found. Please change filter date.</h2>
+        #else
+        <div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Student Preference</h3>
+				  </div>
+				  <div class="panel-body">
+				    #foreach($course in $preferences)
+				    	${course.getCourse().getName()} (${course.getCourse().getCredits()}), Priority: ${course.getCoursePriority()}<br />
+				    #end
+				  </div>
+				</div>
+			</div>
+		</div>
+        <hr />
+        <div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    #if("$!{optimizerCalculation.getCompletionTime().getTime()}" != '')
+				    <h3 class="panel-title">System Solution (Completed: $!{dateFormat.format($optimizerCalculation.getCompletionTime().getTime())} )</h3>
+				  	#end
+				  </div>
+				  <div class="panel-body">
+				    #foreach($course in $recommndations)
+				    	${course.getCourse().getName()}, ${course.getCourse().getCredits()}, prof: ${course.getProfessor().getFirstName()} ${course.getProfessor().getLastName()}<br />
+				    #end
+				  </div>
+				</div>
+			</div>
+		</div>
+		#end
 	</div>
 </div>
  <script type="text/javascript">
     jQuery(function () {
-        jQuery('#datetimepicker').datetimepicker();
+        var datePicker = jQuery('#datetimepicker').datetimepicker();
+        jQuery('#filter').click(function(e){
+        	e.preventDefault();
+        	jQuery('#selectedDate').val(jQuery('#datetimepicker').data('DateTimePicker').date().valueOf());
+        	jQuery('#selectedDateFrom').submit();
+        });
     });
 </script>

@@ -3,12 +3,15 @@
  */
 package org.gatechprojects.project4.Presentation.controllers.students;
 
+import java.util.Calendar;
 import java.util.HashMap;
 
 import org.gatechproject.project4.BAL.dto.LoginHistoryReport;
 import org.gatechproject.project4.BAL.dto.Student;
 import org.gatechproject.project4.BAL.dto.StudentReport;
+import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
 import org.gatechprojects.project4.SharedDataModules.User;
+import org.gatechprojects.project4.BAL.SemesterSetupService;
 import org.gatechprojects.project4.Presentation.controllers.Controller;
 
 import spark.ModelAndView;
@@ -28,6 +31,9 @@ public class HomeController extends Controller {
 		Student currentStudent = new Student((User) request.session().attribute(SESSION_USER));
 		StudentReport systemReport = new StudentReport(currentStudent);
 		LoginHistoryReport loginHistory = new LoginHistoryReport(currentStudent);
+		SemesterSetupService courseService = new SemesterSetupService();
+		int currentOptimizerId = courseService.getOptimizerCalculationId(false, Calendar.getInstance() );
+		OptimizerCalculation optimizerCalculation = courseService.getOptimizerCalculation(currentOptimizerId);
 		model.put("template", "templates/student/home.vtl");
 		model.put("pageTitle", PAGE_TITLE);
 		model.put("includeHeader", true);
@@ -36,6 +42,8 @@ public class HomeController extends Controller {
 		model.put("dateFormat", DATE_FORMAT);
 		model.put("currentStudent", currentStudent);
 		model.put("systemReport", systemReport);
+		model.put("solutionList", courseService.getLastOptimizerCalculations(3));
+		model.put("optimizerCalculation", optimizerCalculation);
 		model.put("request", request);
 		return new ModelAndView(model, LAYOUT_TEMPLATE);
 	}

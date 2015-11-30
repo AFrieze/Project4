@@ -93,17 +93,6 @@ public class OptimizerBoard extends Board {
 		getSession().save(offeredCourse);
 	}
 
-	/**
-	 * Used for testing the method getOptimizerCourseRecommendations() 
-	 */
-	public void createOutputOfferedCourse(Course course, OptimizerCalculation optimizerCalculation) {
-		OutputOfferedCourse offeredCourse = new OutputOfferedCourse();
-
-		offeredCourse.setCourse(course);
-		offeredCourse.setCourseSize(50);
-		offeredCourse.setOptimizerCalculation(optimizerCalculation);
-
-		getSession().save(offeredCourse);
-	}
+	
 	
 }

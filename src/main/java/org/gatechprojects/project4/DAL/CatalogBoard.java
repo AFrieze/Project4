@@ -104,6 +104,15 @@ public class CatalogBoard extends Board {
 	public List<Semester> getSemesters() {
 		return getSession().createCriteria(Semester.class).list();
 	}
+	
+	public Semester getMostRecentSemester() {
+		List<Semester> currentSemester = getSession().createCriteria(Semester.class).addOrder(Order.desc("id")).setFirstResult(0).setMaxResults(1).list();
+		if (currentSemester.size() > 0) {
+			return currentSemester.get(0);
+		}
+		return null;
+	}
+	
 
 	private Course populateCourse(Course course, String name, int nbrCredits) {
 		course.setName(name);
