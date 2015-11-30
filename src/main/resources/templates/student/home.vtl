@@ -11,16 +11,19 @@
 			</div>
 		</div>
 		<hr />
-		<h1>Stubbed time for BAL are not render (replaced with fake data if for layout / function)</h1>
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="panel panel-primary">
 				  <div class="panel-heading"><h3 class="panel-title">Academic Standing</h3></div>
 				  <div class="panel-body">
 				    <p>
-				    	<strong>Completed courses:</strong>  $currentStudent.getCompletedCoursesCount()<br />
-				    	<strong>Current courses:</strong>  $currentStudent.getCurrentCoursesCount()<br />
-				    	<strong>Student Standing:</strong>  $currentStudent.getStudentStanding()
+				    	<strong>Completed courses:</strong>  $!{currentStudent.getCoursesTaken().size()}<br />
+				    	<ul>
+				    		#foreach($course in $currentStudent.getCoursesTaken())
+				    			<li>$!{course.getName()}</li>
+				    		#end
+				    	</ul>
+				    	<strong>Student Standing:</strong>  $!{currentStudent.getStudentStanding()}
 				    </p>
 				  </div>
 				</div>
@@ -29,9 +32,10 @@
 				<div class="panel panel-primary">
 				  <div class="panel-heading"><h3 class="panel-title">Next Semester</h3></div>
 				  <div class="panel-body">
-				  	<p><strong>Solution status</strong><br/>
-				  		$currentStudent.getSolutionStatus() <br />
-				  		$!{dateFormat.format($currentStudent.getSolutionDate())}
+				  	<p><strong>System Solution</strong><br/>
+				  		#if("$!{optimizerCalculation.getCompletionTime().getTime()}" != '')
+				     		$!{dateFormat.format($optimizerCalculation.getCompletionTime().getTime())} )
+				  		#end
 				  	</p>
 				    <a class="btn btn-primary btn-block" href="/student/nextsemestercourses">Select Courses</a>
 				  </div>
@@ -41,14 +45,12 @@
 				<div class="panel panel-primary">
 				  <div class="panel-heading"><h3 class="panel-title">History</h3></div>
 				  <div class="panel-body">
-					  <p>Last 3 solutions</p>
-					  ## FAKE DATA
-					  #set($solutions = ['Nov 10 2015, 5pm', 'Nov 10 2015, 10am', 'Nov 9 2015, 11am'])
-					  // PLACE HOLDER DATA
-					  // NEED METHOD FOR GETTING SOLUTION SET DATETIME
+					  <p>Last Solutions</p>
 					  <ul>
-					  	#foreach($solution in $solutions)
-					  		<li>$solution</li>
+					  	#foreach($solution in $solutionList)
+					  		#if("$!{solution.getCompletionTime().getTime()}" != '')
+				     		<li>$!{dateFormat.format($solution.getCompletionTime().getTime())} )</li>
+				  			#end
 					  	#end
 					  </ul>
 				    <a class="btn btn-primary btn-block" href="/student/solutionhistory">Solution History</a>
