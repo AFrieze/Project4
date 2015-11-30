@@ -38,12 +38,12 @@ import org.gatechprojects.project4.controller.Participant;
  * @author Andrew
  *
  */
-public class SemesterOptimizer implements Participant {
+public class OptimizerParticipant implements Participant {
 
 	private ExecutorService optimizerQueue = Executors.newSingleThreadExecutor();
 	private final int semesterId;
 
-	public SemesterOptimizer(int semesterId) {
+	public OptimizerParticipant(int semesterId) {
 		this.semesterId = semesterId;
 	}
 
