@@ -9,10 +9,10 @@
     <title>Admin Portal</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/admin/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/admin/css/style.css">
-    <link rel="stylesheet" href="/admin/css/style-menu.css">
-    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/style-menu.css"> 
+    <link rel="stylesheet" href="/styles/site.css">
 </head>
 <body>
     <!--=== Top ===-->
@@ -32,7 +32,7 @@
                         </span><span class="glyphicon glyphicon-bar"></span></a>
                     <!-- Logo -->
                     <div id="logo">
-                        <a href="home.html"><img src="/images/gtlogo.png" height="30px" alt="Admin Portal"></a>
+                        <a href="/admin/home"><img src="/images/gtlogo.png" height="30px" alt="Admin Portal"></a>
                         <div class="sublogo">
                             Admin Portal</div>
                     </div>
@@ -42,10 +42,10 @@
                 <!-- /nav-collapse -->
                 <div>
                     <ul class="nav navbar-nav navbar-right navbar-collapse collapse top-2">
-                        <li><a href="/">Home</a> </li>
-                        <li class="active"><a href="#">Semester Configuration</a> </li>
-                        <li><a href="#">History</a> </li>
-                        <li><a href="#">Sandbox</a> </li>
+                        <li><a href="/admin/home">Home</a> </li>
+                        <li><a href="/admin/SemesterConfiguration">Semester Configuration</a> </li>
+                        <li class="active"><a href="/admin/HistoryCourseDemand">History</a> </li>
+                        <li><a href="/admin/HistoryCourseDemand">Sandbox</a> </li>
                     </ul>
                 </div>
                 <!-- /nav-collapse -->
@@ -66,8 +66,8 @@
                 <div class="col-md-12">
                     <div class="blog margin-bottom-30">
                         <ul class="list-unstyled list-inline blog-info">
-                            <li><i class="glyphicon glyphicon-calendar"></i>CurrentDateTime</li>
-                            <li><i class="glyphicon glyphicon-pencil"></i>Loggedin user</li>
+                            <li><i class="glyphicon glyphicon-calendar"></i>${currentdate}</li>
+                            <li><i class="glyphicon glyphicon-pencil"></i>${user.getFirstName()} ${user.getLastName()}</li>
                         </ul>
                     </div>
                 </div>
@@ -130,7 +130,8 @@
     </div>
     <!--/footer-->
     <!-- JS and jQuery -->
-    <script type="text/javascript" src="admin/js/jquery-2.0.0.min.js"></script>
-    <script type="text/javascript" src="admin/js/bootstrap.min.js"></script>
+ 
+    <script type="text/javascript" src="/styles/jquery-2.0.0.min.js"></script>
+    <script type="text/javascript" src="/styles/bootstrap.min.js"></script>
 </body>
 </html>
