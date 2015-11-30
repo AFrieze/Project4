@@ -30,7 +30,7 @@ public class OptimizerBoard extends Board {
 
 	public int getCourseDemand(int courseId, int optimizerCalculationId) {
 		Query query = getSession().createQuery(
-				"select count(*) from InputStudentCoursePreference where course.id = :courseId and inputStudent.optimizerCalculation.id = :optimizerCalculationId");
+				"select count(*) from InputStudentCoursePreference where course.id = :courseId and optimizerCalculation.id = :optimizerCalculationId");
 		query.setInteger("optimizerCalculationId", optimizerCalculationId);
 		query.setInteger("courseId", courseId);
 		Integer count = (Integer) query.uniqueResult();
