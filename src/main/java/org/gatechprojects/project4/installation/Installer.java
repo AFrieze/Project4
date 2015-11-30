@@ -23,9 +23,9 @@ import org.hibernate.cfg.Configuration;
 
 public class Installer {
 
-	private static int NBR_STUDENTS = 600;
-	private static int NBR_PROFESSORS = 10;
-	private static int NBR_TAS = 50;
+	private static int NBR_STUDENTS = 100;
+	private static int NBR_PROFESSORS = 20;
+	private static int NBR_TAS = 100;
 	private static String ADMIN_USERNAME = "Administrator";
 	private static String ADMIN_PASSWORD = "password1";
 	// static final Logger LOG =
@@ -199,9 +199,9 @@ public class Installer {
 		blackboard.load();
 		blackboard.startTransaction();
 		blackboard.getCatalogBoard().createSemester("Spring", 2016);
-		blackboard.getCatalogBoard().createSemester("Fall", 2016);
-		blackboard.getCatalogBoard().createSemester("Spring", 2017);
-		blackboard.getCatalogBoard().createSemester("Fall", 2017);
+		// blackboard.getCatalogBoard().createSemester("Fall", 2016);
+		// blackboard.getCatalogBoard().createSemester("Spring", 2017);
+		// blackboard.getCatalogBoard().createSemester("Fall", 2017);
 		blackboard.commitTransaction();
 		blackboard.close();
 	}

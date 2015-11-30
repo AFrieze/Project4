@@ -578,10 +578,6 @@ public class CatalogOptimizer {
 			 */
 			// Retrieve and print our results ...
 
-			double ng_yij[][] = model.get(GRB.DoubleAttr.X, yij);
-			double ng_paj[][] = model.get(GRB.DoubleAttr.X, paj);
-			double ng_taj[][] = model.get(GRB.DoubleAttr.X, taj);
-
 			// The solution is contained in the ng_vars declared above. However,
 			// it will have to be mapped into
 			// output object(s). To illustrate/show what's there/how to get to
@@ -590,6 +586,10 @@ public class CatalogOptimizer {
 			// To make the solution uniquely named, suggest we consider using
 			// Julian date as primary key for results.
 			if (model.get(GRB.IntAttr.Status) == GRB.Status.OPTIMAL) {
+
+				double ng_yij[][] = model.get(GRB.DoubleAttr.X, yij);
+				double ng_paj[][] = model.get(GRB.DoubleAttr.X, paj);
+				double ng_taj[][] = model.get(GRB.DoubleAttr.X, taj);
 				double objectiveValue = model.get(GRB.DoubleAttr.ObjVal);
 				System.out.printf("\nStudent Preferences Met (Ojective value) = %d\n", (int) objectiveValue);
 				List<OutputUserCourseAssignment> outputStudents = new ArrayList<OutputUserCourseAssignment>();

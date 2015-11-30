@@ -166,7 +166,9 @@ public class OptimizerParticipant implements Participant {
 		try (Blackboard blackboard = new Blackboard()) {
 			blackboard.load();
 			computeResults(calculation);
+			blackboard.startTransaction();
 			blackboard.getOptimizerBoard().createOptimizerCalculation(calculation);
+			blackboard.commitTransaction();
 		}
 	}
 
