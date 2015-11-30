@@ -9,7 +9,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import org.gatechprojects.project4.DAL.Blackboard;
-import org.gatechprojects.project4.optimizer.SemesterOptimizer;
+import org.gatechprojects.project4.optimizer.OptimizerParticipant;
 
 public class ControllerService {
 	private static int CONTROLLER_INTERVAL = 5;
@@ -88,7 +88,7 @@ public class ControllerService {
 	}
 
 	private void registerParticipants() {
-		participants.add(new SemesterOptimizer(semesterId));
+		participants.add(new OptimizerParticipant(semesterId));
 	}
 
 	public void start() {
