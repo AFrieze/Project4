@@ -25,6 +25,10 @@ public class InputStudentCoursePreference {
 	@JoinColumn(name = "input_student_id")
 	private InputStudent inputStudent;
 
+	@ManyToOne
+	@JoinColumn(name = "optimizer_calculation_id")
+	private OptimizerCalculation optimizerCalculation;
+	
 	public Course getCourse() {
 		return course;
 	}
@@ -55,6 +59,14 @@ public class InputStudentCoursePreference {
 
 	public void setInputStudent(InputStudent inputStudent) {
 		this.inputStudent = inputStudent;
+	}
+
+	public OptimizerCalculation getOptimizerCalculation() {
+		return optimizerCalculation;
+	}
+
+	public void setOptimizerCalculation(OptimizerCalculation optimizerCalculation) {
+		this.optimizerCalculation = optimizerCalculation;
 	}
 
 }
