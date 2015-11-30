@@ -46,7 +46,7 @@ public class OptimizerBoard extends Board {
 		String hql = "from OptimizerCalculation as c where c.completionTime <= :completionTime and c.isShadow = :isShadow order by c.completionTime desc";
 		List calculations = getSession().createQuery(hql).setParameter("completionTime", calendar)
 				.setParameter("isShadow", isShadow).list();
-		if (calculations.size() > 1) {
+		if (calculations.size() > 0) {
 			OptimizerCalculation optCal = (OptimizerCalculation) calculations.get(0);
 			return optCal.getId();
 		}
@@ -93,4 +93,17 @@ public class OptimizerBoard extends Board {
 		getSession().save(offeredCourse);
 	}
 
+	/**
+	 * Used for testing the method getOptimizerCourseRecommendations() 
+	 */
+	public void createOutputOfferedCourse(Course course, OptimizerCalculation optimizerCalculation) {
+		OutputOfferedCourse offeredCourse = new OutputOfferedCourse();
+
+		offeredCourse.setCourse(course);
+		offeredCourse.setCourseSize(50);
+		offeredCourse.setOptimizerCalculation(optimizerCalculation);
+
+		getSession().save(offeredCourse);
+	}
+	
 }

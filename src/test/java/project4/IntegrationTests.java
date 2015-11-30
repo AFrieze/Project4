@@ -4,7 +4,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+
 import org.gatechproject.project4.BAL.dto.ConfiguredCourse;
+import org.gatechproject.project4.BAL.dto.CourseRecommendation;
 import org.gatechproject.project4.BAL.dto.Professor;
 import org.gatechproject.project4.BAL.dto.SemesterConfiguration;
 import org.gatechproject.project4.BAL.dto.Student;
@@ -15,6 +20,9 @@ import org.gatechprojects.project4.BAL.SemesterSetupService;
 import org.gatechprojects.project4.BAL.StaffService;
 import org.gatechprojects.project4.BAL.UserService;
 import org.gatechprojects.project4.DAL.Blackboard;
+import org.gatechprojects.project4.DAL.CatalogBoard;
+import org.gatechprojects.project4.DAL.OptimizerBoard;
+import org.gatechprojects.project4.DAL.UserBoard;
 import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.InputCourseCompetence;
 import org.gatechprojects.project4.SharedDataModules.InputOfferedCourse;
@@ -60,6 +68,69 @@ public class IntegrationTests {
 
 	}
 
+	private void populateDatabaseForTests(Blackboard blackboard) {
+		blackboard.load();
+		blackboard.startTransaction();
+
+		UserBoard userBoard = blackboard.getUserBoard();
+		OptimizerBoard OBoard = blackboard.getOptimizerBoard();
+		CatalogBoard CBoard = blackboard.getCatalogBoard();
+		
+		userBoard.addUser(1, "one", "last", true, false, false, false);
+		userBoard.addUser(2, "two", "last", true, false, false, false);
+
+		OptimizerCalculation oc = new OptimizerCalculation();
+		oc.setCompletionTime(new GregorianCalendar(2015,10,10,10,10,10));
+		oc.setCreateTime(new GregorianCalendar());
+		OBoard.createOptimizerCalculation(oc);
+
+		oc = new OptimizerCalculation();
+		oc.setCompletionTime(new GregorianCalendar(2015,9,10,10,10,10));
+		oc.setCreateTime(new GregorianCalendar());
+		OBoard.createOptimizerCalculation(oc);
+
+		CBoard.createCourse("course 1",  3);
+		CBoard.createCourse("course 2",  3);
+		CBoard.createCourse("course 3",  3);
+		CBoard.createCourse("course 4",  3);
+
+		Course course = blackboard.getByID(Course.class, 1);
+		OptimizerCalculation optimizerCalculation = blackboard.getByID(OptimizerCalculation.class, 1); 
+		OBoard.createOutputOfferedCourse(course, optimizerCalculation);
+		
+		
+//		userBoard.addUserCourseAssignment(1, 1, 1);		
+//		userBoard.addUserCourseAssignment(2, 1, 1);		
+//		userBoard.addUserCourseAssignment(3, 1, 1);		
+//		userBoard.addUserCourseAssignment(4, 1, 1);		
+//		userBoard.addUserCourseAssignment(5, 1, 1);		
+
+		blackboard.commitTransaction();		
+	}
+	
+	@Test
+	public void courseRecommendationsTest() {
+		Blackboard blackboard = new Blackboard();
+		populateDatabaseForTests(blackboard);
+
+		SemesterSetupService semesterService = new SemesterSetupService();
+		
+		// Get the latest ID based on the current date and time
+		int id = semesterService.getOptimizerCalculationId(false, new GregorianCalendar());
+		assertEquals(1, id);
+		
+		id = semesterService.getOptimizerCalculationId(false, new GregorianCalendar(2015,9,10,10,10,11));
+		assertEquals(2, id);
+		id = semesterService.getOptimizerCalculationId(false, new GregorianCalendar(2015,9,10,10,10,10));
+		assertEquals(2, id);
+
+		// Get latest ID
+		id = semesterService.getOptimizerCalculationId(false, new GregorianCalendar());
+		
+		List<CourseRecommendation> recs = semesterService.getOptimizerCourseRecommendations(id);
+		assertEquals(1, recs.size());
+	}
+	
 	@Test
 	public void semesterConfigurationAndStudentPreferencesTest() {
 
