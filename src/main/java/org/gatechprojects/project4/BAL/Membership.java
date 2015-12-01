@@ -1,10 +1,16 @@
 package org.gatechprojects.project4.BAL;
 
-import java.util.List;
-
 import org.gatechprojects.project4.DAL.Blackboard;
+import org.gatechprojects.project4.SharedDataModules.MembershipUser;
 import org.gatechprojects.project4.SharedDataModules.User;
 
+/**
+ * Service used to create {@link MembershipUser membershipUsers} which are
+ * capable of logging into the system.
+ * 
+ * @author afrieze
+ *
+ */
 public class Membership {
 
 	private Blackboard blackboard;
@@ -40,13 +46,21 @@ public class Membership {
 		return blackboard.getMembershipBoard().authenticate(userName, password);
 	}
 
+	/**
+	 * Creates a new membershipUser in the system. Users created in this manner
+	 * may login to the system.
+	 * 
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
 	public int registerMember(String userName, String password) {
 		blackboard.startTransaction();
 		int membershipId = blackboard.getMembershipBoard().registerMember(userName, password);
 		blackboard.commitTransaction();
 		return membershipId;
 	}
-	
+
 	/**
 	 * 
 	 * Returns the User object for a given login

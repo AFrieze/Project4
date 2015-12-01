@@ -2,6 +2,14 @@ package org.gatechproject.project4.BAL.dto;
 
 import org.gatechprojects.project4.SharedDataModules.User;
 
+/**
+ * 
+ * Abstract class which provides the shared information that users in the system
+ * share.
+ * 
+ * @author ubuntu
+ *
+ */
 public abstract class Person {
 	private String firstName;
 	private String lastName;

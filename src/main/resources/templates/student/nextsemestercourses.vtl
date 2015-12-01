@@ -40,12 +40,12 @@
 				<div class="panel panel-default">
 				  <div class="panel-heading">
 				    #if("$!{optimizerCalculation.getCompletionTime().getTime()}" != '')
-				    <h3 class="panel-title">System Solution (Completed: $!{dateFormat.format($optimizerCalculation.getCompletionTime().getTime())} )</h3>
+				    <h3 class="panel-title">System Solution (Completed:  $optimizerCalculation.getCompletionTime().getTime().toString())</h3>
 				  	#end
 				  </div>
 				  <div class="panel-body">
 				    #foreach($course in $recommndations)
-				    	${course.getCourse().getName()}, ${course.getCourse().getCredits()}, prof: ${course.getProfessor().getFirstName()} ${course.getProfessor().getLastName()}<br />
+				    	${course.getCourse().getName()}, prof: ${course.getProfessor().getFirstName()} ${course.getProfessor().getLastName()}<br />
 				    #end
 				  </div>
 				</div>

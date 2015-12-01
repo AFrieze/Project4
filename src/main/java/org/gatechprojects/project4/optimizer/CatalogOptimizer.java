@@ -27,6 +27,16 @@ import gurobi.GRBLinExpr;
 import gurobi.GRBModel;
 import gurobi.GRBVar;
 
+/**
+ * The CatalogOptimizer is responsible for taking a {@link OptimizerCalculation}
+ * which has been pre-populated with input and determining an optimized solution
+ * for the semester specified. Results should be used to hydrate the passed in
+ * optimizerCalculation instance.
+ * 
+ * @author mark
+ * @author afrieze
+ *
+ */
 public class CatalogOptimizer {
 
 	private static final int DEFAULT_MAX_COURSE_SIZE = 50;
@@ -201,6 +211,13 @@ public class CatalogOptimizer {
 		return maxEnrollment;
 	}
 
+	/**
+	 * Attempts to determine an optimized solution given the passed in
+	 * {@link OptimizerCalculation}. Output values are places in the passed in
+	 * calculation.
+	 * 
+	 * @param calculation
+	 */
 	public void calculateSchedule(OptimizerCalculation calculation) {
 
 		String[] courses = populateCoursesAndLookup(calculation);

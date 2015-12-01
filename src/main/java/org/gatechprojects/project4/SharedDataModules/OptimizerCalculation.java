@@ -14,6 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Contains both the inputs and outputs of an optimization run.
+ * 
+ * @author afrieze
+ *
+ */
 @Entity
 @Table(name = "optimizer_calculation")
 public class OptimizerCalculation {

@@ -11,6 +11,15 @@ import java.util.concurrent.TimeUnit;
 import org.gatechprojects.project4.DAL.Blackboard;
 import org.gatechprojects.project4.optimizer.OptimizerParticipant;
 
+/**
+ * 
+ * The Controller portion of the Blackboard design architecure. Responsible for
+ * notifying interested {@link Participant participants} when the
+ * {@link BlackboardState state} of the blackboard has changes.
+ * 
+ * @author afrieze
+ *
+ */
 public class ControllerService {
 	private static int CONTROLLER_INTERVAL = 10;
 	private static TimeUnit CONTROLLER_INTERVAL_TIMEUNIT = TimeUnit.SECONDS;

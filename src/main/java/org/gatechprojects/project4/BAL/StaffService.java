@@ -51,6 +51,16 @@ public class StaffService {
 
 	}
 
+	/**
+	 * Adds a {@link Professor} to the system. Passing in membershipId is
+	 * optional, and only expected if the user is expected to be able to login
+	 * to the system.
+	 * 
+	 * @param membershipId
+	 * @param firstName
+	 * @param lastName
+	 * @return
+	 */
 	public Professor addProfessor(Integer membershipId, String firstName, String lastName) {
 		blackboard.startTransaction();
 		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, false, true, false);
@@ -74,6 +84,16 @@ public class StaffService {
 
 	}
 
+	/**
+	 * Adds a {@link TeacherAssistant} to the system. Passing in membershipId is
+	 * optional, and only expected if the user is expected to be able to login
+	 * to the system.
+	 * 
+	 * @param membershipId
+	 * @param firstName
+	 * @param lastName
+	 * @return
+	 */
 	public TeacherAssistant addTeacherAssistant(Integer membershipId, String firstName, String lastName) {
 		blackboard.startTransaction();
 		int userId = blackboard.getUserBoard().addUser(membershipId, firstName, lastName, false, true, false, false);
@@ -81,6 +101,13 @@ public class StaffService {
 		return new TeacherAssistant(blackboard.getUserBoard().getUser(userId));
 	}
 
+	/**
+	 * Returns a list of {@link Course courses} which a professor is capable of
+	 * teaching.
+	 * 
+	 * @param userId
+	 * @return
+	 */
 	public List<Course> getAvailableProfessorCompetencies(int userId) {
 
 		User user = blackboard.getUserBoard().getUser(userId);

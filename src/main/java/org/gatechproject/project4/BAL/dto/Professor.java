@@ -7,11 +7,19 @@ import org.gatechprojects.project4.SharedDataModules.Course;
 import org.gatechprojects.project4.SharedDataModules.ProfessorCompetence;
 import org.gatechprojects.project4.SharedDataModules.User;
 
+/**
+ * Implementation of the {@link Person} class. Represents a person who is a
+ * professor, capable of teaching the courses listed in the
+ * {@link #getCourseCompetencies()}.
+ * 
+ * @author afrieze
+ *
+ */
 public class Professor extends Person {
 
 	private List<Course> courseCompetencies = new ArrayList<Course>();
 	private boolean assigned = false;
-	
+
 	public Professor() {
 	}
 

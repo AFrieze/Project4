@@ -93,6 +93,13 @@ public class UserService {
 		return student;
 	}
 
+	/**
+	 * Returns a {@link TeacherAssistant} matching the provided userId. If a
+	 * matching ta is not found, null is returned.
+	 * 
+	 * @param userId
+	 * @return
+	 */
 	public TeacherAssistant getTAById(int userId) {
 		TeacherAssistant teacherAssistant = null;
 		User user = blackboard.getUserBoard().getUser(userId);
@@ -102,6 +109,13 @@ public class UserService {
 		return teacherAssistant;
 	}
 
+	/**
+	 * Returns a {@link Professor} matching the provided userId. If a matching
+	 * professor is not found, null is returned.
+	 * 
+	 * @param userId
+	 * @return
+	 */
 	public Professor getProfessorById(int userId) {
 		Professor professor = null;
 		User user = blackboard.getUserBoard().getUser(userId);

@@ -9,6 +9,10 @@ import org.gatechprojects.project4.SharedDataModules.StudentPreference;
 import org.gatechprojects.project4.SharedDataModules.UserAvailability;
 
 /**
+ * 
+ * Represents the state of a blackboard at some point in time. Generally used to
+ * determine if the blackboard has changed in a meaningful way.
+ * 
  * @author Andrew
  *
  */

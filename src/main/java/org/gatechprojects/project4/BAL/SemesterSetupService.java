@@ -20,7 +20,7 @@ import org.gatechprojects.project4.SharedDataModules.UserAvailability;
 
 /**
  * 
- * Provides access to data needed to understand and configure a sememster.
+ * Provides access to data needed to understand and configure a semester.
  * 
  * @author Andrew
  *
