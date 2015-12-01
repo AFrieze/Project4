@@ -110,7 +110,7 @@ public class UserService {
 		}
 		return professor;
 	}
-	
+
 	/**
 	 * Fetches a {@link Student} based on their {@link MembershipUser#getId()
 	 * membershipId}. This is generally used to link an authenticated membership
@@ -148,7 +148,7 @@ public class UserService {
 			if (ca.getCourse() != null) {
 				Professor assignedProfessor = null;
 				for (OutputOfferedCourse assignment : ca.getOptimizerCalculation().getOutputOfferedCourses()) {
-					if (assignment.getCourse().getCourseId() == ca.getCourse().getCourseId()
+					if (assignment.getCourse().getId() == ca.getCourse().getId()
 							&& assignment.getAssignedProfessor() != null) {
 						assignedProfessor = new Professor(assignment.getAssignedProfessor());
 					}
@@ -178,9 +178,10 @@ public class UserService {
 				.getStudentPreferencesForCalculation(studentID, optimizerCalculationID);
 		List<StudentCoursePreferenceDetails> details = new ArrayList<StudentCoursePreferenceDetails>();
 		for (InputStudentCoursePreference pref : inputPreferences) {
-			int demand = blackboard.getOptimizerBoard().getCourseDemand(pref.getCourse().getCourseId(),
+			long demand = blackboard.getOptimizerBoard().getCourseDemand(pref.getCourse().getId(),
 					optimizerCalculationID);
-			details.add(new StudentCoursePreferenceDetails(pref.getCourse(), demand, pref.getCoursePriority()));
+			details.add(new StudentCoursePreferenceDetails(pref.getCourse(), Integer.parseInt(Long.toString(demand)),
+					pref.getCoursePriority()));
 		}
 		return inputPreferences;
 	}

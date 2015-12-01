@@ -46,7 +46,7 @@
 				  	#end
 				  </div>
 				  <div class="panel-body">
-				    #foreach($course in $recommndations)
+				    #foreach($course in $recommendations)
 				    	${course.getCourse().getName()}, ${course.getCourse().getCredits()}, prof: ${course.getProfessor().getFirstName()} ${course.getProfessor().getLastName()}<br />
 				    #end
 				  </div>

@@ -130,10 +130,12 @@ public class SemesterSetupService {
 	public List<Course> getAvailableCourses() {
 		return blackboard.getCatalogBoard().getAvailableCourses();
 	}
-	
+
 	public List<Course> getCurrentSemesterCourses() {
-		//List<CourseSemester> currentSemesterCourses = blackboard.getCatalogBoard().getSemesterCourses(blackboard.getCatalogBoard().getMostRecentSemester().getId(), false);
-		List<CourseSemester> currentSemesterCourses = new ArrayList<CourseSemester>(); 
+		List<CourseSemester> currentSemesterCourses = blackboard.getCatalogBoard()
+				.getSemesterCourses(blackboard.getCatalogBoard().getMostRecentSemester().getId(), false);
+		// List<CourseSemester> currentSemesterCourses = new
+		// ArrayList<CourseSemester>();
 		List<Course> avaliableCourses = new ArrayList<Course>();
 		for (CourseSemester courseSemesterObj : currentSemesterCourses) {
 			avaliableCourses.add(courseSemesterObj.getCourse());
@@ -147,12 +149,11 @@ public class SemesterSetupService {
 	public List<Semester> getAvailableSemesters() {
 		return blackboard.getCatalogBoard().getSemesters();
 	}
-	
-	public Semester getCurrentSemester(){
-		//return blackboard.getCatalogBoard().getMostRecentSemester();
-		return null;
+
+	public Semester getCurrentSemester() {
+		return blackboard.getCatalogBoard().getMostRecentSemester();
+		// return null;
 	}
-	
 
 	public Course getCourse(int courseId) {
 		return blackboard.getCatalogBoard().getCourse(courseId);
@@ -170,12 +171,12 @@ public class SemesterSetupService {
 	public int getOptimizerCalculationId(boolean isShadow, Calendar time) {
 		return blackboard.getOptimizerBoard().getOptimizerCalculationId(time, isShadow);
 	}
-	
+
 	public OptimizerCalculation getOptimizerCalculation(int optimizerCalculationId) {
 		return blackboard.getOptimizerBoard().getOptimizerCalculation(optimizerCalculationId);
 	}
-	
-	public List<OptimizerCalculation> getLastOptimizerCalculations(int limit){
+
+	public List<OptimizerCalculation> getLastOptimizerCalculations(int limit) {
 		return blackboard.getOptimizerBoard().getLastOptimizerCalculations(limit);
 	}
 
@@ -235,7 +236,7 @@ public class SemesterSetupService {
 		List<CourseSemester> semesterCourses = blackboard.getCatalogBoard().getSemesterCourses(semesterId, isShadow);
 		List<ConfiguredCourse> configuredCourses = new ArrayList<>();
 		for (CourseSemester cs : semesterCourses) {
-			configuredCourses.add(new ConfiguredCourse(cs,true));
+			configuredCourses.add(new ConfiguredCourse(cs, true));
 		}
 		semesterConfiguration.setOfferedCourses(configuredCourses);
 		return semesterConfiguration;

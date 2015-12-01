@@ -15,12 +15,12 @@ public class ConfiguredCourse {
 	}
 
 	public ConfiguredCourse(Course course) {
-		this.courseId = course.getCourseId();
+		this.courseId = course.getId();
 		this.courseName = course.getName();
 	}
 
 	public ConfiguredCourse(Course course, boolean isAssigned) {
-		this.courseId = course.getCourseId();
+		this.courseId = course.getId();
 		this.courseName = course.getName();
 		this.assigned = isAssigned;
 	}
@@ -28,7 +28,7 @@ public class ConfiguredCourse {
 	public ConfiguredCourse(CourseSemester cs, boolean isAssigned) {
 		if(cs.getAssignedProfessor() != null)
 			this.assignedProfessorId = cs.getAssignedProfessor().getId();
-		this.courseId = cs.getCourse().getCourseId();
+		this.courseId = cs.getCourse().getId();
 		this.maxCourseSize = cs.getMaxCourseSize();
 		this.courseName = cs.getCourse().getName();
 		this.assigned = isAssigned;

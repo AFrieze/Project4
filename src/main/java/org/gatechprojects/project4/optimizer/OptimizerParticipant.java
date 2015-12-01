@@ -22,6 +22,7 @@ import org.gatechprojects.project4.SharedDataModules.InputStudent;
 import org.gatechprojects.project4.SharedDataModules.InputStudentCoursePreference;
 import org.gatechprojects.project4.SharedDataModules.InputTA;
 import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
+import org.gatechprojects.project4.SharedDataModules.Semester;
 import org.gatechprojects.project4.SharedDataModules.User;
 import org.gatechprojects.project4.controller.Participant;
 
@@ -62,12 +63,15 @@ public class OptimizerParticipant implements Participant {
 		 * required for output
 		 * 
 		 */
-
+		optimizerCalculation.setCompletionTime(Calendar.getInstance());
 		return optimizerCalculation;
 	}
 
 	private OptimizerCalculation createOptimizerInput(boolean isShadow) {
 		OptimizerCalculation calculation = new OptimizerCalculation();
+		Semester semester = new Semester();
+		semester.setId(semesterId);
+		calculation.setSemester(semester);
 		calculation.setCreateTime(Calendar.getInstance());
 		calculation.setShadow(isShadow);
 		Blackboard blackboard = new Blackboard();
@@ -142,6 +146,7 @@ public class OptimizerParticipant implements Participant {
 				inputCourse.setCourse(blackboard.getByID(Course.class, course.getCourseId()));
 				inputCourse.setCoursePriority(coursePriority);
 				inputCourse.setInputStudent(inputStudent);
+				inputCourse.setOptimizerCalculation(calculation);
 				coursePriority++;
 				inputStudent.getCoursePreferences().add(inputCourse);
 			}

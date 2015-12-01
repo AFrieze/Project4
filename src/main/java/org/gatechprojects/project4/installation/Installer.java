@@ -176,7 +176,7 @@ public class Installer {
 		int courseIndex = 0;
 		for (Professor professor : professors) {
 			for (int i = 0; i < nbrCompetencies; i++) {
-				staffService.addCourseCompetency(courses.get(courseIndex).getCourseId(), professor.getUserId());
+				staffService.addCourseCompetency(courses.get(courseIndex).getId(), professor.getUserId());
 				courseIndex = courseIndex + 1 >= courses.size() ? 0 : courseIndex + 1;
 			}
 		}
@@ -224,7 +224,7 @@ public class Installer {
 				for (Course course : courses) {
 					boolean isTaken = false;
 					for (CourseTaken taken : user.getCoursesTaken()) {
-						if (course.getCourseId() == taken.getCourse().getCourseId()) {
+						if (course.getId() == taken.getCourse().getId()) {
 							isTaken = true;
 							break;
 						}

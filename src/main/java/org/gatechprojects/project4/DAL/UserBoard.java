@@ -208,15 +208,21 @@ public class UserBoard extends Board {
 		// ugly child delete..couldn't figure out how to set cascade in the
 		// database
 		StudentPreference preference = (StudentPreference) getSession().createCriteria(StudentPreference.class)
-				.add(Restrictions.eq("user.id", userId)).add(Restrictions.eq("semester.id", semesterId)).uniqueResult();
+				.setCacheable(false).add(Restrictions.eq("user.id", userId))
+				.add(Restrictions.eq("semester.id", semesterId)).uniqueResult();
 		if (preference != null) {
 			Iterator<StudentCoursePreference> iterator = preference.getCoursePreferences().iterator();
 			while (iterator.hasNext()) {
 				StudentCoursePreference p = iterator.next();
+				// String hql = "delete from StudentCoursePreference where id =
+				// :id";
 				getSession().delete(p);
+				// getSession().createQuery(hql).setInteger("id",
+				// p.getId()).executeUpdate();
+				iterator.remove();
 			}
-
 		}
+		getSession().flush();
 		String hql = "delete from StudentPreference where semester.id = :semesterId and user.id = :userId";
 		getSession().createQuery(hql).setInteger("semesterId", semesterId).setInteger("userId", userId).executeUpdate();
 
@@ -235,7 +241,11 @@ public class UserBoard extends Board {
 			coursePreferences.add(p);
 		}
 		preferences.setCoursePreferences(coursePreferences);
-		return (Integer) getSession().save(preferences);
+		Integer prefID = (Integer) getSession().save(preferences);
+		for (StudentCoursePreference cp : coursePreferences) {
+			getSession().save(cp);
+		}
+		return prefID;
 	}
 
 }

@@ -8,8 +8,6 @@ import org.gatechprojects.project4.SharedDataModules.InputStudentCoursePreferenc
 import org.gatechprojects.project4.SharedDataModules.OptimizerCalculation;
 import org.gatechprojects.project4.SharedDataModules.OutputOfferedCourse;
 import org.gatechprojects.project4.SharedDataModules.OutputUserCourseAssignment;
-import org.gatechprojects.project4.SharedDataModules.StudentPreference;
-import org.gatechprojects.project4.SharedDataModules.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -28,12 +26,12 @@ public class OptimizerBoard extends Board {
 
 	}
 
-	public int getCourseDemand(int courseId, int optimizerCalculationId) {
+	public long getCourseDemand(int courseId, int optimizerCalculationId) {
 		Query query = getSession().createQuery(
 				"select count(*) from InputStudentCoursePreference where course.id = :courseId and optimizerCalculation.id = :optimizerCalculationId");
 		query.setInteger("optimizerCalculationId", optimizerCalculationId);
 		query.setInteger("courseId", courseId);
-		Integer count = (Integer) query.uniqueResult();
+		Long count = (Long) query.uniqueResult();
 		return count;
 	}
 
@@ -52,25 +50,23 @@ public class OptimizerBoard extends Board {
 		}
 		return -1;
 	}
-	
+
 	public OptimizerCalculation getOptimizerCalculation(int optimizerCalculationId) {
 		return getSession().get(OptimizerCalculation.class, optimizerCalculationId);
 	}
-	
-	public List<OptimizerCalculation> getLastOptimizerCalculations(int limit) {
-		List<OptimizerCalculation> optimizerSet =  getSession().createCriteria(OptimizerCalculation.class)
-				.addOrder(Order.desc("id")).setFirstResult(0)
-				.setMaxResults(limit).list();
 
-			return optimizerSet;
+	public List<OptimizerCalculation> getLastOptimizerCalculations(int limit) {
+		List<OptimizerCalculation> optimizerSet = getSession().createCriteria(OptimizerCalculation.class)
+				.addOrder(Order.desc("id")).setFirstResult(0).setMaxResults(limit).list();
+
+		return optimizerSet;
 
 	}
-	
 
 	public List<InputStudentCoursePreference> getStudentPreferencesForCalculation(int studentID,
 			int optimizerCalculationID) {
-		return getSession().createCriteria(InputStudentCoursePreference.class)
-				.add(Restrictions.eq("inputStudent.id", studentID))
+		return getSession().createCriteria(InputStudentCoursePreference.class).createAlias("inputStudent", "is")
+				.createAlias("is.user", "u").add(Restrictions.eq("u.id", studentID))
 				.add(Restrictions.eq("optimizerCalculation.id", optimizerCalculationID)).list();
 	}
 
@@ -79,9 +75,9 @@ public class OptimizerBoard extends Board {
 				.add(Restrictions.eq("optimizerCalculation.id", optimizerCalculationId))
 				.add(Restrictions.eq("optimizerCalculation.isShadow", isShadow)).list();
 	}
-	
+
 	/**
-	 * Used for testing the method getOptimizerCourseRecommendations() 
+	 * Used for testing the method getOptimizerCourseRecommendations()
 	 */
 	public void createOutputOfferedCourse(Course course, OptimizerCalculation optimizerCalculation) {
 		OutputOfferedCourse offeredCourse = new OutputOfferedCourse();
@@ -93,6 +89,4 @@ public class OptimizerBoard extends Board {
 		getSession().save(offeredCourse);
 	}
 
-	
-	
 }

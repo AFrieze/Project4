@@ -28,7 +28,15 @@ public class InputStudentCoursePreference {
 	@ManyToOne
 	@JoinColumn(name = "optimizer_calculation_id")
 	private OptimizerCalculation optimizerCalculation;
-	
+
+	public OptimizerCalculation getOptimizerCalculation() {
+		return optimizerCalculation;
+	}
+
+	public void setOptimizerCalculation(OptimizerCalculation optimizerCalculation) {
+		this.optimizerCalculation = optimizerCalculation;
+	}
+
 	public Course getCourse() {
 		return course;
 	}
@@ -59,14 +67,6 @@ public class InputStudentCoursePreference {
 
 	public void setInputStudent(InputStudent inputStudent) {
 		this.inputStudent = inputStudent;
-	}
-
-	public OptimizerCalculation getOptimizerCalculation() {
-		return optimizerCalculation;
-	}
-
-	public void setOptimizerCalculation(OptimizerCalculation optimizerCalculation) {
-		this.optimizerCalculation = optimizerCalculation;
 	}
 
 }

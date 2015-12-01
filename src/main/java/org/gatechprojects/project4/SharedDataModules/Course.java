@@ -20,7 +20,7 @@ public class Course {
 		return credits;
 	}
 
-	public int getCourseId() {
+	public int getId() {
 		return id;
 	}
 

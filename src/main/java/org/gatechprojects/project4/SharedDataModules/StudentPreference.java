@@ -2,7 +2,6 @@ package org.gatechprojects.project4.SharedDataModules;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +28,7 @@ public class StudentPreference {
 	private User user;
 	private int desiredNumberCourses;
 
-	@OneToMany(mappedBy = "studentPreference", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	@OneToMany(mappedBy = "studentPreference")
 	private List<StudentCoursePreference> coursePreferences;
 
 	public List<StudentCoursePreference> getCoursePreferences() {
