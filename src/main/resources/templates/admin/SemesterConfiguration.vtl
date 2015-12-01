@@ -16,6 +16,60 @@
     <link rel="stylesheet" href="/styles/site.css">
     <!-- java script -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    
+    <script language="JavaScript">
+            function toggleVisibility(eventsender, idOfObjectToToggle){
+            	alert(this.id);
+                var myNewState = "hidden";
+                var myNewType = "hidden";
+                if (eventsender.checked === true){
+                    myNewState = "visible";
+                    myNewType = "text";
+                }
+
+                document.getElementById(idOfObjectToToggle).style.visibility = myNewState;
+                document.getElementById(idOfObjectToToggle).type = myNewType;
+                document.getElementById(idOfObjectToToggle).setAttribute("type","myNewType");
+            }       
+            
+            function toggleVisibilityNew(eventsender, idOfObjectToToggle){
+            	//alert(eventsender.id);
+            	var senderId = eventsender.id
+            	var lstId = 'lst' + senderId
+            	var txtId = 'txt' + senderId
+            	var hdnId = 'hdn' + senderId
+            	//alert(lstId + " " + txtId + " " + hdnId)
+                if (eventsender.checked === true){
+                	//alert("adding")
+                    document.getElementById(lstId).appendChild(CreateTextbox(txtId, hdnId));
+                }
+                else
+                {	
+                	document.getElementById(lstId).removeChild(document.getElementById(txtId));	
+                }
+            }       
+            function CreateTextbox(txtId, hdnId) {
+			    var textBox = document.createElement("input");
+			    textBox.setAttribute("type", "textbox");
+			    textBox.setAttribute("id", txtId);
+			    textBox.setAttribute("name", "coursesize");
+			    textBox.setAttribute("style", "width:43px");
+			    var courseSizeValue = document.getElementById(hdnId).value;
+			    textBox.setAttribute("value", courseSizeValue);
+			    return textBox;
+			}
+			
+			document.getElementById("chk").onclick = function () {
+			    if (textboxId == 0) {
+			        document.getElementById("formContainer").appendChild(CreateTextbox(textboxId));
+			        textboxId = 1;
+			    } else if (textboxId == 1) {
+			        document.getElementById("formContainer").innerHTML = '';
+			        textboxId = 0;
+			        //The code to remove the previosuly made textbox
+			    }
+			}
+    </script>
 </head>
 <body>
     <!--=== Top ===-->
@@ -144,17 +198,22 @@
                             <ul id="courses" class="checkbos">
                                 #foreach($entity in $Courses)
 	                            	#if("${entity.isAssigned()}" == true)
-		                            	<li style="width:430px" >
-											<input type="checkbox" checked="checked" id="${entity.getCourseId()}"  name="courses" value="${entity.getCourseId()}" />
+		                            	<li id="lst${entity.getCourseId()}" style="width:430px" >
+											<input type="checkbox" checked="checked" id="${entity.getCourseId()}"  name="courses" value="${entity.getCourseId()}" 
+											onclick="JavaScript:toggleVisibilityNew(this,'txt${entity.getCourseId()}');" />
 											<label for="cb1">${entity.getName()}</label>
 										</li> 
+										<input type="text" name="coursesize" id="txt${entity.getCourseId()}" 
+														style="width:50px"  value="${entity.getMaxCourseSize()}"/>
 	                        		#else
-		                            	<li style="width:430px" >
-											<input type="checkbox" id="${entity.getCourseId()}"  name="courses" value="${entity.getCourseId()}" />
+		                            	<li id="lst${entity.getCourseId()}" style="width:430px" >
+											<input type="checkbox" id="${entity.getCourseId()}"  name="courses" value="${entity.getCourseId()}" 
+											onclick="JavaScript:toggleVisibilityNew(this,'txt${entity.getCourseId()}');" />
 											<label for="cb1">${entity.getName()}</label>
 										</li> 
 	                            	#end
-	                            	${entity.getMaxCourseSize()}
+	                            	<input type="hidden" name="hdnCoursesize" id="hdn${entity.getCourseId()}" 
+														style="width:50px;visibility:hidden"  value="${entity.getMaxCourseSize()}"/>
 	                            #end
                             </ul>
                         </fieldset>
@@ -164,10 +223,10 @@
                             <label>Competencies Assignments</label>
                             <ul id="competencies" class="checkbos">
                                 #foreach($entity in $Competencies)
-	                            	<li>
-	                            		<input type="checkbox" id="${entity.getId()}"  name="competencies" value="${entity.getId()}" >
-	                            		<label for="cb1">${entity.getName()}</label>
-	                            	</li> 
+	                            	<li style="width:430px" >
+										<input type="checkbox" id="${entity.getCourseId()}"  name="courses" value="${entity.getCourseId()}" />
+										<label for="cb1">${entity.getName()}</label>
+									</li>  
 	                            #end
                             </ul>
                         </fieldset>
@@ -201,10 +260,5 @@
     <!-- JS and jQuery -->
     <script type="text/javascript" src="/js/jquery-2.0.0.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    
-    <script type="text/javascript"  >
-        
-		
-    </script>
 </body>
 </html>

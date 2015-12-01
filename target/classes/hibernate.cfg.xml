@@ -21,10 +21,10 @@
  <property name="show_sql">true</property>
 		<!-- Assume test is the database name -->
 		<property name="hibernate.connection.url">
-			jdbc:mysql://127.0.0.1/project4
+			jdbc:mysql://localhost/project4
 		</property>
 		<property name="hibernate.connection.username">
-			project4
+			root
 		</property>
 		<property name="hibernate.connection.password">
 			password1

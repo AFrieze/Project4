@@ -32,14 +32,7 @@ public class SemesterController extends Controller {
 			
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		String semesterId = (String)request.queryParams("Semester");
-		if (semesterId != null && !semesterId.isEmpty()) 
-		{	
-			getSemesterConfiguration(model, semesterId);
-		}
-		else
-		{	
-			getAllMasters(model);
-		}
+		getSemesterConfiguration(model, "1");
 
 		getCommonDetails(model, request);
 		
@@ -76,12 +69,13 @@ public class SemesterController extends Controller {
 		String[] selectedTAs = (String[])request.queryMap().get("tas").values();
 		String[] selectedProfessors = (String[])request.queryMap().get("professors").values();
 		String[] selectedCourses = (String[])request.queryMap().get("courses").values();
+		String[] courseSizes = (String[])request.queryMap().get("coursesize").values();
 		
 		if(selectedTAs != null && selectedProfessors != null && selectedTAs != null)
 		{
 			addTAs(semesterConfiguration, selectedTAs);
 			addProfessors(semesterConfiguration, selectedProfessors);
-			addCourses(semesterConfiguration, selectedCourses);
+			addCourses(semesterConfiguration, selectedCourses, courseSizes);
 			
 			semesterSetupService.applySemesterConfiguration(semesterConfiguration, true);
 		}
@@ -126,7 +120,7 @@ public class SemesterController extends Controller {
 	}
 	
 
-	private void addCourses(SemesterConfiguration semesterConfiguration, String[] selectedCourses) {
+	private void addCourses(SemesterConfiguration semesterConfiguration, String[] selectedCourses, String[] courseSizes) {
 
 		SemesterSetupService courseService = new SemesterSetupService();
 		List<ConfiguredCourse> courses = new ArrayList<ConfiguredCourse>();
@@ -134,6 +128,7 @@ public class SemesterController extends Controller {
 		for (int i = 0; i < selectedCourses.length; i++) {
 		    int courseId = Integer.parseInt(selectedCourses[i]);
 		    ConfiguredCourse configuredCourse = new ConfiguredCourse(courseService.getCourse(courseId),true);
+		    configuredCourse.setMaxCourseSize(Integer.parseInt(courseSizes[i]));
 		    courses.add(configuredCourse);
 		}
 		
@@ -158,7 +153,16 @@ public class SemesterController extends Controller {
 		model.put("SelectedSemester", "");
 		model.put("TeacherAssistants", staffSetupService.getAvailableTeacherAssistants());
 		model.put("Professors", staffSetupService.getAvailableProfessors());
-		model.put("Courses", semesterSetupService.getAvailableCourses());
+
+		List<Course> allCourses = semesterSetupService.getAvailableCourses();
+		List<ConfiguredCourse> configuredCourses = new ArrayList<>();
+		for (Course course : allCourses) {
+			configuredCourses.add(new ConfiguredCourse(course,false));
+		}
+		
+		model.put("Courses", configuredCourses);
+		model.put("Competencies", userService.getProfessorById(1).getCourseCompetencies());
+		
 	}
 
 
@@ -195,6 +199,7 @@ public class SemesterController extends Controller {
 		model.put("Professors", allProfessors);
 		model.put("Courses", assignedCourses);
 		model.put("Semesters", semesterSetupService.getAvailableSemesters());
+		model.put("Competencies", userService.getProfessorById(1).getCourseCompetencies());
 		
 		model.put("SelectedSemester", semesterId);
 	}

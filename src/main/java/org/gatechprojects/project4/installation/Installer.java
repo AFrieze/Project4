@@ -199,9 +199,9 @@ public class Installer {
 		blackboard.load();
 		blackboard.startTransaction();
 		blackboard.getCatalogBoard().createSemester("Spring", 2016);
-		// blackboard.getCatalogBoard().createSemester("Fall", 2016);
-		// blackboard.getCatalogBoard().createSemester("Spring", 2017);
-		// blackboard.getCatalogBoard().createSemester("Fall", 2017);
+		blackboard.getCatalogBoard().createSemester("Fall", 2016);
+		blackboard.getCatalogBoard().createSemester("Spring", 2017);
+		blackboard.getCatalogBoard().createSemester("Fall", 2017);
 		blackboard.commitTransaction();
 		blackboard.close();
 	}
